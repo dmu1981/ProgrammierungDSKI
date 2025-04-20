@@ -4,6 +4,12 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+- file: vscode
+- file: introduction
+- file: grundlagen/helloworld
+- file: grundlagen/variablenundoperationen
+- file: grundlagen/kontrollstrukturen
+- file: grundlagen/schleifen
+- file: grundlagen/mathundrandom
+- file: grundlagen/listen
+- file: grundlagen/tuple

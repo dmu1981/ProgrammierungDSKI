@@ -1,0 +1,2 @@
+jb build . --all
+
