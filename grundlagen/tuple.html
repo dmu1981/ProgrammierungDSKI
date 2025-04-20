@@ -194,6 +194,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">📦 Tupel - Die unveränderbare Liste</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sets.html">🔷 Sets in Python – Mengen ohne Duplikate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dicts.html">📘 Dictionaries in Python – Daten als Schlüssel-Wert-Paare</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funktionen.html">🧩 Funktionen in Python – Code wiederverwenden und strukturieren</a></li>
 </ul>
 
     </div>
@@ -393,6 +394,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tupel-erstellen-verwenden">🔧 Tupel erstellen &amp; verwenden</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unpacking">⚙️ Unpacking</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-enumerate-funktion">✨ Die <code class="docutils literal notranslate"><span class="pre">enumerate</span></code>-Funktion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-zip-funktion">✨ Die <code class="docutils literal notranslate"><span class="pre">zip</span></code>-Funktion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-projekt">🎓 Mini-Projekt</a></li>
 </ul>
             </nav>
@@ -462,6 +464,16 @@ document.write(`
 </pre></div>
 </div>
 </section>
+<section id="die-zip-funktion">
+<h2>✨ Die <code class="docutils literal notranslate"><span class="pre">zip</span></code>-Funktion<a class="headerlink" href="#die-zip-funktion" title="Link to this heading">#</a></h2>
+<p>Mit der <a class="reference external" href="https://www.w3schools.com/python/ref_func_zip.asp">zip</a> Funktion können mehrere gleichlange Listen gemeinsam iteriert werden. Dabei wird ein neuer Iterator erzeugt der die jeweils passenden Elemente der Liste als Tupel liefert</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">namen</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Anna&quot;</span><span class="p">,</span> <span class="s2">&quot;Beate&quot;</span><span class="p">,</span> <span class="s2">&quot;Carla&quot;</span><span class="p">,</span> <span class="s2">&quot;Denise&quot;</span><span class="p">,</span> <span class="s2">&quot;Erika&quot;</span><span class="p">,</span> <span class="s2">&quot;Frauke&quot;</span><span class="p">]</span>
+<span class="n">alter</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">jahre</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">namen</span><span class="p">,</span> <span class="n">alter</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> ist </span><span class="si">{</span><span class="n">jahre</span><span class="si">}</span><span class="s2"> Jahre alt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 <section id="mini-projekt">
 <h2>🎓 Mini-Projekt<a class="headerlink" href="#mini-projekt" title="Link to this heading">#</a></h2>
 <p>Schreibe ein kleines Programm welches den Nutzer verschiedene Meßgrößen <span class="math notranslate nohighlight">\(x_i\)</span> (als Fließkommazahl abfragt).
@@ -484,6 +496,7 @@ Tupel bestehend aus der Meßgröße und deren Häufigkeit ist. Die Eingabe endet
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mf">8.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
 </pre></div>
 </div>
+<p><a class="reference internal" href="mittelsolution.html"><span class="std std-doc">Lösung</span></a></p>
 <!--- ```python
 elemente = []
 while True:
@@ -573,6 +586,7 @@ print(f"Das arithmetische Mittel ist {summeX / summeW}")
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tupel-erstellen-verwenden">🔧 Tupel erstellen &amp; verwenden</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unpacking">⚙️ Unpacking</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-enumerate-funktion">✨ Die <code class="docutils literal notranslate"><span class="pre">enumerate</span></code>-Funktion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-zip-funktion">✨ Die <code class="docutils literal notranslate"><span class="pre">zip</span></code>-Funktion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-projekt">🎓 Mini-Projekt</a></li>
 </ul>
   </nav></div>

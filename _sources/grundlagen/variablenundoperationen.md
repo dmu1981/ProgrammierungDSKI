@@ -107,6 +107,13 @@ x = "zehn"  # jetzt ist x ein str
 * Nicht mit Zahlen beginnen
 * Keine reservierten Wörter wie if, class, def als Namen verwenden
 
+### 5. `None` als besonderer Wert
+Um anzuzeigen das eine Variable (noch) nicht gesetzt ist bzw. ihr (noch) kein Wert zugewiesen wurde kann das besondere Keyword `None` verwendet werden. 
+
+```python
+x = None
+```
+
 ### 6. 🧠 Tipp: Du kannst mit der Funktion type(variable) jederzeit den Datentyp prüfen:
 ```python
 x = 42

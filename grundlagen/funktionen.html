@@ -1,0 +1,730 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>🧩 Funktionen in Python – Code wiederverwenden und strukturieren &#8212; Programmierung für Data Science und KI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/funktionen';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="📘 Dictionaries in Python – Daten als Schlüssel-Wert-Paare" href="dicts.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Programmierung für Data Science und KI - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Programmierung für Data Science und KI - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programmierung für Data Science und KI
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Einführung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helloworld.html">🐍 Python: Hello World Beispiel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variablenundoperationen.html">🧠 Variablen in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kontrollstrukturen.html">🗂️ Kontrollstrukturen – Entscheidungen im Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schleifen.html">🔁 Schleifen – Wiederholungen meistern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathundrandom.html">🧮 Einführung in <code class="docutils literal notranslate"><span class="pre">math</span></code> und <code class="docutils literal notranslate"><span class="pre">random</span></code> in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="listen.html">🧩 Listen - Mehrere Elemente verwalten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">📝 Strings in Python – Zeichenketten meistern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tuple.html">📦 Tupel - Die unveränderbare Liste</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sets.html">🔷 Sets in Python – Mengen ohne Duplikate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dicts.html">📘 Dictionaries in Python – Daten als Schlüssel-Wert-Paare</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">🧩 Funktionen in Python – Code wiederverwenden und strukturieren</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgrundlagen/funktionen.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/grundlagen/funktionen.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>🧩 Funktionen in Python – Code wiederverwenden und strukturieren</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-funktionen">🔹 Warum Funktionen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-definieren-und-aufrufen">🔹 Funktionen definieren und aufrufen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-ohne-ruckgabewert">🔹 Funktionen ohne Rückgabewert</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-mit-mehreren-ruckgabewerten">🔹 Funktionen mit mehreren Rückgabewerten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardwerte-fur-funktionsparameter">🔹 Standardwerte für Funktionsparameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#globale-vs-lokale-variablen">🔹 Globale vs. Lokale Variablen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-sind-first-class-citizens">🔹Funktionen sind First Class Citizens</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-und-filter">🔹 <code class="docutils literal notranslate"><span class="pre">map</span></code> und <code class="docutils literal notranslate"><span class="pre">filter</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anonyme-lambda-funktionen">🔹 Anonyme <code class="docutils literal notranslate"><span class="pre">lambda</span></code>-Funktionen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe-fakultat">🧪 Übungsaufgabe: Fakultät</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-projekt-vektoren-der-lange-nach-sortieren">🎓 Mini-Projekt: Vektoren der Länge nach sortieren</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="funktionen-in-python-code-wiederverwenden-und-strukturieren">
+<h1>🧩 Funktionen in Python – Code wiederverwenden und strukturieren<a class="headerlink" href="#funktionen-in-python-code-wiederverwenden-und-strukturieren" title="Link to this heading">#</a></h1>
+<section id="warum-funktionen">
+<h2>🔹 Warum Funktionen?<a class="headerlink" href="#warum-funktionen" title="Link to this heading">#</a></h2>
+<p>Motivation:</p>
+<ul class="simple">
+<li><p>Vermeide Wiederholung</p></li>
+<li><p>Mache Code verständlicher</p></li>
+<li><p>Ermögliche Wiederverwendung</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Schlechter Stil: Wiederholung</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo, Max!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo, Lisa!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Besser:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">begruessung</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo,&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="n">begruessung</span><span class="p">(</span><span class="s2">&quot;Max&quot;</span><span class="p">)</span>
+<span class="n">begruessung</span><span class="p">(</span><span class="s2">&quot;Lisa&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="funktionen-definieren-und-aufrufen">
+<h2>🔹 Funktionen definieren und aufrufen<a class="headerlink" href="#funktionen-definieren-und-aufrufen" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">quadrat</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">quadrat</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>  <span class="c1"># 25</span>
+</pre></div>
+</div>
+</section>
+<section id="funktionen-ohne-ruckgabewert">
+<h2>🔹 Funktionen ohne Rückgabewert<a class="headerlink" href="#funktionen-ohne-ruckgabewert" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">begruessung</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="funktionen-mit-mehreren-ruckgabewerten">
+<h2>🔹 Funktionen mit mehreren Rückgabewerten<a class="headerlink" href="#funktionen-mit-mehreren-ruckgabewerten" title="Link to this heading">#</a></h2>
+<p>Du kannst eine Funktion ein Tupel zurückgeben lassen wenn Du mehrere Rückgabewerte hast</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rechnung</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+
+<span class="n">summe</span><span class="p">,</span> <span class="n">produkt</span> <span class="o">=</span> <span class="n">rechnung</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="standardwerte-fur-funktionsparameter">
+<h2>🔹 Standardwerte für Funktionsparameter<a class="headerlink" href="#standardwerte-fur-funktionsparameter" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hallo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Welt&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo,&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="n">hallo</span><span class="p">()</span>           <span class="c1"># → Hallo, Welt</span>
+<span class="n">hallo</span><span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">)</span>     <span class="c1"># → Hallo, Anna</span>
+</pre></div>
+</div>
+<p>⚠️ Achtung: Parameter mit Standardwerten dürfen immer nur <strong>nach</strong> Parameter ohne solche stehen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span> <span class="c1"># Das ist ok</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span> 
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bar</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span> <span class="c1"># Das ist nicht ok    </span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span> 
+</pre></div>
+</div>
+</section>
+<section id="globale-vs-lokale-variablen">
+<h2>🔹 Globale vs. Lokale Variablen<a class="headerlink" href="#globale-vs-lokale-variablen" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># Dies ist eine globale Variable</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># Dies ist eine lokale Variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;In Funktion:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">test</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Außerhalb:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Man kann eine globale Variable in den lokalen “scope” ziehen um sie zu verwenden.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># Dies ist eine globale Variable</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">x</span> <span class="c1"># Hierdurch wird die globale Variable x verwendet</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>   <span class="c1"># Jetzt wird die globale Variable x überschrieben</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;In Funktion:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">test</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Außerhalb:&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>⚠️ Achtung: Da dies unerwünschte Nebeneffekte haben kann die schwer zu debuggen sind sollte dies, wo immer möglich, vermieden werden.</p>
+</section>
+<section id="funktionen-sind-first-class-citizens">
+<h2>🔹Funktionen sind <a class="reference external" href="https://en.wikipedia.org/wiki/First-class_citizen#:~:text=In%20a%20given%20programming%20language,and%20assigned%20to%20a%20variable.">First Class Citizens</a><a class="headerlink" href="#funktionen-sind-first-class-citizens" title="Link to this heading">#</a></h2>
+<p>In Python sind Funktionen eigenständige Objekte die dann wiederum z.B. einer Variable zugewiesen werden können bzw. als Rückgabewert oder Parameter einer anderen Funktion verwendet werden können.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sub</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calc</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+  <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Das Ergebniss ist </span><span class="si">{</span><span class="n">func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">auswahl</span><span class="p">():</span>
+  <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">wahl</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Möchte Sie addieren (a) oder subtrahieren (s)?&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">wahl</span> <span class="o">==</span> <span class="s2">&quot;a&quot;</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">add</span>
+
+    <span class="k">if</span> <span class="n">wahl</span> <span class="o">==</span> <span class="s2">&quot;s&quot;</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">sub</span>
+
+<span class="n">func</span> <span class="o">=</span> <span class="n">auswahl</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span> <span class="n">func</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="map-und-filter">
+<h2>🔹 <code class="docutils literal notranslate"><span class="pre">map</span></code> und <code class="docutils literal notranslate"><span class="pre">filter</span></code><a class="headerlink" href="#map-und-filter" title="Link to this heading">#</a></h2>
+<p>Die <a class="reference external" href="https://www.w3schools.com/python/ref_func_map.asp">map</a>() Funktion iteriert über einen Iterator und ruft die angegebene Funktion für jedes Element auf. Sie liefert dann einen neuen Iterator, welche die entsprechenden Rückgabewerte enthält.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">count_vokale</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="n">vokale</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">]</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+  <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+  
+  <span class="k">for</span> <span class="n">vokal</span> <span class="ow">in</span> <span class="n">vokale</span><span class="p">:</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="n">text</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">vokal</span><span class="p">)</span>
+  
+  <span class="k">return</span> <span class="n">count</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">map</span><span class="p">(</span><span class="n">count_vokale</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;cherry&#39;</span><span class="p">]):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Die <a class="reference external" href="https://www.w3schools.com/python/ref_func_filter.asp">filter</a> Funktion iteriert über einen Iterator und ruft die angegebene Funktion für jedes Element auf. Sie liefert dann einen neuen Iterator, welcher nur diejenigen Elemente enthält für die die Funktion <code class="docutils literal notranslate"><span class="pre">True</span></code> liefert.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">isPrim</span><span class="p">(</span><span class="n">zahl</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">teiler</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">zahl</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">zahl</span> <span class="o">%</span> <span class="n">teiler</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">False</span>
+    
+  <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">for</span> <span class="n">primzahlen</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="n">isPrim</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">primzahlen</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="anonyme-lambda-funktionen">
+<h2>🔹 Anonyme <code class="docutils literal notranslate"><span class="pre">lambda</span></code>-Funktionen<a class="headerlink" href="#anonyme-lambda-funktionen" title="Link to this heading">#</a></h2>
+<p>Lambda-Funktionen sind anonyme, also namenlose Funktionen, die man direkt inline schreiben kann:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">lambda</span> <span class="n">parameter</span><span class="p">:</span> <span class="n">ausdruck</span>
+</pre></div>
+</div>
+<p><strong>Beispiel 1</strong>: Nur Wörter mit mehr als 4 Buchstaben</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">woerter</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Ei&quot;</span><span class="p">,</span> <span class="s2">&quot;Bananenbrot&quot;</span><span class="p">,</span> <span class="s2">&quot;Hund&quot;</span><span class="p">]</span>
+<span class="n">lange</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">,</span> <span class="n">woerter</span><span class="p">))</span>
+<span class="c1"># → [&#39;Apfel&#39;, &#39;Bananenbrot&#39;]</span>
+</pre></div>
+</div>
+<p><strong>Beispiel 2</strong>: Quadrate berechnen</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">]</span>
+<span class="n">quadrate</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="n">zahlen</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">zahl</span><span class="p">,</span> <span class="n">quadrat</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">zahlen</span><span class="p">,</span> <span class="n">quadrate</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Das Quadrat von </span><span class="si">{</span><span class="n">zahl</span><span class="si">}</span><span class="s2"> ist </span><span class="si">{</span><span class="n">quadrat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Beispiel 3</strong>: Schlüsselelement zum sortieren auswählen</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">personen</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Max&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Ben&quot;</span><span class="p">,</span> <span class="mi">19</span><span class="p">)]</span>
+<span class="n">personen</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># → [(&#39;Ben&#39;, 19), (&#39;Max&#39;, 20), (&#39;Anna&#39;, 25)]</span>
+</pre></div>
+</div>
+</section>
+<section id="ubungsaufgabe-fakultat">
+<h2>🧪 Übungsaufgabe: Fakultät<a class="headerlink" href="#ubungsaufgabe-fakultat" title="Link to this heading">#</a></h2>
+<p>Schreibe eine Funktion <code class="docutils literal notranslate"><span class="pre">fakultaet</span></code> welche rekursiv die Fakultaet berechnet, also</p>
+<div class="math notranslate nohighlight">
+\[ n! = n\cdot (n-1)! \]</div>
+<p>für <span class="math notranslate nohighlight">\(n &gt; 1\)</span> und <span class="math notranslate nohighlight">\(1! = 1\)</span> (Abbruchbedingung).</p>
+</section>
+<section id="mini-projekt-vektoren-der-lange-nach-sortieren">
+<h2>🎓 Mini-Projekt: Vektoren der Länge nach sortieren<a class="headerlink" href="#mini-projekt-vektoren-der-lange-nach-sortieren" title="Link to this heading">#</a></h2>
+<p>Schreibe ein kleines Programm welches den Nutzer mehrere zwei-dimensionale Vektoren <span class="math notranslate nohighlight">\(\textbf{x} = (x_1, x_2)\)</span> eingeben lässt. Schreibe dazu eine Funktion welche die <span class="math notranslate nohighlight">\(x_1\)</span> und <span class="math notranslate nohighlight">\(x_2\)</span> Komponente des Vektors abfragt. Der Nutzer soll die beiden Komponenten mit Komma getrennt eingeben können. Verwende wieder <a class="reference external" href="https://www.w3schools.com/jsref/jsref_split.asp">split</a>()
+und <a class="reference external" href="https://www.w3schools.com/python/ref_string_strip.asp">strip</a>() um die Komponenten geeignet zu trennen und wandle die erhaltenen Strings mit <a class="reference external" href="https://www.w3schools.com/python/ref_func_float.asp">float</a>() in Gleitkommazahlen um ()</p>
+<p>Rufe diese Funktion aus der Hauptschleife auf und füge den Vektor einer ständig wachsenden Liste mit allen Eingaben zu. Gibt der Nutzer keine Zahl ein so soll die Funktion <code class="docutils literal notranslate"><span class="pre">None</span></code> liefern. Das ist das Signal für das Hauptprogramm, die Eingabe zu beenden und zum zweiten Teil überzugehen.</p>
+<p>Definiere im zweiten Teil eine geeignete Funktion welche die euklische Länge eines Vektor berechnet, also</p>
+<div class="math notranslate nohighlight">
+\[ ||\textbf{x}||_2 = \sqrt{x_1^2 + x_2^2} \]</div>
+<p>und sortiere die Liste der Vektoren nach der Länge. Gib anschließend alle Vektoren in sortierter Reihenfolge auf, deren Länge kleiner oder gleich 1 ist.</p>
+<p><a class="reference internal" href="vektorsolution.html"><span class="std std-doc">Lösung</span></a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./grundlagen"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="dicts.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">📘 Dictionaries in Python – Daten als Schlüssel-Wert-Paare</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-funktionen">🔹 Warum Funktionen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-definieren-und-aufrufen">🔹 Funktionen definieren und aufrufen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-ohne-ruckgabewert">🔹 Funktionen ohne Rückgabewert</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-mit-mehreren-ruckgabewerten">🔹 Funktionen mit mehreren Rückgabewerten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardwerte-fur-funktionsparameter">🔹 Standardwerte für Funktionsparameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#globale-vs-lokale-variablen">🔹 Globale vs. Lokale Variablen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-sind-first-class-citizens">🔹Funktionen sind First Class Citizens</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-und-filter">🔹 <code class="docutils literal notranslate"><span class="pre">map</span></code> und <code class="docutils literal notranslate"><span class="pre">filter</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anonyme-lambda-funktionen">🔹 Anonyme <code class="docutils literal notranslate"><span class="pre">lambda</span></code>-Funktionen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe-fakultat">🧪 Übungsaufgabe: Fakultät</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-projekt-vektoren-der-lange-nach-sortieren">🎓 Mini-Projekt: Vektoren der Länge nach sortieren</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Prof. Dr. Dennis Müller
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

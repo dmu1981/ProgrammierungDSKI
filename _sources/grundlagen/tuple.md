@@ -54,6 +54,15 @@ for index, name in enumerate(A):
   print(f"Hallo {name}. Du bist auf Platz {index} der Liste!")
 ```
 
+## ✨ Die ``zip``-Funktion
+Mit der [zip](https://www.w3schools.com/python/ref_func_zip.asp) Funktion können mehrere gleichlange Listen gemeinsam iteriert werden. Dabei wird ein neuer Iterator erzeugt der die jeweils passenden Elemente der Liste als Tupel liefert
+```python
+namen = ["Anna", "Beate", "Carla", "Denise", "Erika", "Frauke"]
+alter = [22, 21, 24, 28, 23, 31]
+for name, jahre in zip(namen, alter):
+  print(f"{name} ist {jahre} Jahre alt")
+```
+
 ## 🎓 Mini-Projekt
 Schreibe ein kleines Programm welches den Nutzer verschiedene Meßgrößen $x_i$ (als Fließkommazahl abfragt).
 Zu jeder Zahl soll ebenfalls erfasst werden wie häufig diese Meßgröße gemessen wurden $\omega_i$. 
@@ -79,6 +88,9 @@ Die Liste sieht dann so aus
 ```python
 [(3.0, 3), (8.0, 2)]
 ```
+
+[Lösung](mittelsolution.md)
+
 <!--- ```python
 elemente = []
 while True:
