@@ -81,6 +81,7 @@ for zahl in range(2, 100):
   if istPrim:
     print(f"{zahl} ist prim!")
 ```
-## 🧪 Mini-Projekt - Benutzerverwaltung:
+## 🎓 Mini-Projekt - Benutzerverwaltung:
 Zur Anmeldung an einem Terminal müssen Nutzer sich mit Benutzername und Passwort registrieren. Es gibt aktuell drei Benutzer mit Namen "Anna", "Beate" und "Clara". Ihre jeweiligen Passwörter lauten "Aquamarin", "Beige" und "Cyan". Erstelle ein kleines Projekt wo Du zuerst nach dem Benutzernamen fragst. Stelle sicher das sich nur die drei bekannten Nutzer anmelden können. Brich das Program ab wenn sich andere Nutzer anmelden möchten. Ein bekannter Benutzer muß sich mit dem korrekten Passwort anmelden. Erlaube maximal drei Fehlversuche bei der Eingabe des Passwortes. Brich das Programm ab wenn ein bekannter Benutzer sein Passwort zum dritten mal falsch eingibt. 
 
+[Lösung](benutzerverwaltungsolution.md)
