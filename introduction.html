@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Visual Studio Code &#8212; Programmierung für Data Science und KI</title>
+    <title>Einführung in Python &#8212; Programmierung für Data Science und KI</title>
   
   
   
@@ -57,11 +57,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'vscode';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'introduction';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Einführung in Python" href="introduction.html" />
-    <link rel="prev" title="Programmierung für Data Science und KI" href="intro.html" />
+    <link rel="prev" title="Visual Studio Code" href="vscode.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,8 +179,8 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visual Studio Code</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Einführung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vscode.html">Visual Studio Code</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Einführung in Python</a></li>
 </ul>
 
     </div>
@@ -253,7 +252,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fvscode.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintroduction.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -283,7 +282,7 @@
       
       
       
-      <li><a href="_sources/vscode.md" target="_blank"
+      <li><a href="_sources/introduction.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -354,7 +353,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -365,11 +366,30 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Visual Studio Code</h1>
+    <h1>Einführung in Python</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-python">Warum Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grosze-verbreitung-in-data-science-und-machine-learning">🔍 1. Große Verbreitung in Data Science und Machine Learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machtige-bibliotheken-und-frameworks">🧰 2. Mächtige Bibliotheken und Frameworks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einfach-zu-lernen-idealer-einstieg">🧠 3. Einfach zu lernen – idealer Einstieg</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interaktive-entwicklung-mit-jupyter-notebooks">🧪 4. Interaktive Entwicklung mit Jupyter Notebooks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#riesige-community-open-source">🔁 5. Riesige Community + Open Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einsatz-in-industrie-und-forschung">🤖 6. Einsatz in Industrie und Forschung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vielseitig-einsetzbar">🚀 7. Vielseitig einsetzbar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hohe-jobchancen">📈 8. Hohe Jobchancen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fazit">✅ Fazit</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -379,10 +399,93 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="visual-studio-code">
-<h1>Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Link to this heading">#</a></h1>
-<p>In dieser Vorlesung (und einem großen Teil des Studiums)</p>
-<p>Installieren Sie <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="einfuhrung-in-python">
+<h1>Einführung in Python<a class="headerlink" href="#einfuhrung-in-python" title="Link to this heading">#</a></h1>
+<section id="warum-python">
+<h2>Warum Python<a class="headerlink" href="#warum-python" title="Link to this heading">#</a></h2>
+<p>Python ist <strong>DIE</strong> Sprache im Bereich Data Science und Machine Learning – und das aus richtig guten Gründen:</p>
+<hr class="docutils" />
+<section id="grosze-verbreitung-in-data-science-und-machine-learning">
+<h3>🔍 1. Große Verbreitung in Data Science und Machine Learning<a class="headerlink" href="#grosze-verbreitung-in-data-science-und-machine-learning" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Python ist <strong>de facto Standard</strong> in der Branche.</p></li>
+<li><p>Die meisten Frameworks, Tools und Bibliotheken im Bereich AI/ML sind in Python geschrieben oder bieten Python-APIs.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="machtige-bibliotheken-und-frameworks">
+<h3>🧰 2. Mächtige Bibliotheken und Frameworks<a class="headerlink" href="#machtige-bibliotheken-und-frameworks" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Datenanalyse</strong>: <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
+<li><p><strong>Visualisierung</strong>: <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, <code class="docutils literal notranslate"><span class="pre">plotly</span></code></p></li>
+<li><p><strong>Machine Learning</strong>: <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>, <code class="docutils literal notranslate"><span class="pre">XGBoost</span></code>, <code class="docutils literal notranslate"><span class="pre">LightGBM</span></code></p></li>
+<li><p><strong>Deep Learning</strong>: <code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code>, <code class="docutils literal notranslate"><span class="pre">Keras</span></code>, <code class="docutils literal notranslate"><span class="pre">PyTorch</span></code></p></li>
+<li><p><strong>NLP</strong>: <code class="docutils literal notranslate"><span class="pre">spaCy</span></code>, <code class="docutils literal notranslate"><span class="pre">transformers</span></code> (Hugging Face)</p></li>
+<li><p><strong>Web Scraping &amp; Automatisierung</strong>: <code class="docutils literal notranslate"><span class="pre">requests</span></code>, <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code>, <code class="docutils literal notranslate"><span class="pre">Selenium</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="einfach-zu-lernen-idealer-einstieg">
+<h3>🧠 3. Einfach zu lernen – idealer Einstieg<a class="headerlink" href="#einfach-zu-lernen-idealer-einstieg" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Klarer, lesbarer Code</p></li>
+<li><p>Viele Einsteiger-Tutorials, Bücher, Online-Kurse, Jupyter Notebooks etc.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="interaktive-entwicklung-mit-jupyter-notebooks">
+<h3>🧪 4. Interaktive Entwicklung mit Jupyter Notebooks<a class="headerlink" href="#interaktive-entwicklung-mit-jupyter-notebooks" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Ideal für <strong>Exploratory Data Analysis (EDA)</strong>, Visualisierung und schnelles Prototyping.</p></li>
+<li><p>Notebooks sind Standard in der Data-Science-Community.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="riesige-community-open-source">
+<h3>🔁 5. Riesige Community + Open Source<a class="headerlink" href="#riesige-community-open-source" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Millionen von Nutzern weltweit.</p></li>
+<li><p>Schnelle Hilfe durch Stack Overflow, GitHub, Reddit &amp; Co.</p></li>
+<li><p>Ständige Weiterentwicklung durch die Open-Source-Community.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="einsatz-in-industrie-und-forschung">
+<h3>🤖 6. Einsatz in Industrie und Forschung<a class="headerlink" href="#einsatz-in-industrie-und-forschung" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Sowohl bei Startups als auch bei großen Tech-Unternehmen im Einsatz.</p></li>
+<li><p>Auch in der akademischen Forschung weit verbreitet.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="vielseitig-einsetzbar">
+<h3>🚀 7. Vielseitig einsetzbar<a class="headerlink" href="#vielseitig-einsetzbar" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Nicht nur für Data Science &amp; ML, sondern auch für:</p>
+<ul>
+<li><p>Webentwicklung (<code class="docutils literal notranslate"><span class="pre">Flask</span></code>, <code class="docutils literal notranslate"><span class="pre">Django</span></code>)</p></li>
+<li><p>Datenbanken / ETL-Prozesse</p></li>
+<li><p>Automatisierung von Aufgaben</p></li>
+<li><p>Deployment von Modellen (<code class="docutils literal notranslate"><span class="pre">FastAPI</span></code>, <code class="docutils literal notranslate"><span class="pre">Streamlit</span></code>)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="hohe-jobchancen">
+<h3>📈 8. Hohe Jobchancen<a class="headerlink" href="#hohe-jobchancen" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Fast alle Data-Science- und ML-Jobs setzen Python voraus.</p></li>
+<li><p>Python-Know-how macht dich <strong>direkt attraktiver auf dem Arbeitsmarkt</strong>.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="fazit">
+<h2>✅ Fazit<a class="headerlink" href="#fazit" title="Link to this heading">#</a></h2>
+<p>Wenn du Richtung <strong>Data Science</strong> oder <strong>Machine Learning</strong> willst, führt an Python kaum ein Weg vorbei. Du musst nicht alles sofort lernen – aber eine solide Basis öffnet dir viele Türen 🚪✨</p>
+<hr class="docutils" />
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -416,22 +519,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="vscode.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Programmierung für Data Science und KI</p>
+        <p class="prev-next-title">Visual Studio Code</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="introduction.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Einführung in Python</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -439,6 +533,32 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-python">Warum Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grosze-verbreitung-in-data-science-und-machine-learning">🔍 1. Große Verbreitung in Data Science und Machine Learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machtige-bibliotheken-und-frameworks">🧰 2. Mächtige Bibliotheken und Frameworks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einfach-zu-lernen-idealer-einstieg">🧠 3. Einfach zu lernen – idealer Einstieg</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interaktive-entwicklung-mit-jupyter-notebooks">🧪 4. Interaktive Entwicklung mit Jupyter Notebooks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#riesige-community-open-source">🔁 5. Riesige Community + Open Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einsatz-in-industrie-und-forschung">🤖 6. Einsatz in Industrie und Forschung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vielseitig-einsetzbar">🚀 7. Vielseitig einsetzbar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hohe-jobchancen">📈 8. Hohe Jobchancen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fazit">✅ Fazit</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
