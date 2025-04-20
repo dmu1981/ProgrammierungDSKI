@@ -12,4 +12,7 @@ chapters:
 - file: grundlagen/schleifen
 - file: grundlagen/mathundrandom
 - file: grundlagen/listen
+- file: grundlagen/strings
 - file: grundlagen/tuple
+- file: grundlagen/sets
+- file: grundlagen/dicts

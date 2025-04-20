@@ -1,4 +1,4 @@
-# 🧩 Listen
+# 🧩 Listen - Mehrere Elemente verwalten
 Eine Liste ist eine geordnete Sammlung von Werten. Diese dürfen unterschiedliche Datentypen haben.
 Mit Listen kann man mehrere Werte in einer Variablen speichern. Die Reihenfolge der Elemente spielt eine Rolle.
 
@@ -130,7 +130,7 @@ obst = ["Apfel", "Banane", "Kirsche", "Melone", "Birne"]
 ## 🎓 Mini-Projekt
 Schreibe ein kleines Programm welches den Nutzer verschiedene Zahlen eingeben läßt. Füge solange die eingegebenen Zahlen einer Liste hinzu bis der Benutzer "fertig" eingibt. Sobald der Benutzer fertig ist berechne den **Median** der Liste. Dazu musst Du die Liste zunächst sortieren und dann das mittlere Element herausgreifen. Wenn die Anzahl der Elemente gerade ist musst Du die beiden Elemente links und rechts der Mitte nehmen, addieren und durch zwei teilen. 
 
-<!-- ```python
+<!--- ```python
 elemente = []
 while True:
   zahl = input("Nächste Zahl bitte:")
@@ -148,4 +148,4 @@ else:
   a = elemente[anzahl//2-1]
   b = elemente[anzahl//2]
   print(f"Der Median ist {(a+b)/2}")
-``` -->
+``` --->
