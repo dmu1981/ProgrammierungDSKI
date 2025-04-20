@@ -60,3 +60,5 @@ und [strip](https://www.w3schools.com/python/ref_string_strip.asp)() um den Satz
 # Eingabe: "Hallo Welt Hallo"
 # Ausgabe: {"Hallo": 2, "Welt": 1}
 ```
+
+[Lösung](woertersolution.md)

@@ -16,3 +16,4 @@ chapters:
 - file: grundlagen/tuple
 - file: grundlagen/sets
 - file: grundlagen/dicts
+- file: grundlagen/funktionen

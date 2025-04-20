@@ -56,6 +56,8 @@ Beachte die Regeln des Spiels: Der Spieler muß in jeder Runde alle Gegenstände
 
 💡 Tipps: Du kannst die [split](https://www.w3schools.com/jsref/jsref_split.asp)() Funktion benutzen um den eingegebenen String nach jedem Komma in eine Liste zu splitten. Ausserdem kannst Du die [strip](https://www.w3schools.com/python/ref_string_strip.asp)() Funktion benutzen um überflüssige Leerzeichen am Anfang und am Ende eines jeden Wortes zu entfernen. 
 
+[Lösung](koffersolution.md)
+
 <!---
 ```python
 koffer =  set()

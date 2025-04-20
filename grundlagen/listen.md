@@ -130,6 +130,7 @@ obst = ["Apfel", "Banane", "Kirsche", "Melone", "Birne"]
 ## 🎓 Mini-Projekt
 Schreibe ein kleines Programm welches den Nutzer verschiedene Zahlen eingeben läßt. Füge solange die eingegebenen Zahlen einer Liste hinzu bis der Benutzer "fertig" eingibt. Sobald der Benutzer fertig ist berechne den **Median** der Liste. Dazu musst Du die Liste zunächst sortieren und dann das mittlere Element herausgreifen. Wenn die Anzahl der Elemente gerade ist musst Du die beiden Elemente links und rechts der Mitte nehmen, addieren und durch zwei teilen. 
 
+[Lösung](mediansolution.md)
 <!--- ```python
 elemente = []
 while True:
