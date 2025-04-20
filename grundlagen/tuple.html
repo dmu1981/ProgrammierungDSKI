@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/tuple';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -388,6 +390,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tupel-erstellen-verwenden-10-min">🔧 Tupel erstellen &amp; verwenden (10 Min)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unpacking">⚙️ Unpacking</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-enumerate-funktion">✨ Die <code class="docutils literal notranslate"><span class="pre">enumerate</span></code>-Funktion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-projekt">🎓 Mini-Projekt</a></li>
 </ul>
             </nav>
         </div>
@@ -441,7 +444,7 @@ document.write(`
              <span class="p">(</span><span class="s2">&quot;Denise&quot;</span><span class="p">,</span> <span class="mi">938772</span><span class="p">),</span>
              <span class="p">(</span><span class="s2">&quot;Erika&quot;</span><span class="p">,</span> <span class="mi">1087732</span><span class="p">),</span>
              <span class="p">(</span><span class="s2">&quot;Frauke&quot;</span><span class="p">,</span> <span class="mi">1132934</span><span class="p">)]</span>
-             
+
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">studenten</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>             
 </pre></div>
@@ -455,6 +458,47 @@ document.write(`
   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hallo </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">. Du bist auf Platz </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2"> der Liste!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+<section id="mini-projekt">
+<h2>🎓 Mini-Projekt<a class="headerlink" href="#mini-projekt" title="Link to this heading">#</a></h2>
+<p>Schreibe ein kleines Programm welches den Nutzer verschiedene Meßgrößen <span class="math notranslate nohighlight">\(x_i\)</span> (als Fließkommazahl abfragt).
+Zu jeder Zahl soll ebenfalls erfasst werden wie häufig diese Meßgröße gemessen wurden <span class="math notranslate nohighlight">\(\omega_i\)</span>.</p>
+<p>Erzeuge eine Liste deren Elemente
+Tupel bestehend aus der Meßgröße und deren Häufigkeit ist. Die Eingabe endet sobald der Nutzer eine leere Antwort gibt (also keine Zahlen eingibt).</p>
+<p>Berechne dann den gewichteten arithmetischen Mittelwert der Meßgrößen, also</p>
+<div class="math notranslate nohighlight">
+\[E = \frac{\sum_i \omega_i x_i}{\sum_i\omega i}\]</div>
+<p><strong>Beispielausgabe des Programms</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Gib</span> <span class="n">die</span> <span class="n">Meßgröße</span> <span class="n">ein</span><span class="p">:</span><span class="mi">3</span>
+<span class="n">Gib</span> <span class="n">die</span> <span class="n">Häufigkeit</span> <span class="n">der</span> <span class="n">Meßgröße</span> <span class="n">ein</span><span class="p">:</span><span class="mi">3</span>
+<span class="n">Gib</span> <span class="n">die</span> <span class="n">Meßgröße</span> <span class="n">ein</span><span class="p">:</span><span class="mi">8</span>
+<span class="n">Gib</span> <span class="n">die</span> <span class="n">Häufigkeit</span> <span class="n">der</span> <span class="n">Meßgröße</span> <span class="n">ein</span><span class="p">:</span><span class="mi">2</span>
+<span class="n">Gib</span> <span class="n">die</span> <span class="n">Meßgröße</span> <span class="n">ein</span><span class="p">:</span>
+<span class="n">Das</span> <span class="n">arithmetische</span> <span class="n">Mittel</span> <span class="n">ist</span> <span class="mf">5.0</span>
+</pre></div>
+</div>
+<p>Die Liste sieht dann so aus</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mf">8.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+</pre></div>
+</div>
+<!--- ```python
+elemente = []
+while True:
+  zahl = input("Gib die Meßgröße ein:")
+  if zahl == "":
+    break
+  gewicht = input("Gib die Häufigkeit der Meßgröße ein:")
+  if gewicht == "":
+    break
+  elemente.append((float(zahl), int(gewicht)))
+
+summeX, summeW = 0, 0
+for x, w in elemente:
+  summeX = summeX + x * w
+  summeW = summeW + w
+
+print(f"Das arithmetische Mittel ist {summeX / summeW}") 
+``` --->
 </section>
 </section>
 
@@ -517,6 +561,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tupel-erstellen-verwenden-10-min">🔧 Tupel erstellen &amp; verwenden (10 Min)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unpacking">⚙️ Unpacking</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-enumerate-funktion">✨ Die <code class="docutils literal notranslate"><span class="pre">enumerate</span></code>-Funktion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-projekt">🎓 Mini-Projekt</a></li>
 </ul>
   </nav></div>
 

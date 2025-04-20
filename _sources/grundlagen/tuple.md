@@ -40,7 +40,7 @@ studenten = [("Anna", 982939),
              ("Denise", 938772),
              ("Erika", 1087732),
              ("Frauke", 1132934)]
-             
+
 for name, _ in studenten:
   print(name)             
 ```
@@ -54,3 +54,46 @@ for index, name in enumerate(A):
   print(f"Hallo {name}. Du bist auf Platz {index} der Liste!")
 ```
 
+## 🎓 Mini-Projekt
+Schreibe ein kleines Programm welches den Nutzer verschiedene Meßgrößen $x_i$ (als Fließkommazahl abfragt).
+Zu jeder Zahl soll ebenfalls erfasst werden wie häufig diese Meßgröße gemessen wurden $\omega_i$. 
+
+Erzeuge eine Liste deren Elemente
+Tupel bestehend aus der Meßgröße und deren Häufigkeit ist. Die Eingabe endet sobald der Nutzer eine leere Antwort gibt (also keine Zahlen eingibt).
+
+Berechne dann den gewichteten arithmetischen Mittelwert der Meßgrößen, also 
+
+$$E = \frac{\sum_i \omega_i x_i}{\sum_i\omega i}$$
+
+**Beispielausgabe des Programms**:
+```
+Gib die Meßgröße ein:3
+Gib die Häufigkeit der Meßgröße ein:3
+Gib die Meßgröße ein:8
+Gib die Häufigkeit der Meßgröße ein:2
+Gib die Meßgröße ein:
+Das arithmetische Mittel ist 5.0
+```
+
+Die Liste sieht dann so aus
+```python
+[(3.0, 3), (8.0, 2)]
+```
+<!--- ```python
+elemente = []
+while True:
+  zahl = input("Gib die Meßgröße ein:")
+  if zahl == "":
+    break
+  gewicht = input("Gib die Häufigkeit der Meßgröße ein:")
+  if gewicht == "":
+    break
+  elemente.append((float(zahl), int(gewicht)))
+
+summeX, summeW = 0, 0
+for x, w in elemente:
+  summeX = summeX + x * w
+  summeW = summeW + w
+
+print(f"Das arithmetische Mittel ist {summeX / summeW}") 
+``` --->
