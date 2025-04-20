@@ -113,8 +113,8 @@ x = 42
 print(type(x))  # <class 'int'>
 ```
 
-# Übungsaufgaben
-## 1. 📌 Begrüßung mit Name
+## 🎓 Übungsaufgabe:
+### 1. 📌 Begrüßung mit Name
 Frage den Benutzer nach seinem Namen und gib eine personalisierte Begrüßung aus.
  Nutze [input](https://www.w3schools.com/python/ref_func_input.asp)() und [print](https://www.w3schools.com/python/ref_func_print.asp)()
 
@@ -123,7 +123,7 @@ Beispielausgabe:
     Wie heißt du? → Maria
     Hallo, Maria!
 
-## 2. 🌡️ Celsius nach Fahrenheit
+### 2. 🌡️ Celsius nach Fahrenheit
 Frage eine Temperatur in Celsius ab und rechne sie in Fahrenheit um.
 Nutze [input](https://www.w3schools.com/python/ref_func_input.asp)() und [float](https://www.w3schools.com/python/ref_func_float.asp).
 
