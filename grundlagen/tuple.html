@@ -62,7 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/tuple';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="🧩 Listen" href="listen.html" />
+    <link rel="next" title="🔷 Sets in Python – Mengen ohne Duplikate" href="sets.html" />
+    <link rel="prev" title="📝 Strings in Python – Zeichenketten meistern" href="strings.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,13 +185,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Einführung in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="helloworld.html">🐍 Python: Hello World Beispiel</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="variablenundoperationen.html">🧠 Variablen in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kontrollstrukturen.html">🗂️ Kontrollstrukturen – Entscheidungen im Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schleifen.html">🔁 Schleifen – Wiederholungen meistern</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mathundrandom.html">🧮 Einführung in <code class="docutils literal notranslate"><span class="pre">math</span></code> und <code class="docutils literal notranslate"><span class="pre">random</span></code> in Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="listen.html">🧩 Listen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="listen.html">🧩 Listen - Mehrere Elemente verwalten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">📝 Strings in Python – Zeichenketten meistern</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">📦 Tupel - Die unveränderbare Liste</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sets.html">🔷 Sets in Python – Mengen ohne Duplikate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dicts.html">📘 Dictionaries in Python – Daten als Schlüssel-Wert-Paare</a></li>
 </ul>
 
     </div>
@@ -387,7 +390,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-ein-tupel">🔍 Was ist ein Tupel?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tupel-erstellen-verwenden-10-min">🔧 Tupel erstellen &amp; verwenden (10 Min)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tupel-erstellen-verwenden">🔧 Tupel erstellen &amp; verwenden</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unpacking">⚙️ Unpacking</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-enumerate-funktion">✨ Die <code class="docutils literal notranslate"><span class="pre">enumerate</span></code>-Funktion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-projekt">🎓 Mini-Projekt</a></li>
@@ -418,8 +421,8 @@ document.write(`
 <li><p>Ideal für feste Daten (z. B. Koordinaten, Konstanten)</p></li>
 </ul>
 </section>
-<section id="tupel-erstellen-verwenden-10-min">
-<h2>🔧 Tupel erstellen &amp; verwenden (10 Min)<a class="headerlink" href="#tupel-erstellen-verwenden-10-min" title="Link to this heading">#</a></h2>
+<section id="tupel-erstellen-verwenden">
+<h2>🔧 Tupel erstellen &amp; verwenden<a class="headerlink" href="#tupel-erstellen-verwenden" title="Link to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">koordinaten</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="n">farben</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;rot&quot;</span><span class="p">,</span> <span class="s2">&quot;grün&quot;</span><span class="p">,</span> <span class="s2">&quot;blau&quot;</span><span class="p">)</span>
 <span class="n">einer</span> <span class="o">=</span> <span class="p">(</span><span class="mi">42</span><span class="p">,)</span>  <span class="c1"># wichtig: Komma macht es zu einem Tupel!</span>
@@ -437,7 +440,7 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Wenn bestimmte Elemente nicht benötigt werden können diese durch einen unterstrich ignoriert werden</p>
+<p>Wenn bestimmte Elemente nicht benötigt werden können diese durch einen Unterstrich ignoriert werden</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">studenten</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Anna&quot;</span><span class="p">,</span> <span class="mi">982939</span><span class="p">),</span> 
              <span class="p">(</span><span class="s2">&quot;Beate&quot;</span><span class="p">,</span> <span class="mi">992112</span><span class="p">),</span>
              <span class="p">(</span><span class="s2">&quot;Carla&quot;</span><span class="p">,</span> <span class="mi">878922</span><span class="p">),</span>
@@ -533,13 +536,22 @@ print(f"Das arithmetische Mittel ist {summeX / summeW}")
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="listen.html"
+       href="strings.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">🧩 Listen</p>
+        <p class="prev-next-title">📝 Strings in Python – Zeichenketten meistern</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="sets.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">🔷 Sets in Python – Mengen ohne Duplikate</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -558,7 +570,7 @@ print(f"Das arithmetische Mittel ist {summeX / summeW}")
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-ein-tupel">🔍 Was ist ein Tupel?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tupel-erstellen-verwenden-10-min">🔧 Tupel erstellen &amp; verwenden (10 Min)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tupel-erstellen-verwenden">🔧 Tupel erstellen &amp; verwenden</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unpacking">⚙️ Unpacking</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#die-enumerate-funktion">✨ Die <code class="docutils literal notranslate"><span class="pre">enumerate</span></code>-Funktion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-projekt">🎓 Mini-Projekt</a></li>

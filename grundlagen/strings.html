@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>🐍 Python: Hello World Beispiel &#8212; Programmierung für Data Science und KI</title>
+    <title>📝 Strings in Python – Zeichenketten meistern &#8212; Programmierung für Data Science und KI</title>
   
   
   
@@ -57,11 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/helloworld';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/strings';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="🧠 Variablen in Python" href="variablenundoperationen.html" />
-    <link rel="prev" title="Einführung in Python" href="../introduction.html" />
+    <link rel="next" title="📦 Tupel - Die unveränderbare Liste" href="tuple.html" />
+    <link rel="prev" title="🧩 Listen - Mehrere Elemente verwalten" href="listen.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,13 +182,13 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Einführung in Python</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">🐍 Python: Hello World Beispiel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helloworld.html">🐍 Python: Hello World Beispiel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variablenundoperationen.html">🧠 Variablen in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kontrollstrukturen.html">🗂️ Kontrollstrukturen – Entscheidungen im Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schleifen.html">🔁 Schleifen – Wiederholungen meistern</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mathundrandom.html">🧮 Einführung in <code class="docutils literal notranslate"><span class="pre">math</span></code> und <code class="docutils literal notranslate"><span class="pre">random</span></code> in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="listen.html">🧩 Listen - Mehrere Elemente verwalten</a></li>
-<li class="toctree-l1"><a class="reference internal" href="strings.html">📝 Strings in Python – Zeichenketten meistern</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">📝 Strings in Python – Zeichenketten meistern</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuple.html">📦 Tupel - Die unveränderbare Liste</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sets.html">🔷 Sets in Python – Mengen ohne Duplikate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dicts.html">📘 Dictionaries in Python – Daten als Schlüssel-Wert-Paare</a></li>
@@ -263,7 +263,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgrundlagen/helloworld.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgrundlagen/strings.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -293,7 +293,7 @@
       
       
       
-      <li><a href="../_sources/grundlagen/helloworld.md" target="_blank"
+      <li><a href="../_sources/grundlagen/strings.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -377,7 +377,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>🐍 Python: Hello World Beispiel</h1>
+    <h1>📝 Strings in Python – Zeichenketten meistern</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -387,7 +387,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benutzereingaben">🧩 Benutzereingaben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-einzelne-zeichen-slicing">🔢 Zugriff auf einzelne Zeichen &amp; Slicing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typische-anwendungsbeispiele">🧪 Typische Anwendungsbeispiele</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grosz-kleinschreibung-normalisieren">📌 Groß-/Kleinschreibung normalisieren:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worte-zahlen">📌 Worte zählen:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zeichen-ersetzen">📌 Zeichen ersetzen:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe-textanalyse-mini-statistik">🎓 Übungsaufgabe: Textanalyse “Mini-Statistik”</a></li>
 </ul>
             </nav>
         </div>
@@ -399,22 +406,109 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="python-hello-world-beispiel">
-<h1>🐍 Python: Hello World Beispiel<a class="headerlink" href="#python-hello-world-beispiel" title="Link to this heading">#</a></h1>
-<p>Ein klassisches erstes Programm in Python – es gibt einfach <code class="docutils literal notranslate"><span class="pre">&quot;Hello,</span> <span class="pre">World!&quot;</span></code> auf der Konsole aus:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># hello.py</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="strings-in-python-zeichenketten-meistern">
+<h1>📝 Strings in Python – Zeichenketten meistern<a class="headerlink" href="#strings-in-python-zeichenketten-meistern" title="Link to this heading">#</a></h1>
+<p>Ein String ist eine Folge von Zeichen. In Python wird ein String in Anführungszeichen geschrieben:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hallo Welt&quot;</span>
 </pre></div>
 </div>
-<p>Erstellen Sie eine neue Datei mit Namen “<a class="reference external" href="http://hello.py">hello.py</a>” und übernehmen Sie den obigen Programmcode. Führen Sie das Programm aus.</p>
-<section id="benutzereingaben">
-<h2>🧩 Benutzereingaben<a class="headerlink" href="#benutzereingaben" title="Link to this heading">#</a></h2>
-<p>Mit der Funktion <a class="reference external" href="https://www.w3schools.com/python/ref_func_input.asp">input</a> können wir eine Benutzereingabe entgegennehmen und in einer <em>Variable</em> speichern. Wir können auch den Inhalt einer Variable (das was dort aktuell gespeichert ist) wieder auf der Konsole ausgeben.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Wie heißt du? &quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hallo, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Methode</p></th>
+<th class="head"><p>Bedeutung</p></th>
+<th class="head"><p>Beispiel</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>lower()</p></td>
+<td><p>Alles in Kleinbuchstaben</p></td>
+<td><p>“Python”.lower() → ‘python’</p></td>
+</tr>
+<tr class="row-odd"><td><p>upper()</p></td>
+<td><p>Alles in Großbuchstaben</p></td>
+<td><p>“abc”.upper() → ‘ABC’</p></td>
+</tr>
+<tr class="row-even"><td><p>strip()</p></td>
+<td><p>Entfernt Leerzeichen am Anfang/Ende</p></td>
+<td><p>“  Hallo  “.strip() → ‘Hallo’</p></td>
+</tr>
+<tr class="row-odd"><td><p>replace(a, b)</p></td>
+<td><p>Ersetzt Teilstrings</p></td>
+<td><p>“Apfel”.replace(“A”, “B”) → ‘Bpfel’</p></td>
+</tr>
+<tr class="row-even"><td><p>split(sep)</p></td>
+<td><p>Zerlegt String in Liste</p></td>
+<td><p>“a,b,c”.split(“,”) → [‘a’, ‘b’, ‘c’]</p></td>
+</tr>
+<tr class="row-odd"><td><p>join(list)</p></td>
+<td><p>Verbindet Liste zu String</p></td>
+<td><p>“,”.join([“a”, “b”, “c”]) → ‘a,b,c’</p></td>
+</tr>
+<tr class="row-even"><td><p>find(sub)</p></td>
+<td><p>Gibt Index des ersten Vorkommens zurück</p></td>
+<td><p>“Test”.find(“s”) → 2</p></td>
+</tr>
+<tr class="row-odd"><td><p>startswith(s)</p></td>
+<td><p>Prüft, ob der String mit s beginnt</p></td>
+<td><p>“Hallo”.startswith(“H”) → True</p></td>
+</tr>
+<tr class="row-even"><td><p>endswith(s)</p></td>
+<td><p>Prüft, ob der String mit s endet</p></td>
+<td><p>“<a class="reference external" href="http://Test.py">Test.py</a>”.endswith(“.py”) → True</p></td>
+</tr>
+<tr class="row-odd"><td><p>isdigit()</p></td>
+<td><p>Prüft, ob nur Ziffern enthalten sind</p></td>
+<td><p>“123”.isdigit() → True</p></td>
+</tr>
+<tr class="row-even"><td><p>count()</p></td>
+<td><p>Zählt, wie ohne ein Teilstring in dem String vorkommt</p></td>
+<td><p>“Hallo Wellt”.count(“ll”) → 2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="zugriff-auf-einzelne-zeichen-slicing">
+<h2>🔢 Zugriff auf einzelne Zeichen &amp; Slicing<a class="headerlink" href="#zugriff-auf-einzelne-zeichen-slicing" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Python&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>      <span class="c1"># &#39;P&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>     <span class="c1"># &#39;n&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>    <span class="c1"># &#39;yth&#39;</span>
 </pre></div>
 </div>
+</section>
+<section id="typische-anwendungsbeispiele">
+<h2>🧪 Typische Anwendungsbeispiele<a class="headerlink" href="#typische-anwendungsbeispiele" title="Link to this heading">#</a></h2>
+<section id="grosz-kleinschreibung-normalisieren">
+<h3>📌 Groß-/Kleinschreibung normalisieren:<a class="headerlink" href="#grosz-kleinschreibung-normalisieren" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">eingabe</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Name: &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="worte-zahlen">
+<h3>📌 Worte zählen:<a class="headerlink" href="#worte-zahlen" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">satz</span> <span class="o">=</span> <span class="s2">&quot;Das ist ein Test&quot;</span>
+<span class="n">anzahl</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">satz</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="zeichen-ersetzen">
+<h3>📌 Zeichen ersetzen:<a class="headerlink" href="#zeichen-ersetzen" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Python ist toll!&quot;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;toll&quot;</span><span class="p">,</span> <span class="s2">&quot;super&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ubungsaufgabe-textanalyse-mini-statistik">
+<h2>🎓 Übungsaufgabe: Textanalyse “Mini-Statistik”<a class="headerlink" href="#ubungsaufgabe-textanalyse-mini-statistik" title="Link to this heading">#</a></h2>
+<p>Schreibe ein Programm, das vom Benutzer einen beliebigen Text einliest (mehrere Sätze) und dann folgende Informationen berechnet:</p>
+<ul class="simple">
+<li><p>Gesamtanzahl der Zeichen (inkl. Leerzeichen)</p></li>
+<li><p>Anzahl der Wörter</p></li>
+<li><p>Anzahl der Vokale (a, e, i, o, u)</p></li>
+<li><p>Wie oft ein bestimmtes Wort vorkommt (Benutzer wählt Wort)</p></li>
+<li><p>Gib die Eingabe rückwärts aus (komplett gespiegelt)</p></li>
+</ul>
 </section>
 </section>
 
@@ -449,20 +543,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../introduction.html"
+       href="listen.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Einführung in Python</p>
+        <p class="prev-next-title">🧩 Listen - Mehrere Elemente verwalten</p>
       </div>
     </a>
     <a class="right-next"
-       href="variablenundoperationen.html"
+       href="tuple.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">🧠 Variablen in Python</p>
+        <p class="prev-next-title">📦 Tupel - Die unveränderbare Liste</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -482,7 +576,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benutzereingaben">🧩 Benutzereingaben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-einzelne-zeichen-slicing">🔢 Zugriff auf einzelne Zeichen &amp; Slicing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typische-anwendungsbeispiele">🧪 Typische Anwendungsbeispiele</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grosz-kleinschreibung-normalisieren">📌 Groß-/Kleinschreibung normalisieren:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worte-zahlen">📌 Worte zählen:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zeichen-ersetzen">📌 Zeichen ersetzen:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe-textanalyse-mini-statistik">🎓 Übungsaufgabe: Textanalyse “Mini-Statistik”</a></li>
 </ul>
   </nav></div>
 

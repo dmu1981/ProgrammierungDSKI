@@ -35,7 +35,11 @@ for _ in range(5):
 
 ## 🎓 Übungsaufgabe:
 ### Kreisfläche und Umfang
-Schreibe ein Programm welches den Benutzer nach dem Radius eines Kreises fragt. Nutze dann das `math`-Paket um den Kreisumfang $$U = 2\pi\cdot r$$ sowie die Kreisfläche $$A = \pi\cdot r^2$$ zu berechnen. Gib Umfang und Fläche auf zwei Nachkommastellen gerundet auf der Konsole aus. 
+Schreibe ein Programm welches den Benutzer nach dem Radius eines Kreises fragt. Nutze dann das `math`-Paket um den Kreisumfang 
+$$U = 2\pi\cdot r$$ 
+sowie die Kreisfläche 
+$$A = \pi\cdot r^2$$ 
+zu berechnen. Gib Umfang und Fläche auf zwei Nachkommastellen gerundet auf der Konsole aus. 
 ### Zahlenraten
 Schreibe ein Programm, welches sich eine Zufallszahl zwischen 1 und 100 ausdenkt. Verwende dazu
 [random.randint](https://www.w3schools.com/python/ref_random_randint.asp)() wie im Beispiel oben. Schreibe dann eine `while True:` Endloß-Schleife, die den Benutzer die Zahl erraten läßt. Frage dazu im Schleifenkörper nach einer Zahl. Gib aus ob die zu erratenden Zahl größer oder kleiner ist. Beende die Schleife mit `break` falls der Benutzer richtig geraten hat. 

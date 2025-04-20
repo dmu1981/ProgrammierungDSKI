@@ -14,7 +14,7 @@ farben = ("rot", "grün", "blau")
 * Schneller als Listen
 * Ideal für feste Daten (z. B. Koordinaten, Konstanten)
 
-## 🔧 Tupel erstellen & verwenden (10 Min)
+## 🔧 Tupel erstellen & verwenden
 ```python
 koordinaten = (10, 20)
 farben = ("rot", "grün", "blau")
@@ -32,7 +32,7 @@ x, y, z = (3, 4, 5)
 print(x + y + z)
 ```
 
-Wenn bestimmte Elemente nicht benötigt werden können diese durch einen unterstrich ignoriert werden
+Wenn bestimmte Elemente nicht benötigt werden können diese durch einen Unterstrich ignoriert werden
 ```python
 studenten = [("Anna", 982939), 
              ("Beate", 992112),

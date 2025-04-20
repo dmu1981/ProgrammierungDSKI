@@ -1,4 +1,4 @@
-# 🧩 Listen
+# 🧩 Listen - Mehrere Elemente verwalten
 Eine Liste ist eine geordnete Sammlung von Werten. Diese dürfen unterschiedliche Datentypen haben.
 Mit Listen kann man mehrere Werte in einer Variablen speichern. Die Reihenfolge der Elemente spielt eine Rolle.
 

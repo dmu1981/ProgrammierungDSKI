@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>🐍 Python: Hello World Beispiel &#8212; Programmierung für Data Science und KI</title>
+    <title>📘 Dictionaries in Python – Daten als Schlüssel-Wert-Paare &#8212; Programmierung für Data Science und KI</title>
   
   
   
@@ -57,11 +57,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/helloworld';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/dicts';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="🧠 Variablen in Python" href="variablenundoperationen.html" />
-    <link rel="prev" title="Einführung in Python" href="../introduction.html" />
+    <link rel="prev" title="🔷 Sets in Python – Mengen ohne Duplikate" href="sets.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,7 +181,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Einführung in Python</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">🐍 Python: Hello World Beispiel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helloworld.html">🐍 Python: Hello World Beispiel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variablenundoperationen.html">🧠 Variablen in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kontrollstrukturen.html">🗂️ Kontrollstrukturen – Entscheidungen im Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schleifen.html">🔁 Schleifen – Wiederholungen meistern</a></li>
@@ -191,7 +190,7 @@
 <li class="toctree-l1"><a class="reference internal" href="strings.html">📝 Strings in Python – Zeichenketten meistern</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuple.html">📦 Tupel - Die unveränderbare Liste</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sets.html">🔷 Sets in Python – Mengen ohne Duplikate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dicts.html">📘 Dictionaries in Python – Daten als Schlüssel-Wert-Paare</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">📘 Dictionaries in Python – Daten als Schlüssel-Wert-Paare</a></li>
 </ul>
 
     </div>
@@ -263,7 +262,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgrundlagen/helloworld.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgrundlagen/dicts.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -293,7 +292,7 @@
       
       
       
-      <li><a href="../_sources/grundlagen/helloworld.md" target="_blank"
+      <li><a href="../_sources/grundlagen/dicts.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -377,7 +376,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>🐍 Python: Hello World Beispiel</h1>
+    <h1>📘 Dictionaries in Python – Daten als Schlüssel-Wert-Paare</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -387,7 +386,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benutzereingaben">🧩 Benutzereingaben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-werte">🔹 Zugriff auf Werte</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#werte-andern-hinzufugen">Werte ändern / hinzufügen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elemnte-loschen">Elemnte löschen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtige-dictionary-methoden">Wichtige Dictionary-Methoden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#durch-ein-dictionary-iterieren">Durch ein Dictionary iterieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe-noch-eine-textanalyse">🎓 Übungsaufgabe: Noch eine Textanalyse</a></li>
 </ul>
             </nav>
         </div>
@@ -399,20 +403,85 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="python-hello-world-beispiel">
-<h1>🐍 Python: Hello World Beispiel<a class="headerlink" href="#python-hello-world-beispiel" title="Link to this heading">#</a></h1>
-<p>Ein klassisches erstes Programm in Python – es gibt einfach <code class="docutils literal notranslate"><span class="pre">&quot;Hello,</span> <span class="pre">World!&quot;</span></code> auf der Konsole aus:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># hello.py</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="dictionaries-in-python-daten-als-schlussel-wert-paare">
+<h1>📘 Dictionaries in Python – Daten als Schlüssel-Wert-Paare<a class="headerlink" href="#dictionaries-in-python-daten-als-schlussel-wert-paare" title="Link to this heading">#</a></h1>
+<p>Ein Dictionary ist eine Sammlung von Daten, die als Schlüssel-Wert-Paare organisiert ist.</p>
+<p>Syntax:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Anna&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;alter&quot;</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span>
+    <span class="s2">&quot;studiengang&quot;</span><span class="p">:</span> <span class="s2">&quot;Informatik&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>Erstellen Sie eine neue Datei mit Namen “<a class="reference external" href="http://hello.py">hello.py</a>” und übernehmen Sie den obigen Programmcode. Führen Sie das Programm aus.</p>
-<section id="benutzereingaben">
-<h2>🧩 Benutzereingaben<a class="headerlink" href="#benutzereingaben" title="Link to this heading">#</a></h2>
-<p>Mit der Funktion <a class="reference external" href="https://www.w3schools.com/python/ref_func_input.asp">input</a> können wir eine Benutzereingabe entgegennehmen und in einer <em>Variable</em> speichern. Wir können auch den Inhalt einer Variable (das was dort aktuell gespeichert ist) wieder auf der Konsole ausgeben.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Wie heißt du? &quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hallo, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+<section id="zugriff-auf-werte">
+<h2>🔹 Zugriff auf Werte<a class="headerlink" href="#zugriff-auf-werte" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>         <span class="c1"># → Anna</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;alter&quot;</span><span class="p">))</span>    <span class="c1"># → 23</span>
+</pre></div>
+</div>
+<p>Der Unterschied zwischen direkter Indizierung über den Schlüssel oder die <a class="reference external" href="https://www.w3schools.com/python/ref_dictionary_get.asp()">get</a> Funktion ist, dass bei der get-Funktion <code class="docutils literal notranslate"><span class="pre">None</span></code> zurückgegeben wird, falls der Schlüssel im Dictionary nicht exisitiert. Bei direkter Indizierung kommt es zum Programmabbruch.</p>
+</section>
+<section id="werte-andern-hinzufugen">
+<h2>Werte ändern / hinzufügen<a class="headerlink" href="#werte-andern-hinzufugen" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="p">[</span><span class="s2">&quot;alter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">24</span>          <span class="c1"># Wert ändern</span>
+<span class="n">person</span><span class="p">[</span><span class="s2">&quot;wohnort&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Berlin&quot;</span>  <span class="c1"># Neuer Eintrag</span>
+</pre></div>
+</div>
+</section>
+<section id="elemnte-loschen">
+<h2>Elemnte löschen<a class="headerlink" href="#elemnte-loschen" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">person</span><span class="p">[</span><span class="s2">&quot;studiengang&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="wichtige-dictionary-methoden">
+<h2>Wichtige Dictionary-Methoden<a class="headerlink" href="#wichtige-dictionary-methoden" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Methode</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>dict.keys()</p></td>
+<td><p>Gibt alle Schlüssel zurück</p></td>
+</tr>
+<tr class="row-odd"><td><p>dict.values()</p></td>
+<td><p>Gibt alle Werte zurück</p></td>
+</tr>
+<tr class="row-even"><td><p>dict.items()</p></td>
+<td><p>Gibt Paare aus (Schlüssel, Wert) zurück</p></td>
+</tr>
+<tr class="row-odd"><td><p>dict.get(k)</p></td>
+<td><p>Gibt den Wert für k, sonst None</p></td>
+</tr>
+<tr class="row-even"><td><p>dict.pop(k)</p></td>
+<td><p>Löscht Schlüssel k und gibt den Wert zurück</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="durch-ein-dictionary-iterieren">
+<h2>Durch ein Dictionary iterieren<a class="headerlink" href="#durch-ein-dictionary-iterieren" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">person</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">&quot;→&quot;</span><span class="p">,</span> <span class="n">person</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>oder</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">person</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="ubungsaufgabe-noch-eine-textanalyse">
+<h2>🎓 Übungsaufgabe: Noch eine Textanalyse<a class="headerlink" href="#ubungsaufgabe-noch-eine-textanalyse" title="Link to this heading">#</a></h2>
+<p>Frage den Benutzer nach einem beliebigen Satz. Verwende wieder <a class="reference external" href="https://www.w3schools.com/jsref/jsref_split.asp">split</a>()
+und <a class="reference external" href="https://www.w3schools.com/python/ref_string_strip.asp">strip</a>() um den Satz in einzelne Wörter aufzuteilen. Erzeuge dann ein Dictionary, welches jedem Wort die Anzahl zuordnet, mit der es im Satz vorkommt.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eingabe: &quot;Hallo Welt Hallo&quot;</span>
+<span class="c1"># Ausgabe: {&quot;Hallo&quot;: 2, &quot;Welt&quot;: 1}</span>
 </pre></div>
 </div>
 </section>
@@ -449,22 +518,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../introduction.html"
+       href="sets.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Einführung in Python</p>
+        <p class="prev-next-title">🔷 Sets in Python – Mengen ohne Duplikate</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="variablenundoperationen.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">🧠 Variablen in Python</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -482,7 +542,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benutzereingaben">🧩 Benutzereingaben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-werte">🔹 Zugriff auf Werte</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#werte-andern-hinzufugen">Werte ändern / hinzufügen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elemnte-loschen">Elemnte löschen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtige-dictionary-methoden">Wichtige Dictionary-Methoden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#durch-ein-dictionary-iterieren">Durch ein Dictionary iterieren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe-noch-eine-textanalyse">🎓 Übungsaufgabe: Noch eine Textanalyse</a></li>
 </ul>
   </nav></div>
 
