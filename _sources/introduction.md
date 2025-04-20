@@ -66,4 +66,3 @@ Python ist **DIE** Sprache im Bereich Data Science und Machine Learning – und 
 Wenn du Richtung **Data Science** oder **Machine Learning** willst, führt an Python kaum ein Weg vorbei. Du musst nicht alles sofort lernen – aber eine solide Basis öffnet dir viele Türen 🚪✨
 
 ---
-
