@@ -17,7 +17,7 @@ while True:
     print("Du hast", vergessen, "vergessen")
     exit()
 
-  # Wurde mehr als ein neuer Gegenstand hingezufügt?
+  # Wurde mehr als ein neuer Gegenstand hinzugefügt?
   neue = items - koffer
   if len(neue) != 1:
     print("Du musst genau einen neuen Gegenstand hinzufügen.")
