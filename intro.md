@@ -1,11 +1,6 @@
 # Programmierung für Data Science und KI
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
-
-Check out the content pages bundled with this sample book to see more.
+Herzlich Willkommen zu dieser Kurs. Hier lernen Sie die Grundlagen der Programmiersprache Python, insbesondere im Kontext von Data Science und künstlicher Intelligenz. Damit legen Sie wichtige Grundlagen für den Rest ihres Studiums sowie ihrer Karriere als Data Scientist oder Machine Learning Expert.
 
 ```{tableofcontents}
 ```

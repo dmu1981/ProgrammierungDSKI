@@ -6,6 +6,7 @@ root: intro
 chapters:
 - file: vscode
 - file: introduction
+- file: pyenv
 - file: grundlagen/helloworld
 - file: grundlagen/variablenundoperationen
 - file: grundlagen/kontrollstrukturen
