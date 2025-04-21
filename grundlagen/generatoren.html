@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Programmierung für Data Science und KI</title>
+    <title>🔁 Generatoren in Python – Elegante Iteratoren mit yield &#8212; Programmierung für Data Science und KI</title>
   
   
   
@@ -57,9 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/mittelsolution';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/generatoren';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="📂 Arbeiten mit CSV- und JSON-Dateien in Python" href="csvjson.html" />
+    <link rel="prev" title="✅ assert in Python" href="assert.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -179,7 +179,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Einführung in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="helloworld.html">🐍 Python: Hello World Beispiel</a></li>
@@ -201,7 +201,7 @@
 <li class="toctree-l1"><a class="reference internal" href="kontext.html">📚 Kontextmanager &amp; with-Statement in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">🧩 Eigene Module in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assert.html">✅ <code class="docutils literal notranslate"><span class="pre">assert</span></code> in Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generatoren.html">🔁 Generatoren in Python – Elegante Iteratoren mit yield</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">🔁 Generatoren in Python – Elegante Iteratoren mit yield</a></li>
 <li class="toctree-l1"><a class="reference internal" href="csvjson.html">📂 Arbeiten mit CSV- und JSON-Dateien in Python</a></li>
 </ul>
 
@@ -274,7 +274,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgrundlagen/mittelsolution.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgrundlagen/generatoren.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +304,7 @@
       
       
       
-      <li><a href="../_sources/grundlagen/mittelsolution.md" target="_blank"
+      <li><a href="../_sources/grundlagen/generatoren.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -388,7 +388,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>🔁 Generatoren in Python – Elegante Iteratoren mit yield</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -397,9 +397,21 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-ein-generator">🧠 Was ist ein Generator?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generatoren-vs-normale-funktionen">🔁 Generatoren vs. normale Funktionen</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-funktioniert-yield">🔧 Wie funktioniert <code class="docutils literal notranslate"><span class="pre">yield</span></code>?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-generatoren">📦 Warum Generatoren?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-beispiele">🧪 Weitere Beispiele</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zahlergenerator">🔹 Zählergenerator:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unendlicher-generator">🔹 Unendlicher Generator:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zeilen-einer-datei-vereinfacht">🔹 Zeilen einer Datei (vereinfacht)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe">🧪 Übungsaufgabe</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -410,24 +422,95 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">elemente</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-  <span class="n">zahl</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Gib die Meßgröße ein:&quot;</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">zahl</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-    <span class="k">break</span>
-  <span class="n">gewicht</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Gib die Häufigkeit der Meßgröße ein:&quot;</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">gewicht</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-    <span class="k">break</span>
-  <span class="n">elemente</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">float</span><span class="p">(</span><span class="n">zahl</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">gewicht</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">elemente</span><span class="p">)</span>
-<span class="n">summeX</span><span class="p">,</span> <span class="n">summeW</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">elemente</span><span class="p">:</span>
-  <span class="n">summeX</span> <span class="o">=</span> <span class="n">summeX</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="n">w</span>
-  <span class="n">summeW</span> <span class="o">=</span> <span class="n">summeW</span> <span class="o">+</span> <span class="n">w</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Das arithmetische Mittel ist </span><span class="si">{</span><span class="n">summeX</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">summeW</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+  <section class="tex2jax_ignore mathjax_ignore" id="generatoren-in-python-elegante-iteratoren-mit-yield">
+<h1>🔁 Generatoren in Python – Elegante Iteratoren mit yield<a class="headerlink" href="#generatoren-in-python-elegante-iteratoren-mit-yield" title="Link to this heading">#</a></h1>
+<section id="was-ist-ein-generator">
+<h2>🧠 Was ist ein Generator?<a class="headerlink" href="#was-ist-ein-generator" title="Link to this heading">#</a></h2>
+<p>Ein Generator ist eine spezielle Funktion, die Werte nacheinander liefert – nicht auf einmal, sondern Stück für Stück, jeweils bei Bedarf.</p>
+<p>Das funktioniert mit dem yield-Schlüsselwort statt return.</p>
+<section id="generatoren-vs-normale-funktionen">
+<h3>🔁 Generatoren vs. normale Funktionen<a class="headerlink" href="#generatoren-vs-normale-funktionen" title="Link to this heading">#</a></h3>
+<p>Normale Funktion:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">quadrate_liste</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
 </pre></div>
 </div>
+<p>→ Gibt sofort alle Werte auf einmal zurück (z. B. Liste mit 1000 Einträgen)</p>
+<p>Alternative Generator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">quadrate_generator</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>→ Gibt die Werte einen nach dem anderen aus – auf Abruf</p>
+</section>
+</section>
+<section id="wie-funktioniert-yield">
+<h2>🔧 Wie funktioniert <code class="docutils literal notranslate"><span class="pre">yield</span></code>?<a class="headerlink" href="#wie-funktioniert-yield" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Beim ersten Aufruf: Funktion startet bis zum ersten yield</p></li>
+<li><p>Danach: sie merkt sich ihren Zustand</p></li>
+<li><p>Beim nächsten next(): sie macht genau dort weiter</p></li>
+</ul>
+</section>
+<section id="warum-generatoren">
+<h2>📦 Warum Generatoren?<a class="headerlink" href="#warum-generatoren" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Vorteil</p></th>
+<th class="head"><p>Erklärung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>🧠 Speichersparend</p></td>
+<td><p>Große Datenmengen werden nicht im Voraus erzeugt</p></td>
+</tr>
+<tr class="row-odd"><td><p>🔁 Wiederverwendbar</p></td>
+<td><p>Sehr elegant in for-Schleifen nutzbar</p></td>
+</tr>
+<tr class="row-even"><td><p>🚀 Effizient</p></td>
+<td><p>Besonders gut für Datenströme, Dateien, Streams</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="weitere-beispiele">
+<h2>🧪 Weitere Beispiele<a class="headerlink" href="#weitere-beispiele" title="Link to this heading">#</a></h2>
+<section id="zahlergenerator">
+<h3>🔹 Zählergenerator:<a class="headerlink" href="#zahlergenerator" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">zaehler</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">ende</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">ende</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">start</span>
+        <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="unendlicher-generator">
+<h3>🔹 Unendlicher Generator:<a class="headerlink" href="#unendlicher-generator" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">unendlich_zaehler</span><span class="p">():</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="zeilen-einer-datei-vereinfacht">
+<h3>🔹 Zeilen einer Datei (vereinfacht)<a class="headerlink" href="#zeilen-einer-datei-vereinfacht" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">zeilen_lesen</span><span class="p">(</span><span class="n">dateiname</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dateiname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">zeile</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">zeile</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ubungsaufgabe">
+<h2>🧪 Übungsaufgabe<a class="headerlink" href="#ubungsaufgabe" title="Link to this heading">#</a></h2>
+<p>Erstelle einen eigenen Generator welcher nur Primzahlen liefert.</p>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -459,6 +542,24 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="assert.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">✅ <code class="docutils literal notranslate"><span class="pre">assert</span></code> in Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="csvjson.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">📂 Arbeiten mit CSV- und JSON-Dateien in Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -474,9 +575,21 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-ein-generator">🧠 Was ist ein Generator?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generatoren-vs-normale-funktionen">🔁 Generatoren vs. normale Funktionen</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wie-funktioniert-yield">🔧 Wie funktioniert <code class="docutils literal notranslate"><span class="pre">yield</span></code>?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-generatoren">📦 Warum Generatoren?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-beispiele">🧪 Weitere Beispiele</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zahlergenerator">🔹 Zählergenerator:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unendlicher-generator">🔹 Unendlicher Generator:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zeilen-einer-datei-vereinfacht">🔹 Zeilen einer Datei (vereinfacht)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe">🧪 Übungsaufgabe</a></li>
+</ul>
   </nav></div>
 
 </div></div>

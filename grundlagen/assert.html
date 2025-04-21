@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Programmierung für Data Science und KI</title>
+    <title>✅ assert in Python &#8212; Programmierung für Data Science und KI</title>
   
   
   
@@ -57,9 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/mittelsolution';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/assert';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="🔁 Generatoren in Python – Elegante Iteratoren mit yield" href="generatoren.html" />
+    <link rel="prev" title="🧩 Eigene Module in Python" href="module.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -179,7 +179,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Einführung in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="helloworld.html">🐍 Python: Hello World Beispiel</a></li>
@@ -200,7 +200,7 @@
 <li class="toctree-l1"><a class="reference internal" href="iteratoren.html">🔁 Iteratoren in Python – und wie man eigene erstellt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kontext.html">📚 Kontextmanager &amp; with-Statement in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">🧩 Eigene Module in Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assert.html">✅ <code class="docutils literal notranslate"><span class="pre">assert</span></code> in Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">✅ <code class="docutils literal notranslate"><span class="pre">assert</span></code> in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generatoren.html">🔁 Generatoren in Python – Elegante Iteratoren mit yield</a></li>
 <li class="toctree-l1"><a class="reference internal" href="csvjson.html">📂 Arbeiten mit CSV- und JSON-Dateien in Python</a></li>
 </ul>
@@ -274,7 +274,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgrundlagen/mittelsolution.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgrundlagen/assert.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +304,7 @@
       
       
       
-      <li><a href="../_sources/grundlagen/mittelsolution.md" target="_blank"
+      <li><a href="../_sources/grundlagen/assert.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -388,7 +388,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>✅ assert in Python</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -397,9 +397,15 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-assert">🔍 Was ist assert?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">🧪 Syntax:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel">✅ Beispiel:</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wozu-assert-verwenden">🎯 Wozu assert verwenden?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtig">⚠️ Wichtig:</a></li>
+</ul>
             </nav>
         </div>
     </div>
@@ -410,24 +416,44 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">elemente</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-  <span class="n">zahl</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Gib die Meßgröße ein:&quot;</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">zahl</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-    <span class="k">break</span>
-  <span class="n">gewicht</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Gib die Häufigkeit der Meßgröße ein:&quot;</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">gewicht</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-    <span class="k">break</span>
-  <span class="n">elemente</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">float</span><span class="p">(</span><span class="n">zahl</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">gewicht</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">elemente</span><span class="p">)</span>
-<span class="n">summeX</span><span class="p">,</span> <span class="n">summeW</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">elemente</span><span class="p">:</span>
-  <span class="n">summeX</span> <span class="o">=</span> <span class="n">summeX</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="n">w</span>
-  <span class="n">summeW</span> <span class="o">=</span> <span class="n">summeW</span> <span class="o">+</span> <span class="n">w</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Das arithmetische Mittel ist </span><span class="si">{</span><span class="n">summeX</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">summeW</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+  <section class="tex2jax_ignore mathjax_ignore" id="assert-in-python">
+<h1>✅ <code class="docutils literal notranslate"><span class="pre">assert</span></code> in Python<a class="headerlink" href="#assert-in-python" title="Link to this heading">#</a></h1>
+<section id="was-ist-assert">
+<h2>🔍 Was ist assert?<a class="headerlink" href="#was-ist-assert" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">assert</span></code> ist ein einfaches Werkzeug zur Überprüfung, ob eine bestimmte Bedingung wahr ist.
+Wenn die Bedingung nicht erfüllt ist, bricht das Programm ab und zeigt eine Fehlermeldung an.</p>
+<section id="syntax">
+<h3>🧪 Syntax:<a class="headerlink" href="#syntax" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">bedingung</span><span class="p">,</span> <span class="s2">&quot;Fehlermeldung (optional)&quot;</span>
 </pre></div>
 </div>
+</section>
+<section id="beispiel">
+<h3>✅ Beispiel:<a class="headerlink" href="#beispiel" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">teile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Division durch 0 ist nicht erlaubt&quot;</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">teile</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>   <span class="c1"># → 5.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">teile</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>   <span class="c1"># AssertionError: Division durch 0 ist nicht erlaubt</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="wozu-assert-verwenden">
+<h2>🎯 Wozu assert verwenden?<a class="headerlink" href="#wozu-assert-verwenden" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Um eigene Annahmen im Code zu überprüfen</p></li>
+<li><p>Für einfache Tests während der Entwicklung</p></li>
+<li><p>Zum Debuggen: „Darf dieser Fall überhaupt auftreten?“</p></li>
+</ul>
+</section>
+<section id="wichtig">
+<h2>⚠️ Wichtig:<a class="headerlink" href="#wichtig" title="Link to this heading">#</a></h2>
+<p>assert ist nicht für Benutzerfehler gedacht – nur für Entwicklerprüfungen
+Bei Ausführung mit python -O (Optimierung) werden asserts ignoriert</p>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -459,6 +485,24 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="module.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">🧩 Eigene Module in Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="generatoren.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">🔁 Generatoren in Python – Elegante Iteratoren mit yield</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -474,9 +518,15 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-ist-assert">🔍 Was ist assert?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">🧪 Syntax:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel">✅ Beispiel:</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wozu-assert-verwenden">🎯 Wozu assert verwenden?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtig">⚠️ Wichtig:</a></li>
+</ul>
   </nav></div>
 
 </div></div>

@@ -57,7 +57,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/mittelsolution';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/umfragesolution';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -274,7 +274,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgrundlagen/mittelsolution.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgrundlagen/umfragesolution.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -304,7 +304,7 @@
       
       
       
-      <li><a href="../_sources/grundlagen/mittelsolution.md" target="_blank"
+      <li><a href="../_sources/grundlagen/umfragesolution.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -410,22 +410,73 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">elemente</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-  <span class="n">zahl</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Gib die Meßgröße ein:&quot;</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">zahl</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-    <span class="k">break</span>
-  <span class="n">gewicht</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Gib die Häufigkeit der Meßgröße ein:&quot;</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">gewicht</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-    <span class="k">break</span>
-  <span class="n">elemente</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">float</span><span class="p">(</span><span class="n">zahl</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">gewicht</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">elemente</span><span class="p">)</span>
-<span class="n">summeX</span><span class="p">,</span> <span class="n">summeW</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">elemente</span><span class="p">:</span>
-  <span class="n">summeX</span> <span class="o">=</span> <span class="n">summeX</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="n">w</span>
-  <span class="n">summeW</span> <span class="o">=</span> <span class="n">summeW</span> <span class="o">+</span> <span class="n">w</span>
+  <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Das arithmetische Mittel ist </span><span class="si">{</span><span class="n">summeX</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">summeW</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+<span class="c1"># Datei einlesen und in Dictionaries umwandeln</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lade_umfragedaten</span><span class="p">(</span><span class="n">pfad</span><span class="p">):</span>
+    <span class="n">daten</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pfad</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">zeile</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+            <span class="n">zeile</span><span class="p">[</span><span class="s2">&quot;Alter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">zeile</span><span class="p">[</span><span class="s2">&quot;Alter&quot;</span><span class="p">])</span>
+            <span class="n">zeile</span><span class="p">[</span><span class="s2">&quot;Schlafstunden&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">zeile</span><span class="p">[</span><span class="s2">&quot;Schlafstunden&quot;</span><span class="p">])</span>
+            <span class="n">zeile</span><span class="p">[</span><span class="s2">&quot;Stresslevel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">zeile</span><span class="p">[</span><span class="s2">&quot;Stresslevel&quot;</span><span class="p">])</span>
+            <span class="n">zeile</span><span class="p">[</span><span class="s2">&quot;Bildschirmzeit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">zeile</span><span class="p">[</span><span class="s2">&quot;Bildschirmzeit&quot;</span><span class="p">])</span>
+            <span class="n">daten</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">zeile</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">daten</span>
+
+<span class="c1"># 1. Durchschnittliche Schlafdauer berechnen</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">durchschnitt_schlaf</span><span class="p">(</span><span class="n">daten</span><span class="p">):</span>
+    <span class="n">schlafstunden</span> <span class="o">=</span> <span class="p">[</span><span class="n">person</span><span class="p">[</span><span class="s2">&quot;Schlafstunden&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">daten</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">schlafstunden</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">schlafstunden</span><span class="p">)</span>
+
+<span class="c1"># 2. Person mit höchster Bildschirmzeit</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">max_bildschirmzeit</span><span class="p">(</span><span class="n">daten</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">daten</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="s2">&quot;Bildschirmzeit&quot;</span><span class="p">])</span>
+
+<span class="c1"># 3. Anzahl der Informatik-Studierenden</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">zaehle_informatiker</span><span class="p">(</span><span class="n">daten</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">daten</span> <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="s2">&quot;Studiengang&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Informatik&quot;</span><span class="p">)</span>
+
+<span class="c1"># 4. Filter: Personen mit Stresslevel &gt; 3</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stress_hoch</span><span class="p">(</span><span class="n">daten</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">daten</span> <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="s2">&quot;Stresslevel&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="c1"># 5. Durchschnittliche Bildschirmzeit pro Studiengang</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">durchschnitt_bildschirmzeit_pro_studiengang</span><span class="p">(</span><span class="n">daten</span><span class="p">):</span>
+    <span class="n">gruppiert</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">daten</span><span class="p">:</span>
+        <span class="n">gruppiert</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s2">&quot;Studiengang&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s2">&quot;Bildschirmzeit&quot;</span><span class="p">])</span>
+    
+    <span class="n">ergebnis</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">studiengang</span><span class="p">,</span> <span class="n">werte</span> <span class="ow">in</span> <span class="n">gruppiert</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">ergebnis</span><span class="p">[</span><span class="n">studiengang</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">werte</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">werte</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ergebnis</span>
+
+<span class="c1"># Hauptprogramm</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">daten</span> <span class="o">=</span> <span class="n">lade_umfragedaten</span><span class="p">(</span><span class="s2">&quot;umfrage.csv&quot;</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;📊 Umfrageanalyse&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1. Durchschnittlicher Schlaf: </span><span class="si">{</span><span class="n">durchschnitt_schlaf</span><span class="p">(</span><span class="n">daten</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Stunden&quot;</span><span class="p">)</span>
+    
+    <span class="n">max_pers</span> <span class="o">=</span> <span class="n">max_bildschirmzeit</span><span class="p">(</span><span class="n">daten</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2. Höchste Bildschirmzeit: </span><span class="si">{</span><span class="n">max_pers</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">max_pers</span><span class="p">[</span><span class="s1">&#39;Bildschirmzeit&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> Std.)&quot;</span><span class="p">)</span>
+    
+    <span class="n">inf_count</span> <span class="o">=</span> <span class="n">zaehle_informatiker</span><span class="p">(</span><span class="n">daten</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;3. Anzahl Informatik-Studierende: </span><span class="si">{</span><span class="n">inf_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="n">stressige</span> <span class="o">=</span> <span class="n">stress_hoch</span><span class="p">(</span><span class="n">daten</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;4. Personen mit hohem Stresslevel (&gt;3):&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">stressige</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   - </span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;Stresslevel&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5. Durchschnittliche Bildschirmzeit pro Studiengang:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">studiengang</span><span class="p">,</span> <span class="n">schnitt</span> <span class="ow">in</span> <span class="n">durchschnitt_bildschirmzeit_pro_studiengang</span><span class="p">(</span><span class="n">daten</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   </span><span class="si">{</span><span class="n">studiengang</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">schnitt</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Std.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 
