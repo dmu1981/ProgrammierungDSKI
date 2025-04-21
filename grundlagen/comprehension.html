@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>🗂️ Kontrollstrukturen – Entscheidungen im Code &#8212; Programmierung für Data Science und KI</title>
+    <title>🧠 Dict- &amp; Set-Comprehensions in Python &#8212; Programmierung für Data Science und KI</title>
   
   
   
@@ -57,11 +57,9 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/kontrollstrukturen';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/comprehension';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="🔁 Schleifen – Wiederholungen meistern" href="schleifen.html" />
-    <link rel="prev" title="🧠 Variablen in Python" href="variablenundoperationen.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,6 +122,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -179,12 +179,12 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Einführung in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="helloworld.html">🐍 Python: Hello World Beispiel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variablenundoperationen.html">🧠 Variablen in Python</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">🗂️ Kontrollstrukturen – Entscheidungen im Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kontrollstrukturen.html">🗂️ Kontrollstrukturen – Entscheidungen im Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schleifen.html">🔁 Schleifen – Wiederholungen meistern</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mathundrandom.html">🧮 Einführung in <code class="docutils literal notranslate"><span class="pre">math</span></code> und <code class="docutils literal notranslate"><span class="pre">random</span></code> in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="listen.html">🧩 Listen - Mehrere Elemente verwalten</a></li>
@@ -271,7 +271,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgrundlagen/kontrollstrukturen.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgrundlagen/comprehension.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -301,7 +301,7 @@
       
       
       
-      <li><a href="../_sources/grundlagen/kontrollstrukturen.md" target="_blank"
+      <li><a href="../_sources/grundlagen/comprehension.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -385,7 +385,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>🗂️ Kontrollstrukturen – Entscheidungen im Code</h1>
+    <h1>🧠 Dict- & Set-Comprehensions in Python</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -395,10 +395,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vergleichsoperatoren">Vergleichsoperatoren</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#else-und-elif">Else und elif</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logische-operationen">Logische Operationen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#das-programm-vorzeitig-beenden">Das Programm vorzeitig beenden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#erinnerung-list-comprehension">🔄 Erinnerung: List Comprehension</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-comprehension">🔶 Set Comprehension</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">📌 Syntax:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel">✅ Beispiel:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-bedingung">➕ Mit Bedingung:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dict-comprehension">🟨 Dict Comprehension</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">📌 Syntax:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-zahlen-und-ihre-quadrate">✅ Beispiel: Zahlen und ihre Quadrate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-worter-und-ihre-langen">📄 Beispiel: Wörter und ihre Längen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-bedingung-z-b-nur-kurze-worter">➕ Mit Bedingung (z. B. nur kurze Wörter)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">✅ Zusammenfassung</a></li>
 </ul>
             </nav>
         </div>
@@ -410,110 +421,95 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="kontrollstrukturen-entscheidungen-im-code">
-<h1>🗂️ Kontrollstrukturen – Entscheidungen im Code<a class="headerlink" href="#kontrollstrukturen-entscheidungen-im-code" title="Link to this heading">#</a></h1>
-<p>Kontrollstrukturen erlauben es, den Programmfluß zu beinflussen.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x ist größer als 5&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Der Block, welcher nur dann ausgeführt werden soll wenn die Bedingung wahr ist muß zwingend eingerückt werden.
-Der hinter dem if-keyword stehende Bedingung wird ausgewertet und, falls sie wahr ist, der eingerückte Code ausgeführt. Andernfalls setzt das Programm hinter diesem Block fort.</p>
-<section id="vergleichsoperatoren">
-<h2>Vergleichsoperatoren<a class="headerlink" href="#vergleichsoperatoren" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="n">c</span> <span class="o">=</span> <span class="mi">8</span>
-
-<span class="n">a</span> <span class="o">==</span> <span class="n">b</span> <span class="c1"># False</span>
-<span class="n">b</span> <span class="o">==</span> <span class="n">c</span> <span class="c1"># True</span>
-<span class="n">a</span> <span class="o">&gt;=</span> <span class="n">b</span> <span class="c1"># False</span>
-<span class="n">b</span> <span class="o">&gt;=</span> <span class="n">c</span> <span class="c1"># True</span>
-<span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span>  <span class="c1"># False</span>
-<span class="n">b</span> <span class="o">&gt;</span> <span class="n">c</span>  <span class="c1"># False</span>
-<span class="n">a</span> <span class="o">&lt;=</span> <span class="n">b</span> <span class="c1"># True</span>
-<span class="n">b</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="c1"># True</span>
-<span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span>  <span class="c1"># True</span>
-<span class="n">b</span> <span class="o">&lt;</span> <span class="n">c</span>  <span class="c1"># False</span>
-<span class="n">a</span> <span class="o">!=</span> <span class="n">b</span> <span class="c1"># True</span>
-<span class="n">b</span> <span class="o">!=</span> <span class="n">c</span> <span class="c1"># False</span>
-</pre></div>
-</div>
-<p><strong>Achtung</strong>: = und == sind nicht dasselbe. Mit nur einem Gleichheitszeichen handelt es sich um eine Zuweisung. Einer Variable wird also ein neuer Wert zugewiesen. Mit zwei Gleichheitszeichen werden zwei Werte miteinander verglichen.</p>
-<p><strong>Achtung</strong>: Ggf. vorher die Datentypen umwandeln</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;5&quot;</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span> <span class="c1"># False</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="dict-set-comprehensions-in-python">
+<h1>🧠 Dict- &amp; Set-Comprehensions in Python<a class="headerlink" href="#dict-set-comprehensions-in-python" title="Link to this heading">#</a></h1>
+<section id="erinnerung-list-comprehension">
+<h2>🔄 Erinnerung: List Comprehension<a class="headerlink" href="#erinnerung-list-comprehension" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">quadrate</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="c1"># → [0, 1, 4, 9, 16]</span>
 </pre></div>
 </div>
 </section>
-<section id="else-und-elif">
-<h2>Else und elif<a class="headerlink" href="#else-und-elif" title="Link to this heading">#</a></h2>
-<p>Falls eine Bedingung nicht wahr ist kann im s.g. else: Block angebenen werden was stattdessen ausgeführt werden soll.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x ist größer als 5&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x ist nicht größer als 5&quot;</span><span class="p">)</span>    
-</pre></div>
-</div>
-<p>Falls sich mehrere Bedingungen hintereinander anschließen können diesem mit elif geschrieben werden.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">note</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="k">if</span> <span class="n">note</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sehr gut&quot;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">note</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gut&quot;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">note</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Befriedigend&quot;</span><span class="p">)</span>    
-<span class="k">elif</span> <span class="n">note</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ausreichend&quot;</span><span class="p">)</span>    
-<span class="k">elif</span> <span class="n">note</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mangelhaft&quot;</span><span class="p">)</span>    
-<span class="k">elif</span> <span class="n">note</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ungenügend&quot;</span><span class="p">)</span>    
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ungültige Note!)    </span>
-</pre></div>
-</div>
-<p><strong>Übungsaufgabe</strong>
-Nutze <a class="reference external" href="https://www.w3schools.com/python/ref_func_input.asp">input</a>() und <a class="reference external" href="https://www.w3schools.com/python/ref_func_float.asp">float</a> um eine Zahl vom Benutzer abzufragen. Gib dann aus ob diese positiv oder negativ ist.</p>
-<p>Beispielausgabe:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Welche Zahl soll ich überprüfen? -&gt; 3.7
-3.7 ist positiv
+<section id="set-comprehension">
+<h2>🔶 Set Comprehension<a class="headerlink" href="#set-comprehension" title="Link to this heading">#</a></h2>
+<section id="syntax">
+<h3>📌 Syntax:<a class="headerlink" href="#syntax" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">ausdruck</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">}</span>
 </pre></div>
 </div>
 </section>
-<section id="logische-operationen">
-<h2>Logische Operationen<a class="headerlink" href="#logische-operationen" title="Link to this heading">#</a></h2>
-<p>Mehrere Bedingungen können mit logischen Operatoren verknüpft werden um komplexe Sachverhalte zu prüfen</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">FSK</span> <span class="o">=</span> <span class="mi">16</span>
-<span class="n">alter</span> <span class="o">=</span> <span class="mi">15</span>
-<span class="n">mitEltern</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="n">FSK</span> <span class="ow">or</span> <span class="n">mitEltern</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zutritt erlaubt&quot;</span><span class="p">)</span>
+<section id="beispiel">
+<h3>✅ Beispiel:<a class="headerlink" href="#beispiel" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">einzigartige_quadrate</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">zahlen</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">einzigartige_quadrate</span><span class="p">)</span>
+<span class="c1"># → {1, 4, 9, 16, 25}</span>
 </pre></div>
 </div>
 </section>
-<section id="das-programm-vorzeitig-beenden">
-<h2>Das Programm vorzeitig beenden<a class="headerlink" href="#das-programm-vorzeitig-beenden" title="Link to this heading">#</a></h2>
-<p>Miit <a class="reference external" href="https://www.w3schools.com/c/ref_stdlib_exit.php">exit</a>() kann das Programm vorzeitig beendet werden</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">FSK</span> <span class="o">=</span> <span class="mi">16</span>
-<span class="n">alter</span> <span class="o">=</span> <span class="mi">15</span>
-<span class="n">mitEltern</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="k">if</span> <span class="n">alter</span> <span class="o">&lt;</span> <span class="n">FSK</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">mitEltern</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zutritt verboten!&quot;</span><span class="p">)</span>
-  <span class="n">exit</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">Die Galaktische Republik wird von Unruhen erschüttert. </span>
-<span class="s2">Die Besteuerung der Handelsrouten zu weit entfernten Sternensystemen ist der Auslöser.</span>
-
-<span class="s2">In der Hoffnung, die Angelegenheit durch eine Blockade mit mächtigen Kampfschiffen zu beseitigen, hat die unersättliche Handelsföderation jeglichen Transport zu dem kleinen Planeten Naboo eingestellt.</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<section id="mit-bedingung">
+<h3>➕ Mit Bedingung:<a class="headerlink" href="#mit-bedingung" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gerade_quadrate</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">}</span>
+<span class="c1"># → {0, 4, 16, 36, 64}</span>
 </pre></div>
+</div>
+</section>
+</section>
+<section id="dict-comprehension">
+<h2>🟨 Dict Comprehension<a class="headerlink" href="#dict-comprehension" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>📌 Syntax:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">key_expr</span><span class="p">:</span> <span class="n">value_expr</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="beispiel-zahlen-und-ihre-quadrate">
+<h3>✅ Beispiel: Zahlen und ihre Quadrate<a class="headerlink" href="#beispiel-zahlen-und-ihre-quadrate" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">quadrat_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)}</span>
+<span class="c1"># → {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}</span>
+</pre></div>
+</div>
+</section>
+<section id="beispiel-worter-und-ihre-langen">
+<h3>📄 Beispiel: Wörter und ihre Längen<a class="headerlink" href="#beispiel-worter-und-ihre-langen" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">woerter</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Banane&quot;</span><span class="p">,</span> <span class="s2">&quot;Kirsche&quot;</span><span class="p">]</span>
+<span class="n">laengen</span> <span class="o">=</span> <span class="p">{</span><span class="n">wort</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">wort</span><span class="p">)</span> <span class="k">for</span> <span class="n">wort</span> <span class="ow">in</span> <span class="n">woerter</span><span class="p">}</span>
+<span class="c1"># → {&#39;Apfel&#39;: 5, &#39;Banane&#39;: 6, &#39;Kirsche&#39;: 7}</span>
+</pre></div>
+</div>
+</section>
+<section id="mit-bedingung-z-b-nur-kurze-worter">
+<h3>➕ Mit Bedingung (z. B. nur kurze Wörter)<a class="headerlink" href="#mit-bedingung-z-b-nur-kurze-worter" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kurze_woerter</span> <span class="o">=</span> <span class="p">{</span><span class="n">wort</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">wort</span><span class="p">)</span> <span class="k">for</span> <span class="n">wort</span> <span class="ow">in</span> <span class="n">woerter</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">wort</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">6</span><span class="p">}</span>
+<span class="c1"># → {&#39;Apfel&#39;: 5, &#39;Banane&#39;: 6}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="zusammenfassung">
+<h2>✅ Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Comprehension</p></th>
+<th class="head"><p>Zweck</p></th>
+<th class="head"><p>Syntax</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>List</p></td>
+<td><p>geordnete Liste</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[ausdruck</span> <span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">...]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Set</p></td>
+<td><p>einzigartige Werte</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{ausdruck</span> <span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">...}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Dict</p></td>
+<td><p>Schlüssel-Wert-Paare</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{key:</span> <span class="pre">value</span> <span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">...}</span></code></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -548,24 +544,6 @@ Nutze <a class="reference external" href="https://www.w3schools.com/python/ref_f
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="variablenundoperationen.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">🧠 Variablen in Python</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="schleifen.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">🔁 Schleifen – Wiederholungen meistern</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -582,10 +560,21 @@ Nutze <a class="reference external" href="https://www.w3schools.com/python/ref_f
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vergleichsoperatoren">Vergleichsoperatoren</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#else-und-elif">Else und elif</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logische-operationen">Logische Operationen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#das-programm-vorzeitig-beenden">Das Programm vorzeitig beenden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#erinnerung-list-comprehension">🔄 Erinnerung: List Comprehension</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-comprehension">🔶 Set Comprehension</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">📌 Syntax:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel">✅ Beispiel:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-bedingung">➕ Mit Bedingung:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dict-comprehension">🟨 Dict Comprehension</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">📌 Syntax:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-zahlen-und-ihre-quadrate">✅ Beispiel: Zahlen und ihre Quadrate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-worter-und-ihre-langen">📄 Beispiel: Wörter und ihre Längen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-bedingung-z-b-nur-kurze-worter">➕ Mit Bedingung (z. B. nur kurze Wörter)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">✅ Zusammenfassung</a></li>
 </ul>
   </nav></div>
 

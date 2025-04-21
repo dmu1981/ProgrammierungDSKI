@@ -51,4 +51,5 @@ while True:
 Schreiben Sie einen Iterator, der die ersten n Fibonacci-Zahlen liefert. Die Fibonacci-Folge ist definiert durch
 
 $$F(0) = F(1) = 1$$
-$$F(n+2) = F(n + 1) + F(n)
+$$F(n+2) = F(n + 1) + F(n)$$
+
