@@ -19,3 +19,5 @@ chapters:
 - file: grundlagen/funktionen
 - file: grundlagen/exceptions
 - file: grundlagen/dateien
+- file: grundlagen/klassen
+- file: grundlagen/vererbung
