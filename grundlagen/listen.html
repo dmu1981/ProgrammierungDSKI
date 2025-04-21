@@ -184,6 +184,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Einführung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pyenv.html">🔍 Python-Version installieren mit <code class="docutils literal notranslate"><span class="pre">pyenv</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="helloworld.html">🐍 Python: Hello World Beispiel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variablenundoperationen.html">🧠 Variablen in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kontrollstrukturen.html">🗂️ Kontrollstrukturen – Entscheidungen im Code</a></li>
@@ -402,6 +403,14 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-elemente">🔍 Zugriff auf Elemente</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbeiten-mit-listen">🛠️ Arbeiten mit Listen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sum-summe-berechnen">🔢 <code class="docutils literal notranslate"><span class="pre">sum()</span></code> – Summe berechnen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-startwert">➕ Mit Startwert:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#min-kleinster-wert">📉 <code class="docutils literal notranslate"><span class="pre">min()</span></code> – Kleinster Wert</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-groszter-wert">📈 `max()? – Größter Wert</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groszter-eintrag-nach-lange-eines-namens">🧑‍🏆 Größter Eintrag nach Länge eines Namens:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kombiniert-mit-sum-durchschnitt-berechnen">💡 Kombiniert mit sum() – Durchschnitt berechnen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uber-listen-iterieren">🔁 Über Listen iterieren</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension">💡 List-Comprehension</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-list-comprehension">Verschachtelte List-Comprehension</a></li>
@@ -449,6 +458,51 @@ Mit Listen kann man mehrere Werte in einer Variablen speichern. Die Reihenfolge 
 <span class="n">liste</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;Element&quot;</span><span class="p">)</span>          <span class="c1"># Zählt, wie oft &quot;Element&quot; in der Liste vorkommt</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>                      <span class="c1"># liefert Anzahl Elemente in der Liste</span>
 <span class="s2">&quot;x&quot;</span> <span class="ow">in</span> <span class="n">liste</span>                    <span class="c1"># True, falls &quot;x&quot; in der Liste ist</span>
+</pre></div>
+</div>
+</section>
+<section id="sum-summe-berechnen">
+<h2>🔢 <code class="docutils literal notranslate"><span class="pre">sum()</span></code> – Summe berechnen<a class="headerlink" href="#sum-summe-berechnen" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">zahlen</span><span class="p">))</span>  <span class="c1"># → 21</span>
+</pre></div>
+</div>
+<p>➡️ Addiert alle Elemente in der Liste</p>
+<section id="mit-startwert">
+<h3>➕ Mit Startwert:<a class="headerlink" href="#mit-startwert" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">zahlen</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>  <span class="c1"># → 121</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="min-kleinster-wert">
+<h2>📉 <code class="docutils literal notranslate"><span class="pre">min()</span></code> – Kleinster Wert<a class="headerlink" href="#min-kleinster-wert" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temperaturen</span> <span class="o">=</span> <span class="p">[</span><span class="mf">18.2</span><span class="p">,</span> <span class="mf">16.5</span><span class="p">,</span> <span class="mf">19.0</span><span class="p">,</span> <span class="mf">14.8</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">temperaturen</span><span class="p">))</span>  <span class="c1"># → 14.8</span>
+</pre></div>
+</div>
+<p>➡️ Gibt den kleinsten Wert in der Liste zurück</p>
+</section>
+<section id="max-groszter-wert">
+<h2>📈 `max()? – Größter Wert<a class="headerlink" href="#max-groszter-wert" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">punkte</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">punkte</span><span class="p">))</span>  <span class="c1"># → 40</span>
+</pre></div>
+</div>
+<p>➡️ Gibt den größten Wert in der Liste zurück</p>
+</section>
+<section id="groszter-eintrag-nach-lange-eines-namens">
+<h2>🧑‍🏆 Größter Eintrag nach Länge eines Namens:<a class="headerlink" href="#groszter-eintrag-nach-lange-eines-namens" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">namen</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Anna&quot;</span><span class="p">,</span> <span class="s2">&quot;Beate&quot;</span><span class="p">,</span> <span class="s2">&quot;Christoph&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">namen</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">))</span>  <span class="c1"># → Christoph</span>
+</pre></div>
+</div>
+</section>
+<section id="kombiniert-mit-sum-durchschnitt-berechnen">
+<h2>💡 Kombiniert mit sum() – Durchschnitt berechnen<a class="headerlink" href="#kombiniert-mit-sum-durchschnitt-berechnen" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">durchschnitt</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">durchschnitt</span><span class="p">)</span>  <span class="c1"># → 4.5</span>
 </pre></div>
 </div>
 </section>
@@ -678,6 +732,14 @@ else:
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-elemente">🔍 Zugriff auf Elemente</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbeiten-mit-listen">🛠️ Arbeiten mit Listen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sum-summe-berechnen">🔢 <code class="docutils literal notranslate"><span class="pre">sum()</span></code> – Summe berechnen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-startwert">➕ Mit Startwert:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#min-kleinster-wert">📉 <code class="docutils literal notranslate"><span class="pre">min()</span></code> – Kleinster Wert</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-groszter-wert">📈 `max()? – Größter Wert</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groszter-eintrag-nach-lange-eines-namens">🧑‍🏆 Größter Eintrag nach Länge eines Namens:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kombiniert-mit-sum-durchschnitt-berechnen">💡 Kombiniert mit sum() – Durchschnitt berechnen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uber-listen-iterieren">🔁 Über Listen iterieren</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension">💡 List-Comprehension</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-list-comprehension">Verschachtelte List-Comprehension</a></li>

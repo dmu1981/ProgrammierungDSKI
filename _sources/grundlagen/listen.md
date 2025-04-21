@@ -32,6 +32,47 @@ len(liste)                      # liefert Anzahl Elemente in der Liste
 "x" in liste                    # True, falls "x" in der Liste ist
 ```
 
+## 🔢 `sum()` – Summe berechnen
+```python
+zahlen = [4, 7, 10]
+print(sum(zahlen))  # → 21
+```
+➡️ Addiert alle Elemente in der Liste
+
+### ➕ Mit Startwert:
+```python
+print(sum(zahlen, 100))  # → 121
+```
+
+## 📉 `min()` – Kleinster Wert
+```python
+temperaturen = [18.2, 16.5, 19.0, 14.8]
+print(min(temperaturen))  # → 14.8
+```
+
+➡️ Gibt den kleinsten Wert in der Liste zurück
+
+## 📈 `max()? – Größter Wert
+```python
+punkte = [10, 30, 25, 40]
+print(max(punkte))  # → 40
+```
+
+➡️ Gibt den größten Wert in der Liste zurück
+
+## 🧑‍🏆 Größter Eintrag nach Länge eines Namens:
+```python
+namen = ["Anna", "Beate", "Christoph"]
+print(max(namen, key=len))  # → Christoph
+```
+
+## 💡 Kombiniert mit sum() – Durchschnitt berechnen
+```python
+zahlen = [3, 4, 5, 6]
+durchschnitt = sum(zahlen) / len(zahlen)
+print(durchschnitt)  # → 4.5
+```
+
 ## 🔁 Über Listen iterieren
 
 ```python
