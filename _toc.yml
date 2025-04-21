@@ -23,3 +23,5 @@ chapters:
 - file: grundlagen/vererbung
 - file: grundlagen/iteratoren
 - file: grundlagen/kontext
+- file: grundlagen/comprehensions
+- file: grundlagen/module
