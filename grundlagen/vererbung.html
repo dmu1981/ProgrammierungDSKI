@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>🧮 Einführung in math und random in Python &#8212; Programmierung für Data Science und KI</title>
+    <title>🧬 Vererbung in Python – Gemeinsamkeiten wiederverwenden &#8212; Programmierung für Data Science und KI</title>
   
   
   
@@ -57,13 +57,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/mathundrandom';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/vererbung';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="🧩 Listen - Mehrere Elemente verwalten" href="listen.html" />
-    <link rel="prev" title="🔁 Schleifen – Wiederholungen meistern" href="schleifen.html" />
+    <link rel="prev" title="🧱 Klassen - Objektorientierte Programmierung in Python" href="klassen.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,7 +185,7 @@
 <li class="toctree-l1"><a class="reference internal" href="variablenundoperationen.html">🧠 Variablen in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kontrollstrukturen.html">🗂️ Kontrollstrukturen – Entscheidungen im Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="schleifen.html">🔁 Schleifen – Wiederholungen meistern</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">🧮 Einführung in <code class="docutils literal notranslate"><span class="pre">math</span></code> und <code class="docutils literal notranslate"><span class="pre">random</span></code> in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathundrandom.html">🧮 Einführung in <code class="docutils literal notranslate"><span class="pre">math</span></code> und <code class="docutils literal notranslate"><span class="pre">random</span></code> in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="listen.html">🧩 Listen - Mehrere Elemente verwalten</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strings.html">📝 Strings in Python – Zeichenketten meistern</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuple.html">📦 Tupel - Die unveränderbare Liste</a></li>
@@ -198,7 +195,7 @@
 <li class="toctree-l1"><a class="reference internal" href="exceptions.html">🚨 Fehlerbehandlung in Python – <code class="docutils literal notranslate"><span class="pre">try</span></code>, <code class="docutils literal notranslate"><span class="pre">except</span></code>, <code class="docutils literal notranslate"><span class="pre">finally</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="dateien.html">🗂️ Dateien öffnen, lesen und schreiben in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="klassen.html">🧱 Klassen - Objektorientierte Programmierung in Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vererbung.html">🧬 Vererbung in Python – Gemeinsamkeiten wiederverwenden</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">🧬 Vererbung in Python – Gemeinsamkeiten wiederverwenden</a></li>
 </ul>
 
     </div>
@@ -270,7 +267,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgrundlagen/mathundrandom.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgrundlagen/vererbung.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -300,7 +297,7 @@
       
       
       
-      <li><a href="../_sources/grundlagen/mathundrandom.md" target="_blank"
+      <li><a href="../_sources/grundlagen/vererbung.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -384,7 +381,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>🧮 Einführung in math und random in Python</h1>
+    <h1>🧬 Vererbung in Python – Gemeinsamkeiten wiederverwenden</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -394,13 +391,22 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematische-funktionen-mit-dem-math-paket">Mathematische Funktionen mit dem <code class="docutils literal notranslate"><span class="pre">math</span></code> Paket</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zufallszahlen-mit-dem-random-paket">Zufallszahlen mit dem <code class="docutils literal notranslate"><span class="pre">random</span></code> Paket:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe">🎓 Übungsaufgabe:</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kreisflache-und-umfang">Kreisfläche und Umfang</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zahlenraten">Zahlenraten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einfuhrung-motivation">🧠 Einführung &amp; Motivation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-vererbung">🤔 Warum Vererbung?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hund-ist-ein-tier-katze-ist-ein-tier">🧩 Hund ist ein Tier, Katze ist ein Tier</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grundlagen-der-vererbung">🧱 Grundlagen der Vererbung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">🔧 Syntax:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-basisklasse-tier">🐾 Beispiel: Basisklasse Tier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unterklasse-hund">🐶 Unterklasse Hund</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verwendung">📌 Verwendung:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methoden-uberschreiben-overriding">🔄 Methoden überschreiben (Overriding)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#super-zugriff-auf-die-oberklasse">🪜 super() – Zugriff auf die Oberklasse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isinstance-uberprufen-ob-ein-objekt-eine-bestimmten-klasse-ist"><code class="docutils literal notranslate"><span class="pre">isinstance</span></code> - Überprüfen ob ein Objekt eine bestimmten Klasse ist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-projekt-gefangnissverwaltung">🎓 Mini-Projekt: Gefängnissverwaltung</a></li>
 </ul>
             </nav>
         </div>
@@ -412,58 +418,100 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="einfuhrung-in-math-und-random-in-python">
-<h1>🧮 Einführung in <code class="docutils literal notranslate"><span class="pre">math</span></code> und <code class="docutils literal notranslate"><span class="pre">random</span></code> in Python<a class="headerlink" href="#einfuhrung-in-math-und-random-in-python" title="Link to this heading">#</a></h1>
-<p>Python bringt viele nützliche Standard-Module mit, die man einfach importieren und direkt nutzen kann. Zwei davon sind:</p>
-<p><code class="docutils literal notranslate"><span class="pre">math</span></code>: für mathematische Funktionen (wie Wurzeln, Sinus, Pi, Runden …)
-<code class="docutils literal notranslate"><span class="pre">random</span></code>: für Zufallszahlen und Zufallsauswahl (z. B. für Spiele oder Simulationen)</p>
-<section id="mathematische-funktionen-mit-dem-math-paket">
-<h2>Mathematische Funktionen mit dem <code class="docutils literal notranslate"><span class="pre">math</span></code> Paket<a class="headerlink" href="#mathematische-funktionen-mit-dem-math-paket" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>       <span class="c1"># Quadratwurzel → 4.0</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>      <span class="c1"># Potenzieren → 2³ = 8.0</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>   <span class="c1"># Fakultät → 5! = 120</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mf">3.7</span><span class="p">))</span>     <span class="c1"># Abrunden → 3</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">3.1</span><span class="p">))</span>      <span class="c1"># Aufrunden → 4</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>             <span class="c1"># Kreiszahl π → 3.14159...</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="vererbung-in-python-gemeinsamkeiten-wiederverwenden">
+<h1>🧬 Vererbung in Python – Gemeinsamkeiten wiederverwenden<a class="headerlink" href="#vererbung-in-python-gemeinsamkeiten-wiederverwenden" title="Link to this heading">#</a></h1>
+<section id="einfuhrung-motivation">
+<h2>🧠 Einführung &amp; Motivation<a class="headerlink" href="#einfuhrung-motivation" title="Link to this heading">#</a></h2>
+<section id="warum-vererbung">
+<h3>🤔 Warum Vererbung?<a class="headerlink" href="#warum-vererbung" title="Link to this heading">#</a></h3>
+<p>Stell dir vor, du hast eine Klasse Tier, und möchtest viele spezifische Tierarten modellieren (Hund, Katze, Vogel…), ohne den gleichen Code immer wieder zu schreiben.</p>
+<p>Vererbung bedeutet:</p>
+<p>„Etwas ist eine Spezialisierung von etwas anderem.“</p>
+</section>
+<section id="hund-ist-ein-tier-katze-ist-ein-tier">
+<h3>🧩 Hund ist ein Tier, Katze ist ein Tier<a class="headerlink" href="#hund-ist-ein-tier-katze-ist-ein-tier" title="Link to this heading">#</a></h3>
+<p>→ Sie erben alles von Tier, können aber auch eigene Fähigkeiten haben.</p>
+</section>
+</section>
+<section id="grundlagen-der-vererbung">
+<h2>🧱 Grundlagen der Vererbung<a class="headerlink" href="#grundlagen-der-vererbung" title="Link to this heading">#</a></h2>
+<section id="syntax">
+<h3>🔧 Syntax:<a class="headerlink" href="#syntax" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Unterklasse</span><span class="p">(</span><span class="n">Oberklasse</span><span class="p">):</span>
+    <span class="o">...</span>
 </pre></div>
 </div>
 </section>
-<section id="zufallszahlen-mit-dem-random-paket">
-<h2>Zufallszahlen mit dem <code class="docutils literal notranslate"><span class="pre">random</span></code> Paket:<a class="headerlink" href="#zufallszahlen-mit-dem-random-paket" title="Link to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>                   <span class="c1"># Zufallszahl zwischen 1 und 6 (inkl.)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>                        <span class="c1"># Zufalls-Float zwischen 0.0 und 1.0</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;rot&quot;</span><span class="p">,</span> <span class="s2">&quot;blau&quot;</span><span class="p">,</span> <span class="s2">&quot;grün&quot;</span><span class="p">]))</span> <span class="c1"># Zufälliges Element aus Liste</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">liste</span><span class="p">))</span>                  <span class="c1"># Liste zufällig durchmischen (in-place)</span>
-</pre></div>
-</div>
-<p><strong>Beispiel</strong>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="n">wurf</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Du hast eine&quot;</span><span class="p">,</span> <span class="n">wurf</span><span class="p">,</span> <span class="s2">&quot;gewürfelt!&quot;</span><span class="p">)</span>
+<section id="beispiel-basisklasse-tier">
+<h3>🐾 Beispiel: Basisklasse Tier<a class="headerlink" href="#beispiel-basisklasse-tier" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Tier</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">beschreibung</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ich bin ein Tier und heiße </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
-<section id="ubungsaufgabe">
-<h2>🎓 Übungsaufgabe:<a class="headerlink" href="#ubungsaufgabe" title="Link to this heading">#</a></h2>
-<section id="kreisflache-und-umfang">
-<h3>Kreisfläche und Umfang<a class="headerlink" href="#kreisflache-und-umfang" title="Link to this heading">#</a></h3>
-<p>Schreibe ein Programm welches den Benutzer nach dem Radius eines Kreises fragt. Nutze dann das <code class="docutils literal notranslate"><span class="pre">math</span></code>-Paket um den Kreisumfang</p>
-<div class="math notranslate nohighlight">
-\[U = 2\pi\cdot r\]</div>
-<p>sowie die Kreisfläche</p>
-<div class="math notranslate nohighlight">
-\[A = \pi\cdot r^2\]</div>
-<p>zu berechnen. Gib Umfang und Fläche auf zwei Nachkommastellen gerundet auf der Konsole aus.</p>
+<section id="unterklasse-hund">
+<h3>🐶 Unterklasse Hund<a class="headerlink" href="#unterklasse-hund" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Hund</span><span class="p">(</span><span class="n">Tier</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">gibLaut</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> bellt: Wuff!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
-<section id="zahlenraten">
-<h3>Zahlenraten<a class="headerlink" href="#zahlenraten" title="Link to this heading">#</a></h3>
-<p>Schreibe ein Programm, welches sich eine Zufallszahl zwischen 1 und 100 ausdenkt. Verwende dazu
-<a class="reference external" href="https://www.w3schools.com/python/ref_random_randint.asp">random.randint</a>() wie im Beispiel oben. Schreibe dann eine <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">True:</span></code> Endloß-Schleife, die den Benutzer die Zahl erraten läßt. Frage dazu im Schleifenkörper nach einer Zahl. Gib aus ob die zu erratenden Zahl größer oder kleiner ist. Beende die Schleife mit <code class="docutils literal notranslate"><span class="pre">break</span></code> falls der Benutzer richtig geraten hat.</p>
-<p><a class="reference internal" href="zahlenratensolution.html"><span class="std std-doc">Lösung</span></a></p>
+<section id="verwendung">
+<h3>📌 Verwendung:<a class="headerlink" href="#verwendung" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bello</span> <span class="o">=</span> <span class="n">Hund</span><span class="p">(</span><span class="s2">&quot;Bello&quot;</span><span class="p">)</span>
+<span class="n">bello</span><span class="o">.</span><span class="n">beschreibung</span><span class="p">()</span>  <span class="c1"># Von Tier geerbt</span>
+<span class="n">bello</span><span class="o">.</span><span class="n">gibLaut</span><span class="p">()</span>        <span class="c1"># Eigene Methode</span>
+</pre></div>
+</div>
+<p>➡️ Hund erbt beschreibung() von Tier, hat aber auch eigene Methode bellen().</p>
 </section>
+</section>
+<section id="methoden-uberschreiben-overriding">
+<h2>🔄 Methoden überschreiben (Overriding)<a class="headerlink" href="#methoden-uberschreiben-overriding" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Katze</span><span class="p">(</span><span class="n">Tier</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">beschreibung</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ich bin eine Katze und heiße </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">gibLaut</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> miaut: Miao!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="super-zugriff-auf-die-oberklasse">
+<h2>🪜 super() – Zugriff auf die Oberklasse<a class="headerlink" href="#super-zugriff-auf-die-oberklasse" title="Link to this heading">#</a></h2>
+<p>Mit super() kannst du die Oberklassenmethoden gezielt aufrufen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Papagei</span><span class="p">(</span><span class="n">Tier</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">spruch</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># ruft Tier.__init__ auf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spruch</span> <span class="o">=</span> <span class="n">spruch</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sprechen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> sagt: &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">spruch</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="isinstance-uberprufen-ob-ein-objekt-eine-bestimmten-klasse-ist">
+<h2><code class="docutils literal notranslate"><span class="pre">isinstance</span></code> - Überprüfen ob ein Objekt eine bestimmten Klasse ist<a class="headerlink" href="#isinstance-uberprufen-ob-ein-objekt-eine-bestimmten-klasse-ist" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">papagei</span> <span class="o">=</span> <span class="n">Papagei</span><span class="p">(</span><span class="s2">&quot;Polly&quot;</span><span class="p">,</span> <span class="s2">&quot;Polly will einen Keks&quot;</span><span class="p">)</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">papagei</span><span class="p">,</span> <span class="n">Papagei</span><span class="p">)</span>  <span class="c1"># True</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">papagei</span><span class="p">,</span> <span class="n">Tier</span><span class="p">)</span>     <span class="c1"># True</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">papagei</span><span class="p">,</span> <span class="n">Hund</span><span class="p">)</span>     <span class="c1"># False</span>
+</pre></div>
+</div>
+</section>
+<section id="mini-projekt-gefangnissverwaltung">
+<h2>🎓 Mini-Projekt: Gefängnissverwaltung<a class="headerlink" href="#mini-projekt-gefangnissverwaltung" title="Link to this heading">#</a></h2>
+<p>In einem Gefängniss gibt es verschiedene Zellentypen. Es gibt Einzelzellen mit genau einem Bett, Paarzellen mit genau zwei Betten und Gemeinschaftszellen mit einer Variablen Anzahl Betten zwischen 4 und 8. Jede Zelle hat genau</p>
+<p>Darüberhinaus gibt es Wachen und Insassen im Gefängniss. Jeder hat einen Namen aber nur Insassen haben eine Straftat während Wachen eine Personalnummer ha#ben.</p>
+<p>Schreibe eine Klasse <code class="docutils literal notranslate"><span class="pre">Zelle</span></code> welche die Insassen verwaltet.</p>
+<p>Eine Zelle hat eine Methode <code class="docutils literal notranslate"><span class="pre">inhaftieren()</span></code> welche einen Insassen entgegennimmt und diesen in die Zelle sperrt. Dies ist jedoch nur möglich wenn die Zelle noch nicht voll ist. Ausserdem kann kein Personal inhaftiert werden.</p>
+<p>Eine Zelle hat auch eine Methode <code class="docutils literal notranslate"><span class="pre">wachwechsel()</span></code>, welche eine Wache entgegennimmt und sich merkt. Stelle sicher das es wirklich eine Wache ist und kein Insasse.</p>
+<p>Eine Zelle hat zusätzlich eine Methode <code class="docutils literal notranslate"><span class="pre">belegung()</span></code> welche die Namen und Strafttaten aller Insassen ausgibt, ausserdem die aktuell zuständige Wache inklusive ihrer Personalnummer. Leite entsprechende Kindklasse <code class="docutils literal notranslate"><span class="pre">Einzelzelle</span></code>, <code class="docutils literal notranslate"><span class="pre">Paarzelle</span></code>und <code class="docutils literal notranslate"><span class="pre">Gemeinschaftszelle</span></code> ab.</p>
+<p>Schreibe eine weitere Klasse <code class="docutils literal notranslate"><span class="pre">Person</span></code> welche den Namen der Person verwaltet. Leite davon die Klasse <code class="docutils literal notranslate"><span class="pre">Insasse</span></code> sowie <code class="docutils literal notranslate"><span class="pre">Wache</span></code> ab. Überschreibe die <code class="docutils literal notranslate"><span class="pre">__str__</span></code> Methoden um sinnvolle Beschreibungen der Personen zu erhalten.</p>
+<p><a class="reference internal" href="prisonsolution.html"><span class="std std-doc">Lösung</span></a></p>
 </section>
 </section>
 
@@ -498,22 +546,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="schleifen.html"
+       href="klassen.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">🔁 Schleifen – Wiederholungen meistern</p>
+        <p class="prev-next-title">🧱 Klassen - Objektorientierte Programmierung in Python</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="listen.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">🧩 Listen - Mehrere Elemente verwalten</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -531,13 +570,22 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematische-funktionen-mit-dem-math-paket">Mathematische Funktionen mit dem <code class="docutils literal notranslate"><span class="pre">math</span></code> Paket</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zufallszahlen-mit-dem-random-paket">Zufallszahlen mit dem <code class="docutils literal notranslate"><span class="pre">random</span></code> Paket:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe">🎓 Übungsaufgabe:</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kreisflache-und-umfang">Kreisfläche und Umfang</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zahlenraten">Zahlenraten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einfuhrung-motivation">🧠 Einführung &amp; Motivation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warum-vererbung">🤔 Warum Vererbung?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hund-ist-ein-tier-katze-ist-ein-tier">🧩 Hund ist ein Tier, Katze ist ein Tier</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grundlagen-der-vererbung">🧱 Grundlagen der Vererbung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">🔧 Syntax:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-basisklasse-tier">🐾 Beispiel: Basisklasse Tier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unterklasse-hund">🐶 Unterklasse Hund</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verwendung">📌 Verwendung:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methoden-uberschreiben-overriding">🔄 Methoden überschreiben (Overriding)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#super-zugriff-auf-die-oberklasse">🪜 super() – Zugriff auf die Oberklasse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isinstance-uberprufen-ob-ein-objekt-eine-bestimmten-klasse-ist"><code class="docutils literal notranslate"><span class="pre">isinstance</span></code> - Überprüfen ob ein Objekt eine bestimmten Klasse ist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-projekt-gefangnissverwaltung">🎓 Mini-Projekt: Gefängnissverwaltung</a></li>
 </ul>
   </nav></div>
 
