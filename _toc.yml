@@ -25,3 +25,6 @@ chapters:
 - file: grundlagen/kontext
 - file: grundlagen/comprehensions
 - file: grundlagen/module
+- file: grundlagen/assert
+- file: grundlagen/generatoren
+- file: grundlagen/csvjson
