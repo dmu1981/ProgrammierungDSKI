@@ -3,30 +3,39 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: vscode
-- file: introduction
-- file: pyenv
-- file: grundlagen/helloworld
-- file: grundlagen/variablenundoperationen
-- file: grundlagen/kontrollstrukturen
-- file: grundlagen/schleifen
-- file: grundlagen/mathundrandom
-- file: grundlagen/listen
-- file: grundlagen/strings
-- file: grundlagen/tuple
-- file: grundlagen/sets
-- file: grundlagen/dicts
-- file: grundlagen/funktionen
-- file: grundlagen/exceptions
-- file: grundlagen/dateien
-- file: grundlagen/klassen
-- file: grundlagen/vererbung
-- file: grundlagen/iteratoren
-- file: grundlagen/kontext
-- file: grundlagen/comprehensions
-- file: grundlagen/module
-- file: grundlagen/assert
-- file: grundlagen/generatoren
-- file: grundlagen/csvjson
-- file: pandas/intro
+parts:
+  - caption: Einleitung
+    chapters:
+    - file: introduction
+    - file: pyenv
+    - file: vscode
+  - caption: Grundlagen
+    chapters:
+    - file: grundlagen/helloworld
+    - file: grundlagen/variablenundoperationen
+    - file: grundlagen/kontrollstrukturen
+    - file: grundlagen/schleifen
+    - file: grundlagen/mathundrandom
+    - file: grundlagen/listen
+    - file: grundlagen/strings
+    - file: grundlagen/tuple
+    - file: grundlagen/sets
+    - file: grundlagen/dicts
+    - file: grundlagen/funktionen
+    - file: grundlagen/exceptions
+    - file: grundlagen/dateien
+    - file: grundlagen/klassen
+    - file: grundlagen/vererbung
+    - file: grundlagen/iteratoren
+    - file: grundlagen/kontext
+    - file: grundlagen/comprehensions
+    - file: grundlagen/module
+    - file: grundlagen/assert
+    - file: grundlagen/generatoren
+    - file: grundlagen/csvjson
+  - caption: Pandas
+    chapters:
+    - file: pandas/intro
+    - file: pandas/einfuehrung
+    - file: pandas/filtern
+    - file: pandas/gruppieren
