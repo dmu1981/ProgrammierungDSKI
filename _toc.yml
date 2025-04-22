@@ -39,3 +39,4 @@ parts:
     - file: pandas/einfuehrung
     - file: pandas/filtern
     - file: pandas/gruppieren
+    - file: pandas/sortieren
