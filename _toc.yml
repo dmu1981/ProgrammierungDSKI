@@ -40,3 +40,4 @@ parts:
     - file: pandas/filtern
     - file: pandas/gruppieren
     - file: pandas/sortieren
+    - file: pandas/zeitreihen
