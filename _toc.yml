@@ -41,3 +41,11 @@ parts:
     - file: pandas/gruppieren
     - file: pandas/sortieren
     - file: pandas/zeitreihen
+  - caption: NumPy
+    chapters:
+    - file: numpy/intro
+    - file: numpy/einfuehrung  
+    - file: numpy/operationen
+    - file: numpy/slicing
+    - file: numpy/rechnen
+    - file: numpy/reshape
