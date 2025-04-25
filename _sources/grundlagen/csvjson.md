@@ -7,7 +7,7 @@ JSON | „JavaScript Object Notation“, strukturiert | APIs, Konfigurationsdate
 
 ## 🟨 Teil 1: CSV-Dateien lesen & schreiben
 ### 📄 Beispiel-Datei: personen.csv
-```pqsql
+```python
 Name,Alter,Stadt
 Anna,25,Berlin
 Ben,30,Hamburg
