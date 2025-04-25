@@ -52,7 +52,7 @@ print(min(temperaturen))  # → 14.8
 
 ➡️ Gibt den kleinsten Wert in der Liste zurück
 
-## 📈 `max()? – Größter Wert
+## 📈 `max()` – Größter Wert
 ```python
 punkte = [10, 30, 25, 40]
 print(max(punkte))  # → 40
@@ -66,7 +66,7 @@ namen = ["Anna", "Beate", "Christoph"]
 print(max(namen, key=len))  # → Christoph
 ```
 
-## 💡 Kombiniert mit sum() – Durchschnitt berechnen
+## 💡 Kombiniert mit `sum()` – Durchschnitt berechnen
 ```python
 zahlen = [3, 4, 5, 6]
 durchschnitt = sum(zahlen) / len(zahlen)
@@ -78,6 +78,9 @@ print(durchschnitt)  # → 4.5
 ```python
 namen = ["Anna", "Ben", "Clara"]
 for name in namen:
+    print("Hallo,", name)
+
+for name in reversed(namen):
     print("Hallo,", name)
 ```
 
