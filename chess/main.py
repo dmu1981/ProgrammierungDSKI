@@ -48,8 +48,33 @@ class Board:
                 for row in reversed(self.cells)
             ]
         )
+    
+    def iterate_pieces(self, white):
+        for row in self.cells:
+            for cell in row:
+                if cell is None:
+                    continue
+                
+                if cell.white == white:
+                    yield cell
+
+    def evaluate(self):
+        score = 0
+        
+        # Iterate all white pieces and add score
+        for piece in self.iterate_pieces(True):
+            score += piece.evaluate()
+
+        # Iterate all white pieces and substract score
+        for piece in self.iterate_pieces(False):
+            score -= piece.evaluate()
+
+        return score
+
 
     def is_valid_cell(self, cell):
+        # TODO: Return True if the given cell is valid, meaning it exists on the board.
+        # Special case: Handle cell is None properly!
         if cell is None:
             return False
 
@@ -64,6 +89,7 @@ class Board:
         return True
     
     def cell_is_valid_and_empty(self, cell):
+        # TODO: Return True if the given cell is valid and there is no piece place on it currently
         if not self.is_valid_cell(cell):
             return False
         
@@ -74,6 +100,8 @@ class Board:
         return False
 
     def piece_can_enter_cell(self, piece, cell):
+        # TODO: Return True if the given cell can be entered by the given piece.
+        # Note: The cell must be valid and, if there is already a piece, it must be from the opposing color
         if not self.is_valid_cell(cell):
             return False
 
@@ -87,6 +115,8 @@ class Board:
         return False 
     
     def piece_can_hit_on_cell(self, piece, cell):
+        # TODO: Return True if the given piece can hit an opponent piece on the given cell
+        # Note: The cell must be valid and there *must* be a piece of opposing color on the cell
         if not self.is_valid_cell(cell):
             return False
 
@@ -171,11 +201,5 @@ class Board:
 
 board = Board()
 board.reset()
-
-pawn = board.get_cell((1, 5))
-x = pawn.get_valid_cells()
-#print(x)
-
-
 
 run_game(board)

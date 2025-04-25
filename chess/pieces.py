@@ -29,13 +29,32 @@ class Piece:
     
     def can_hit_on_cell(self, cell):
         return self.board.piece_can_hit_on_cell(self, cell)
+    
+    def evaluate(self):
+        score = self.base_score # Base value for this piece
         
+        valid_cells = self.get_valid_cells()
+        score += 0.1 * len(valid_cells) # Every reachable cell gives 0.1 point
+
+        for cell in valid_cells:
+            piece = self.board.get_cell(cell)
+            if piece is not None:
+                score += piece.score_for_threat
+
+        return score
+    
 
 class Pawn(Piece):  # Bauer
     def __init__(self, board, white):
         super().__init__(board, white)
 
+        self.score_for_threat = 1
+        self.base_score = 1
+
+    
+
     def get_valid_cells(self):
+        # TODO: Implement a method that returns all cells this piece can enter in its next move
         move_dir = np.array([1, 0]) if self.is_white() else np.array([-1, 0])
         
         potential_cells = []
@@ -65,7 +84,12 @@ class Rook(Piece):  # Turm
     def __init__(self, board, white):
         super().__init__(board, white)
 
+        self.score_for_threat = 5
+        self.base_score = 5
+        
+
     def get_valid_cells(self):
+        # TODO: Implement a method that returns all cells this piece can enter in its next move
         potential_cells = []
 
         directions = [
@@ -93,7 +117,11 @@ class Knight(Piece):  # Springer
     def __init__(self, board, white):
         super().__init__(board, white)
 
+        self.score_for_threat = 3
+        self.base_score = 3
+
     def get_valid_cells(self):
+        # TODO: Implement a method that returns all cells this piece can enter in its next move
         potential_cells = []
 
         moves = [
@@ -120,7 +148,11 @@ class Bishop(Piece):  # Läufer
     def __init__(self, board, white):
         super().__init__(board, white)
 
+        self.score_for_threat = 3
+        self.base_score = 3
+
     def get_valid_cells(self):
+        # TODO: Implement a method that returns all cells this piece can enter in its next move
         potential_cells = []
 
         directions = [
@@ -149,7 +181,11 @@ class Queen(Piece):  # Königin
     def __init__(self, board, white):
         super().__init__(board, white)
 
+        self.score_for_threat = 9
+        self.base_score = 9
+
     def get_valid_cells(self):
+        # TODO: Implement a method that returns all cells this piece can enter in its next move
         potential_cells = []
 
         directions = [
@@ -180,8 +216,12 @@ class Queen(Piece):  # Königin
 class King(Piece):  # König
     def __init__(self, board, white):
         super().__init__(board, white)
+        
+        self.score_for_threat = 10
+        self.base_score = 10000
 
     def get_valid_cells(self):
+        # TODO: Implement a method that returns all cells this piece can enter in its next move
         potential_cells = []
 
         directions = [

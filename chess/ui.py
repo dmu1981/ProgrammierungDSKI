@@ -179,10 +179,19 @@ def run_game(board):
 
             if event.type == pygame.MOUSEBUTTONUP and uiState.dragging:
                 uiState.dragging = False
-                uiState.valid_cells = None
+                
                 if uiState.selected_cell != uiState.mouse_over_cell:
-                    piece = board.get_cell(uiState.selected_cell)
-                    piece.move_to(uiState.mouse_over_cell)
+                    for valid_cell in uiState.valid_cells:
+                        if uiState.mouse_over_cell[0] == valid_cell[0] and\
+                           uiState.mouse_over_cell[1] == valid_cell[1]:
+                          
+                          piece = board.get_cell(uiState.selected_cell)
+                          piece.move_to(uiState.mouse_over_cell)
+
+                          eval = board.evaluate()
+                          print(f"White score: {eval:.4f}")
+                
+                uiState.valid_cells = None
 
         draw_checker_pattern(screen, uiState)
         draw_board(screen, sprites, board)
