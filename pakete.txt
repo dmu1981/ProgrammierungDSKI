@@ -1,0 +1,12 @@
+📈 Vorschlag für Reihenfolge:
+Matplotlib → Visualisierung von NumPy & Pandas-Daten
+
+Seaborn → einfacher Zugang zu statistischer Visualisierung
+
+SciPy → Ergänzung zu NumPy (optional)
+
+scikit-learn → erste Modelle, Klassifikation, Lineare Regression
+
+Statsmodels → statistische Modellierung mit Erklärungen
+
+Dateisystem / pathlib / json / csv / Excel → Dateibasierte Automatisierung

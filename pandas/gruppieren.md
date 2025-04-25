@@ -140,7 +140,7 @@ Häufigkeiten von Werten | `df["Spalte"].value_counts()`
 
 ## 🔧 Übung: Analysiere Durchschnittsalter nach Studiengang & häufigste Werte
 ### 📄 Datensatz (studierende.csv):
-```csv
+```
 Name,Alter,Studiengang,Note
 Anna,22,Informatik,1.7
 Ben,23,BWL,2.3

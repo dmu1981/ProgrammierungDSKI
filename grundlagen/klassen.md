@@ -1,7 +1,7 @@
 # 🧱 Klassen - Objektorientierte Programmierung in Python
 
 
-### 🚀 Warum brauchen wir objektorientierte Programmierung?
+## 🚀 Warum brauchen wir objektorientierte Programmierung?
 In einfachen Programmen reicht es oft aus, einzelne Variablen und Funktionen zu verwenden. Doch je größer und komplexer ein Programm wird, desto schwieriger wird es, den Überblick zu behalten:
 
 * Was gehört logisch zusammen?
@@ -10,7 +10,7 @@ In einfachen Programmen reicht es oft aus, einzelne Variablen und Funktionen zu 
 
 Hier kommt objektorientierte Programmierung ins Spiel – ein Konzept, das hilft, komplexe Programme besser zu strukturieren.
 
-### 🧩 Was ist objektorientierte Programmierung?
+## 🧩 Was ist objektorientierte Programmierung?
 Objektorientierung bedeutet, dass wir Programme in kleine, eigenständige Bausteine unterteilen: Objekte.
 
 * Ein Objekt ist ein „Ding“ mit Eigenschaften und Fähigkeiten, zum Beispiel:
@@ -19,7 +19,7 @@ Objektorientierung bedeutet, dass wir Programme in kleine, eigenständige Bauste
 
 In der OOP modellieren wir diese Dinge als Klassen – das sind Baupläne für Objekte.
 
-### 🔑 Zentrale Vorteile von OOP
+## 🔑 Zentrale Vorteile von OOP
 
 | Vorteil | Erklärung
 | - | -
@@ -30,7 +30,7 @@ In der OOP modellieren wir diese Dinge als Klassen – das sind Baupläne für O
 👀 Lesbarkeit | Klarere, selbstbeschreibende Programme
 🤝 Zusammenarbeit im Team | Jeder arbeitet an eigenen Klassen – weniger Konflikte im Code
 
-### 🔧 Wie sieht objektorientierter Code aus?
+## 🔧 Wie sieht objektorientierter Code aus?
 ```python
 class Hund:
     def __init__(self, name, alter):
@@ -91,7 +91,7 @@ class Hund:
 `__getitem__` | …Zugriff mit obj[index] erfolgt
 `__setitem__` | …Eintrag geändert wird obj[index] = wert
 
-### 🧱 Codebeispiel:
+## 🧱 Codebeispiel:
 ```python
 class Datum:
     def __init__(self, tag, monat, jahr):

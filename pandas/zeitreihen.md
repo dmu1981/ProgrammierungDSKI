@@ -126,7 +126,7 @@ Ergebnisse speichern | `.to_csv()`, `.to_excel()`, `.to_json()`
 
 ## 🔧 Übung: Wetterdaten analysieren
 ### 📄 Beispielhafte CSV-Datei wetter.csv:
-```csv
+```
 Datum,Temperatur
 2024-01-01,2.3
 2024-01-02,3.1

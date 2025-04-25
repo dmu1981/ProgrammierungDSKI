@@ -52,14 +52,14 @@ df_gesamt = pd.merge(df1, df2, on="Name")
 
 ## 📄 Beispiel: Zwei CSV-Dateien verbinden
 ### 🔹 personen.csv
-```csv
+```
 Name,Alter
 Anna,22
 Ben,23
 Clara,21
 ```
 ### 🔹 studiengang.csv
-```csv
+```
 Name,Studiengang
 Anna,Informatik
 Ben,BWL
@@ -80,7 +80,7 @@ print(df)
 ```
 ➡️ Ergebnis:
 
-```pgsql
+```
     Name  Alter  Studiengang
 0   Anna     22  Informatik
 1    Ben     23        BWL
@@ -101,7 +101,7 @@ Mehrere Bedingungen | (A) & (B) mit Klammern
 ### 📄 Gegeben:
 mitarbeiter.csv mit "ID", "Name", "Abteilung"
 
-```csv
+```
 ID,Name,Abteilung
 101,Anna Schulz,IT
 102,Ben Meier,HR
@@ -112,7 +112,7 @@ ID,Name,Abteilung
 ```
 
 gehaelter.csv mit "ID", "Gehalt"
-```csv
+```
 ID,Gehalt
 101,4500
 102,3900

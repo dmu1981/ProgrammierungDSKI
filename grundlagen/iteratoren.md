@@ -4,10 +4,8 @@
 Ein Iterator ist ein Objekt, das nacheinander Werte liefern kann, z. B. in einer for-Schleife.
 Ein Iterator muss zwei Methoden haben:
 
-```python
-__iter__()   → liefert das Iteratorobjekt selbst  
-__next__()   → liefert das nächste Element oder löst StopIteration aus
-```
+* `__iter__()` liefert das Iteratorobjekt selbst  
+* `__next__()`  liefert das nächste Element oder löst StopIteration aus
 
 ## 🔨 Eigene Iteratoren schreiben
 ```python

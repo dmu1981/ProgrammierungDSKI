@@ -49,3 +49,13 @@ parts:
     - file: numpy/slicing
     - file: numpy/rechnen
     - file: numpy/reshape
+    - file: numpy/linalg
+  - caption: MatPlotLib
+    chapters:
+    - file: matplotlib/intro.md
+    - file: matplotlib/einleitung.md
+    - file: matplotlib/diagramme.md
+    - file: matplotlib/hist.md
+    - file: matplotlib/achsen.md
+    - file: matplotlib/style.md
+    - file: matplotlib/annotations.md

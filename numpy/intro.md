@@ -1,5 +1,5 @@
 # 🔢 Einführung in NumPy – Das Fundament der numerischen Programmierung in Python
-### 🧠 Was ist NumPy?
+## 🧠 Was ist NumPy?
 NumPy steht für Numerical Python und ist eine der wichtigsten und leistungsfähigsten Bibliotheken in der wissenschaftlichen Programmierung mit Python.
 
 NumPy ist vor allem bekannt für sein zentrales Objekt: das n-dimensionale Array (ndarray). Es ist das Rückgrat vieler weiterer Pakete – z. B. Pandas, SciPy, scikit-learn, TensorFlow – und bildet die Grundlage für alle numerischen und datengetriebenen Aufgaben in Python.
