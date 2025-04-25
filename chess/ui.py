@@ -7,6 +7,7 @@ class UIState:
         self.mouse_over_cell = None
         self.dragging = False
         self.selected_cell = None
+        self.valid_cells = None
 
         pass
 
@@ -92,6 +93,15 @@ def draw_checker_pattern(screen, uiState):
             y = 700 - row * 100
             pygame.draw.rect(screen, COLOR_BLACK, pygame.Rect(x, y, 100, 100))
 
+    # Draw valid cells
+    if uiState.valid_cells is not None:
+       for cell in uiState.valid_cells:
+           row, col = cell
+           x = col * 100 + 50
+           y = 700 - row * 100 + 50
+           pygame.draw.circle(screen, (196, 196, 196), (x, y), 35)
+            
+
     # Highlight cell if any
     if uiState.dragging:
         row, col = uiState.selected_cell
@@ -164,10 +174,12 @@ def run_game(board):
                 piece = board.get_cell(uiState.mouse_over_cell)
                 if piece:
                     uiState.dragging = True
+                    uiState.valid_cells = piece.get_valid_cells()
                     uiState.selected_cell = uiState.mouse_over_cell
 
             if event.type == pygame.MOUSEBUTTONUP and uiState.dragging:
                 uiState.dragging = False
+                uiState.valid_cells = None
                 if uiState.selected_cell != uiState.mouse_over_cell:
                     piece = board.get_cell(uiState.selected_cell)
                     piece.move_to(uiState.mouse_over_cell)

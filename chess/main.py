@@ -1,3 +1,4 @@
+import numpy as np
 from pieces import Piece, Pawn, Rook, Bishop, Queen, King, Knight
 from ui import run_game
 
@@ -48,6 +49,56 @@ class Board:
             ]
         )
 
+    def is_valid_cell(self, cell):
+        if cell is None:
+            return False
+
+        row, col = cell
+    
+        if row < 0 or row >= 8:
+            return False
+
+        if col < 0 or col >= 8:
+            return False
+      
+        return True
+    
+    def cell_is_valid_and_empty(self, cell):
+        if not self.is_valid_cell(cell):
+            return False
+        
+        other_piece = self.get_cell(cell)
+        if other_piece is None:
+            return True
+        
+        return False
+
+    def piece_can_enter_cell(self, piece, cell):
+        if not self.is_valid_cell(cell):
+            return False
+
+        other_piece = self.get_cell(cell)
+        if other_piece is None:
+            return True
+        
+        if other_piece.white != piece.white:
+            return True
+
+        return False 
+    
+    def piece_can_hit_on_cell(self, piece, cell):
+        if not self.is_valid_cell(cell):
+            return False
+
+        other_piece = self.get_cell(cell)
+        if other_piece is None:
+            return False
+        
+        if other_piece.white != piece.white:
+            return True
+
+        return False 
+
     def get_cell(self, cell):
         if cell is None:
             return None
@@ -61,6 +112,12 @@ class Board:
             raise InvalidColumnException(row, col)
 
         return self.cells[row][col]
+    
+    def get_cell_or_none(self, cell):
+        try:
+            return self.get_cell(self, cell)
+        except:
+            return None
 
     def set_cell(self, cell, piece):
         row, col = cell
@@ -82,37 +139,43 @@ class Board:
     def reset(self):
         # Pawns
         for col in range(8):
-            self.set_cell((1, col), Pawn(self, True))
-            self.set_cell((6, col), Pawn(self, False))
+            self.set_cell(np.array([1, col]), Pawn(self, True))
+            self.set_cell(np.array([6, col]), Pawn(self, False))
 
         # Rooks
-        self.set_cell((0, 0), Rook(self, True))
-        self.set_cell((0, 7), Rook(self, True))
-        self.set_cell((7, 0), Rook(self, False))
-        self.set_cell((7, 7), Rook(self, False))
+        self.set_cell(np.array([0, 0]), Rook(self, True))
+        self.set_cell(np.array([0, 7]), Rook(self, True))
+        self.set_cell(np.array([7, 0]), Rook(self, False))
+        self.set_cell(np.array([7, 7]), Rook(self, False))
 
         # Knights
-        self.set_cell((0, 1), Knight(self, True))
-        self.set_cell((0, 6), Knight(self, True))
-        self.set_cell((7, 1), Knight(self, False))
-        self.set_cell((7, 6), Knight(self, False))
+        self.set_cell(np.array([0, 1]), Knight(self, True))
+        self.set_cell(np.array([0, 6]), Knight(self, True))
+        self.set_cell(np.array([7, 1]), Knight(self, False))
+        self.set_cell(np.array([7, 6]), Knight(self, False))
 
         # Bishops
-        self.set_cell((0, 2), Bishop(self, True))
-        self.set_cell((0, 5), Bishop(self, True))
-        self.set_cell((7, 2), Bishop(self, False))
-        self.set_cell((7, 5), Bishop(self, False))
+        self.set_cell(np.array([0, 2]), Bishop(self, True))
+        self.set_cell(np.array([0, 5]), Bishop(self, True))
+        self.set_cell(np.array([7, 2]), Bishop(self, False))
+        self.set_cell(np.array([7, 5]), Bishop(self, False))
 
         # Queen
-        self.set_cell((0, 3), Queen(self, True))
-        self.set_cell((7, 3), Queen(self, False))
+        self.set_cell(np.array([0, 3]), Queen(self, True))
+        self.set_cell(np.array([7, 3]), Queen(self, False))
 
         # King
-        self.set_cell((0, 4), King(self, True))
-        self.set_cell((7, 4), King(self, False))
+        self.set_cell(np.array([0, 4]), King(self, True))
+        self.set_cell(np.array([7, 4]), King(self, False))
 
 
 board = Board()
 board.reset()
+
+pawn = board.get_cell((1, 5))
+x = pawn.get_valid_cells()
+#print(x)
+
+
 
 run_game(board)
