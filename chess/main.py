@@ -39,6 +39,7 @@ def map_piece_to_character(piece):
 
 check_cache = {}
 
+
 class Board:
     def __init__(self):
         self.cells = [[None for _ in range(8)] for _ in range(8)]
@@ -50,7 +51,7 @@ class Board:
                 for row in reversed(self.cells)
             ]
         )
-    
+
     def hash(self):
         return "".join(
             [
@@ -58,13 +59,13 @@ class Board:
                 for row in reversed(self.cells)
             ]
         )
-    
+
     def iterate_pieces(self, white):
         for row in self.cells:
             for cell in row:
                 if cell is None:
                     continue
-                
+
                 if cell.white == white:
                     yield cell
 
@@ -72,7 +73,7 @@ class Board:
         for piece in self.iterate_pieces(white):
             if isinstance(piece, King):
                 return piece
-            
+
         return None
 
     def is_king_check(self, white):
@@ -81,7 +82,7 @@ class Board:
         hash = self.hash() + "-w" if white else "-b"
         if hash in check_cache:
             return check_cache[hash]
-        
+
         # First, find the king
         king = self.find_king(white)
 
@@ -92,17 +93,16 @@ class Board:
 
             # If the kings cell is in reach, we are in check
             for cell in potential_cells:
-              if king.cell[0] == cell[0] and king.cell[1] == cell[1]:
-                check_cache[hash] = True
-                return True
-            
+                if king.cell[0] == cell[0] and king.cell[1] == cell[1]:
+                    check_cache[hash] = True
+                    return True
+
         check_cache[hash] = False
         return False
 
-
     def evaluate(self):
         score = 0
-        
+
         # Iterate all white pieces and add score
         for piece in self.iterate_pieces(True):
             score += piece.evaluate()
@@ -113,7 +113,6 @@ class Board:
 
         return score
 
-
     def is_valid_cell(self, cell):
         # TODO: Return True if the given cell is valid, meaning it exists on the board.
         # Special case: Handle cell is None properly!
@@ -121,24 +120,24 @@ class Board:
             return False
 
         row, col = cell
-    
+
         if row < 0 or row >= 8:
             return False
 
         if col < 0 or col >= 8:
             return False
-      
+
         return True
-    
+
     def cell_is_valid_and_empty(self, cell):
         # TODO: Return True if the given cell is valid and there is no piece place on it currently
         if not self.is_valid_cell(cell):
             return False
-        
+
         other_piece = self.get_cell(cell)
         if other_piece is None:
             return True
-        
+
         return False
 
     def piece_can_enter_cell(self, piece, cell):
@@ -150,12 +149,12 @@ class Board:
         other_piece = self.get_cell(cell)
         if other_piece is None:
             return True
-        
+
         if other_piece.white != piece.white:
             return True
 
-        return False 
-    
+        return False
+
     def piece_can_hit_on_cell(self, piece, cell):
         # TODO: Return True if the given piece can hit an opponent piece on the given cell
         # Note: The cell must be valid and there *must* be a piece of opposing color on the cell
@@ -165,11 +164,11 @@ class Board:
         other_piece = self.get_cell(cell)
         if other_piece is None:
             return False
-        
+
         if other_piece.white != piece.white:
             return True
 
-        return False 
+        return False
 
     def get_cell(self, cell):
         if cell is None:
@@ -184,7 +183,7 @@ class Board:
             return None
 
         return self.cells[row][col]
-    
+
     def get_cell_or_none(self, cell):
         try:
             return self.get_cell(self, cell)
@@ -248,9 +247,8 @@ class Board:
         # self.set_cell(np.array([1, 4]), King(self, True))
         # self.set_cell(np.array([7, 4]), King(self, False))
 
+        # return
 
-        #return
-    
         # Pawns
         for col in range(8):
             self.set_cell(np.array([1, col]), Pawn(self, True))

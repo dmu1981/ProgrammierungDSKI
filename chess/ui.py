@@ -87,11 +87,10 @@ def draw_checker_pattern(screen, uiState):
     screen.fill(COLOR_WHITE)
 
     winChance = 1.0 / (1.0 + np.exp(-uiState.score / 8.0))
-    
+
     whiteRatio = 800 * winChance
-    pygame.draw.rect(screen, (255,255,255), (800, 800-whiteRatio, 20, whiteRatio))
-    pygame.draw.rect(screen, (0,0,0), (800, 0, 20, 800-whiteRatio))
-    
+    pygame.draw.rect(screen, (255, 255, 255), (800, 800 - whiteRatio, 20, whiteRatio))
+    pygame.draw.rect(screen, (0, 0, 0), (800, 0, 20, 800 - whiteRatio))
 
     # Draw check board
     for row in range(8):
@@ -105,12 +104,11 @@ def draw_checker_pattern(screen, uiState):
 
     # Draw valid cells
     if uiState.valid_cells is not None:
-       for cell in uiState.valid_cells:
-           row, col = cell
-           x = col * 100 + 50
-           y = 700 - row * 100 + 50
-           pygame.draw.circle(screen, (196, 196, 196), (x, y), 35)
-            
+        for cell in uiState.valid_cells:
+            row, col = cell
+            x = col * 100 + 50
+            y = 700 - row * 100 + 50
+            pygame.draw.circle(screen, (196, 196, 196), (x, y), 35)
 
     # Highlight cell if any
     if uiState.dragging:
@@ -127,15 +125,14 @@ def draw_checker_pattern(screen, uiState):
 
     if uiState.dragging:
         if uiState.mouse_over_cell is not None:
-          row, col = uiState.mouse_over_cell
-          xFrom = col * 100 + 50
-          yFrom = 700 - row * 100 + 50
-          row, col = uiState.selected_cell
-          xTo = col * 100 + 50
-          yTo = 700 - row * 100 + 50
-          pygame.draw.line(screen, (255, 0, 0), (xFrom, yFrom), (xTo, yTo), 3)
+            row, col = uiState.mouse_over_cell
+            xFrom = col * 100 + 50
+            yFrom = 700 - row * 100 + 50
+            row, col = uiState.selected_cell
+            xTo = col * 100 + 50
+            yTo = 700 - row * 100 + 50
+            pygame.draw.line(screen, (255, 0, 0), (xFrom, yFrom), (xTo, yTo), 3)
 
-    
 
 def draw_board(screen, sprites, board):
     for row in range(8):
@@ -173,7 +170,6 @@ def run_game(board):
 
     pygame.display.set_caption("Hello Pygame")
 
-
     # Game loop
     running = True
     uiState = UIState()
@@ -188,8 +184,7 @@ def run_game(board):
             uiState.score = nextMove.score
             displayScore = np.tanh(uiState.score / 8.0) * 4.0
             print(f"Current Evaluation: {+displayScore:.2f}")
-            
-            
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -203,19 +198,21 @@ def run_game(board):
 
             if event.type == pygame.MOUSEBUTTONUP and uiState.dragging:
                 uiState.dragging = False
-                
+
                 if uiState.selected_cell != uiState.mouse_over_cell:
                     for valid_cell in uiState.valid_cells:
-                        if uiState.mouse_over_cell[0] == valid_cell[0] and\
-                           uiState.mouse_over_cell[1] == valid_cell[1]:
-                          
-                          piece = board.get_cell(uiState.selected_cell)
-                          piece.move_to(uiState.mouse_over_cell)
+                        if (
+                            uiState.mouse_over_cell[0] == valid_cell[0]
+                            and uiState.mouse_over_cell[1] == valid_cell[1]
+                        ):
 
-                          #eval = board.evaluate()
-                          #print(f"White score: {eval:.4f}")
-                          nextMove = None
-                
+                            piece = board.get_cell(uiState.selected_cell)
+                            piece.move_to(uiState.mouse_over_cell)
+
+                            # eval = board.evaluate()
+                            # print(f"White score: {eval:.4f}")
+                            nextMove = None
+
                 uiState.valid_cells = None
 
         draw_checker_pattern(screen, uiState)
