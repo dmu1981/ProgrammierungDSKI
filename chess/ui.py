@@ -1,5 +1,7 @@
 import pygame
+import numpy as np
 from pieces import Piece, Pawn, Rook, Bishop, Queen, King, Knight
+from engine import suggest_move
 
 
 class UIState:
@@ -8,6 +10,7 @@ class UIState:
         self.dragging = False
         self.selected_cell = None
         self.valid_cells = None
+        self.score = 0.0
 
         pass
 
@@ -83,6 +86,13 @@ def draw_checker_pattern(screen, uiState):
 
     screen.fill(COLOR_WHITE)
 
+    winChance = 1.0 / (1.0 + np.exp(-uiState.score / 8.0))
+    
+    whiteRatio = 800 * winChance
+    pygame.draw.rect(screen, (255,255,255), (800, 800-whiteRatio, 20, whiteRatio))
+    pygame.draw.rect(screen, (0,0,0), (800, 0, 20, 800-whiteRatio))
+    
+
     # Draw check board
     for row in range(8):
         for col in range(8):
@@ -116,14 +126,16 @@ def draw_checker_pattern(screen, uiState):
         pygame.draw.rect(screen, (255, 0, 0), pygame.Rect(x, y, 100, 100), 3)
 
     if uiState.dragging:
-        row, col = uiState.mouse_over_cell
-        xFrom = col * 100 + 50
-        yFrom = 700 - row * 100 + 50
-        row, col = uiState.selected_cell
-        xTo = col * 100 + 50
-        yTo = 700 - row * 100 + 50
-        pygame.draw.line(screen, (255, 0, 0), (xFrom, yFrom), (xTo, yTo), 3)
+        if uiState.mouse_over_cell is not None:
+          row, col = uiState.mouse_over_cell
+          xFrom = col * 100 + 50
+          yFrom = 700 - row * 100 + 50
+          row, col = uiState.selected_cell
+          xTo = col * 100 + 50
+          yTo = 700 - row * 100 + 50
+          pygame.draw.line(screen, (255, 0, 0), (xFrom, yFrom), (xTo, yTo), 3)
 
+    
 
 def draw_board(screen, sprites, board):
     for row in range(8):
@@ -155,24 +167,36 @@ def run_game(board):
     pygame.init()
 
     # Set up the game window
-    screen = pygame.display.set_mode((800, 800))
+    screen = pygame.display.set_mode((820, 800))
 
     sprites = load_sprites()
 
     pygame.display.set_caption("Hello Pygame")
 
+
     # Game loop
     running = True
     uiState = UIState()
 
+    nextMove = None
+
     while running:
+        if nextMove is None:
+            nextMove = suggest_move(board)
+            print("Next Move is ", nextMove)
+            board.set_cell(nextMove.cell, nextMove.piece)
+            uiState.score = nextMove.score
+            displayScore = np.tanh(uiState.score / 8.0) * 4.0
+            print(f"Current Evaluation: {+displayScore:.2f}")
+            
+            
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 piece = board.get_cell(uiState.mouse_over_cell)
-                if piece:
+                if piece and piece.white == False:
                     uiState.dragging = True
                     uiState.valid_cells = piece.get_valid_cells()
                     uiState.selected_cell = uiState.mouse_over_cell
@@ -188,8 +212,9 @@ def run_game(board):
                           piece = board.get_cell(uiState.selected_cell)
                           piece.move_to(uiState.mouse_over_cell)
 
-                          eval = board.evaluate()
-                          print(f"White score: {eval:.4f}")
+                          #eval = board.evaluate()
+                          #print(f"White score: {eval:.4f}")
+                          nextMove = None
                 
                 uiState.valid_cells = None
 
