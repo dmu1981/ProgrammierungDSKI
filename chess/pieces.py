@@ -75,7 +75,7 @@ class Piece:
             self.board.set_cell(cell, self)
 
             # See if our king is in check
-            if not self.board.is_king_check(self.white):
+            if not self.board.is_king_check_cached(self.white):
                 valid_cells.append(cell)
 
             # Undo placement

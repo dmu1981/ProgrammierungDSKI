@@ -58,31 +58,6 @@ class Move:
         s += f"({self.score:.2f})"
         return s
 
-
-eval_cache = {}
-total_hits = 0
-
-
-def retrieve_from_cache(board, depth):
-    global eval_cache, total_hits
-
-    # Calculate a unique hash code for the current board position and search depth
-    hash = str(depth) + board.hash()
-    if hash in eval_cache:
-        total_hits += 1
-        # print(f"Cache hit! Cache has {len(eval_cache.keys())} entries with {total_hits} hits so far")
-        return eval_cache[hash]
-
-    return None
-
-
-def add_to_cache(board, depth, score):
-    global eval_cache
-    # Calculate a unique hash code for the current board position and search depth
-    hash = str(depth) + board.hash()
-    eval_cache[hash] = score
-
-
 def evaluate_all_possible_moves(board, minMaxArg):
     # Start with an empty list of moves
     moves = []
@@ -118,6 +93,25 @@ def evaluate_all_possible_moves(board, minMaxArg):
 
     return moves
 
+eval_cache = {}
+total_hits = 0
+
+def minMax_cached(board, minMaxArg):
+  global eval_cache, total_hits
+
+   # Calculate a unique hash code for the current board position and search depth
+  hash = str(minMaxArg.depth) + board.hash()
+  if hash in eval_cache:
+      total_hits += 1
+      # print(f"Cache hit! Cache has {len(eval_cache.keys())} entries with {total_hits} hits so far")
+      return eval_cache[hash]
+  
+  # Its not the cache so do the actual evaluation
+  bestMove = minMax(board, minMaxArg)
+
+  # Cache it for later
+  eval_cache[hash] = bestMove
+  return bestMove
 
 def minMax(board, minMaxArg):
     # First, get a sorted list of all possible moves and their respective board evaluations
@@ -150,16 +144,11 @@ def minMax(board, minMaxArg):
             old_piece = board.get_cell(move.cell)
             board.set_cell(move.cell, move.piece)
 
-            # Try to retrieve evaluation from cache
-            score = retrieve_from_cache(board, nextMinMax.depth)
-            if score is None:
-                # Actually go down the rabbit hole
-                bestMove = minMax(board, nextMinMax)
-                add_to_cache(board, nextMinMax.depth, bestMove.score)
-                score = bestMove.score
-
+            # Actually go down the rabbit hole
+            bestMove = minMax_cached(board, nextMinMax)
+            
             # Overwrite score
-            move.score = score
+            move.score = bestMove.score
 
             # Restore board
             board.set_cell(starting_position, move.piece)
@@ -191,4 +180,4 @@ def minMax(board, minMaxArg):
 def suggest_move(board):
     minMaxArg = MinMaxArg()
 
-    return minMax(board, minMaxArg)
+    return minMax_cached(board, minMaxArg)

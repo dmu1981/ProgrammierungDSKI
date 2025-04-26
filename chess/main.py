@@ -39,7 +39,6 @@ def map_piece_to_character(piece):
 
 check_cache = {}
 
-
 class Board:
     def __init__(self):
         self.cells = [[None for _ in range(8)] for _ in range(8)]
@@ -76,13 +75,22 @@ class Board:
 
         return None
 
-    def is_king_check(self, white):
+    def is_king_check_cached(self, white):
         global check_cache
 
+        # Calculate hash and see if current position is in the cache
         hash = self.hash() + "-w" if white else "-b"
         if hash in check_cache:
             return check_cache[hash]
+        
+        # No, so evaluate it
+        value = self.is_king_check(white)
 
+        # Cache it for later
+        check_cache[hash] = value
+        return value
+    
+    def is_king_check(self, white):
         # First, find the king
         king = self.find_king(white)
 
@@ -94,10 +102,8 @@ class Board:
             # If the kings cell is in reach, we are in check
             for cell in potential_cells:
                 if king.cell[0] == cell[0] and king.cell[1] == cell[1]:
-                    check_cache[hash] = True
                     return True
 
-        check_cache[hash] = False
         return False
 
     def evaluate(self):
