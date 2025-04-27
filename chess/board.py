@@ -1,4 +1,6 @@
+import os
 import numpy as np
+from uuid import uuid4
 from pieces import Pawn, Rook, Bishop, Queen, King, Knight
 from util import (
     map_piece_to_character,
@@ -44,6 +46,45 @@ class BoardBase:
                 for row in reversed(self.cells)
             ]
         )
+    
+    def save_to_disk(self):
+        with open(str(uuid4()) + '.board', "wt") as f:
+            f.write(str(self))
+
+    def load_from_disk(self, fname):
+        self.cells = [[None for _ in range(8)] for _ in range(8)]
+
+        with open(fname, "rt") as f:
+            for row, line in enumerate(f):
+              line = line.strip()
+              for col, pieceCode in enumerate(line.split(' ')):
+                if pieceCode == '.':
+                    continue
+                
+                if pieceCode.isupper():
+                    white = True
+                else:
+                    white = False
+
+                pieceCode = pieceCode.upper()
+
+                if pieceCode == "P":
+                    piece = Pawn(self, white)
+                if pieceCode == "K":
+                    piece = King(self, white)
+                if pieceCode == "Q":
+                    piece = Queen(self, white)
+                if pieceCode == "N":
+                    piece = Knight(self, white)
+                if pieceCode == "B":
+                    piece = Bishop(self, white)
+                if pieceCode == "R":
+                    piece = Rook(self, white)
+
+                self.set_cell(np.array([7-row, col]), piece)
+
+        
+            
 
     def is_king_check_cached(self, white):
         """
@@ -138,6 +179,8 @@ class BoardBase:
         # King
         self.set_cell(np.array([0, 4]), King(self, True))
         self.set_cell(np.array([7, 4]), King(self, False))
+
+        #self.save_to_disk()
 
 
 class Board(BoardBase):

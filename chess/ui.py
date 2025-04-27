@@ -177,13 +177,13 @@ def run_game(board):
     nextMove = None
 
     while running:
-        if nextMove is None:
-            nextMove = suggest_move(board)
-            print("Next Move is ", nextMove)
-            board.set_cell(nextMove.cell, nextMove.piece)
-            uiState.score = nextMove.score
-            displayScore = np.tanh(uiState.score / 8.0) * 4.0
-            print(f"Current Evaluation: {+displayScore:.2f}")
+        # if nextMove is None:
+        #     nextMove = suggest_move(board)
+        #     print("Next Move is ", nextMove)
+        #     board.set_cell(nextMove.cell, nextMove.piece)
+        #     uiState.score = nextMove.score
+        #     displayScore = np.tanh(uiState.score / 8.0) * 4.0
+        #     print(f"Current Evaluation: {+displayScore:.2f}")
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -191,7 +191,7 @@ def run_game(board):
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 piece = board.get_cell(uiState.mouse_over_cell)
-                if piece and piece.white == False:
+                if piece:# and piece.white == False:
                     uiState.dragging = True
                     uiState.valid_cells = piece.get_valid_cells()
                     uiState.selected_cell = uiState.mouse_over_cell
@@ -207,7 +207,7 @@ def run_game(board):
                         ):
 
                             piece = board.get_cell(uiState.selected_cell)
-                            piece.move_to(uiState.mouse_over_cell)
+                            piece.board.set_cell(uiState.mouse_over_cell, piece)
 
                             # eval = board.evaluate()
                             # print(f"White score: {eval:.4f}")
