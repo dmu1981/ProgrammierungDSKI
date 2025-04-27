@@ -156,12 +156,12 @@ class Board(BoardBase):
 
     def iterate_cells_with_pieces(self, white):
         """
-        TODO: Write a generator (using the yield keyword) that allows to iterate
+        **TODO**: Write a generator (using the yield keyword) that allows to iterate
         over all cells with a piece of given color.
 
-        Hint: You need a double-nested loop,
-        the first iterates over all the rows, the second one iterates over each cell in the current row.
-        # If the cell has a piece (so it is not None) and the piece has the correct color, *yield* it
+        **Hint**: You need a double-nested loop,
+        the first one iterates over all the rows, the second one iterates over each cell in the current row.
+        If the cell has a piece (so it is not None) and the piece has the correct color, *yield* it
 
         :param white: True if WHITE pieces are to be iterated, False otherwise
         :type white: Boolean
@@ -180,9 +180,9 @@ class Board(BoardBase):
 
     def find_king(self, white):
         """
-        TODO: Find the king piece of given color and return that piece
+        **TODO**: Find the king piece of given color and return that piece
 
-        Hint: You can use the iterate_cells_with_pieces() Method to find all
+        **Hint**: You can use the iterate_cells_with_pieces() Method to find all
         pieces of a given color
 
         :param white: True if WHITE pieces are to be iterated, False otherwise

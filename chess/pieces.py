@@ -1,26 +1,19 @@
 import numpy as np
 
-
 class Piece:
+    """
+    Base class for pieces on the board. 
+    
+    A piece holds a reference to the board, its color and its currently located cell.
+    In this class, you need to implement two methods, the "evaluate()" method and the "get_valid_cells()" method.
+    """
     def __init__(self, board, white):
         self.board = board
         self.white = white
         self.cell = None
 
-    def move_to(self, cell):
-        self.board.set_cell(cell, self)
-
     def is_white(self):
         return self.white
-
-    def is_black(self):
-        return not self.white
-
-    def is_same_color(self, this):
-        return self.color == this.color
-
-    def is_opponent(self, this):
-        return self.color != this.color
 
     def can_enter_cell(self, cell):
         return self.board.piece_can_enter_cell(self, cell)

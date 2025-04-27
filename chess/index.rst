@@ -17,17 +17,12 @@ verpflichtenden Prüfungsleistung programmieren Sie dabei eine erste, eigene KI 
 Vorbereitungen
 --------------
 
-Um m
-
 .. code-block:: console
 
    (.venv) $ pip install lumache
 
-.. autoclass:: board::BoardBase
-   :members:
-
-.. autoclass:: board::Board
-   :members:
+:doc:`Das Brett <../board>` 
+:doc:`Die Figuren <../figures>`
 
 .. toctree::
    :maxdepth: 2

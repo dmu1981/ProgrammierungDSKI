@@ -1,2 +1,0 @@
-# Schachengine - Semesterprojekt
-Hallo

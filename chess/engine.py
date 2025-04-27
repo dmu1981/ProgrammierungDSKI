@@ -1,6 +1,5 @@
 import random
 from tqdm import tqdm
-from pieces import Piece, Pawn, Rook, Bishop, Queen, King, Knight
 from util import map_piece_to_character, cell_to_string
 
 

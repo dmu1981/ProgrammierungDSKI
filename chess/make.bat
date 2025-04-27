@@ -1,7 +1,7 @@
 @ECHO OFF
 
 pushd %~dp0
-sphinx-build -M latexpdf . ./_build 
+sphinx-build . ./_build 
 goto end
 
 REM Command file for Sphinx documentation
