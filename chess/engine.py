@@ -1,6 +1,8 @@
 import random
-from pieces import Piece, Pawn, Rook, Bishop, Queen, King, Knight
 from tqdm import tqdm
+from pieces import Piece, Pawn, Rook, Bishop, Queen, King, Knight
+from util import map_piece_to_character, cell_to_string
+
 
 DEPTH = 3
 MOVES_PER_DEPTH = [0, 2, 3, 5, 10, 15]
@@ -13,32 +15,6 @@ class MinMaxArg:
 
     def next(self):
         return MinMaxArg(self.depth - 1, not self.playAsWhite)
-
-
-def map_piece_to_char(piece):
-    if piece is None:
-        return None
-
-    c = None
-    if isinstance(piece, Pawn):
-        c = "P"
-    if isinstance(piece, Rook):
-        c = "R"
-    if isinstance(piece, Knight):
-        c = "N"
-    if isinstance(piece, Bishop):
-        c = "B"
-    if isinstance(piece, Queen):
-        c = "Q"
-    if isinstance(piece, King):
-        c = "K"
-
-    return c
-
-
-def cell_to_string(cell):
-    files = ["a", "b", "c", "d", "e", "f", "g", "h"]
-    return files[cell[1]] + str(cell[0] + 1)
 
 
 class Move:
@@ -54,16 +30,17 @@ class Move:
         if not self.piece.board.cell_is_valid_and_empty(self.cell):
             center = "x"
 
-        s = map_piece_to_char(self.piece) + fr + center + to
+        s = map_piece_to_character(self.piece).upper() + fr + center + to
         s += f"({self.score:.2f})"
         return s
+
 
 def evaluate_all_possible_moves(board, minMaxArg):
     # Start with an empty list of moves
     moves = []
 
     # Iterate all possible moves for current color
-    for piece in board.iterate_pieces(minMaxArg.playAsWhite):
+    for piece in board.iterate_cells_with_pieces(minMaxArg.playAsWhite):
         # Get valid moves for current piece
         valid_moves = piece.get_valid_cells()
 
@@ -93,25 +70,28 @@ def evaluate_all_possible_moves(board, minMaxArg):
 
     return moves
 
+
 eval_cache = {}
 total_hits = 0
 
+
 def minMax_cached(board, minMaxArg):
-  global eval_cache, total_hits
+    global eval_cache, total_hits
 
-   # Calculate a unique hash code for the current board position and search depth
-  hash = str(minMaxArg.depth) + board.hash()
-  if hash in eval_cache:
-      total_hits += 1
-      # print(f"Cache hit! Cache has {len(eval_cache.keys())} entries with {total_hits} hits so far")
-      return eval_cache[hash]
-  
-  # Its not the cache so do the actual evaluation
-  bestMove = minMax(board, minMaxArg)
+    # Calculate a unique hash code for the current board position and search depth
+    hash = str(minMaxArg.depth) + board.hash()
+    if hash in eval_cache:
+        total_hits += 1
+        # print(f"Cache hit! Cache has {len(eval_cache.keys())} entries with {total_hits} hits so far")
+        return eval_cache[hash]
 
-  # Cache it for later
-  eval_cache[hash] = bestMove
-  return bestMove
+    # Its not the cache so do the actual evaluation
+    bestMove = minMax(board, minMaxArg)
+
+    # Cache it for later
+    eval_cache[hash] = bestMove
+    return bestMove
+
 
 def minMax(board, minMaxArg):
     # First, get a sorted list of all possible moves and their respective board evaluations
@@ -121,15 +101,13 @@ def minMax(board, minMaxArg):
     if not moves:
         return Move(None, None, -500 if minMaxArg.playAsWhite else 500)
 
-    # Restrict further analysis to the best 10 moves
+    # Restrict further analysis to the heuristicaly best moves
     d = DEPTH - minMaxArg.depth + 1
     movesToKeep = MOVES_PER_DEPTH[-d]
     moves = moves[:movesToKeep]
 
     # If there is depth left, see how opponent would behave for potential moves
     if minMaxArg.depth > 1:
-        nextMinMax = minMaxArg.next()
-
         # Go through best 10 moves
         iter = moves
         if minMaxArg.depth == DEPTH:
@@ -145,8 +123,8 @@ def minMax(board, minMaxArg):
             board.set_cell(move.cell, move.piece)
 
             # Actually go down the rabbit hole
-            bestMove = minMax_cached(board, nextMinMax)
-            
+            bestMove = minMax_cached(board, minMaxArg.next())
+
             # Overwrite score
             move.score = bestMove.score
 
@@ -168,16 +146,10 @@ def minMax(board, minMaxArg):
     # Debug output
     print("Depth: ", minMaxArg.depth, [str(move) for move in moves])
 
-    # If there is a guaranteed winning move, never risk that
-    if moves[0].score > 250:
-        return moves[0]
-
     # Shuffle and pick a random move
     random.shuffle(moves)
     return moves[0]
 
 
 def suggest_move(board):
-    minMaxArg = MinMaxArg()
-
-    return minMax_cached(board, minMaxArg)
+    return minMax_cached(board, MinMaxArg())

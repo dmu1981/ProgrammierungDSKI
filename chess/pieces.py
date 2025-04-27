@@ -22,9 +22,6 @@ class Piece:
     def is_opponent(self, this):
         return self.color != this.color
 
-    def get_valid_cells(self):
-        raise NotImplementedError()
-
     def can_enter_cell(self, cell):
         return self.board.piece_can_enter_cell(self, cell)
 
