@@ -8,7 +8,8 @@ from util import (
 
 
 class BoardBase:
-    """Base Class for the Chess Board.
+    """
+    Base Class for the Chess Board.
     You are free to look around the members of this class and their implementation, however you will not need to change
     anything in this class for any of the tasks.
     """
@@ -140,7 +141,17 @@ class BoardBase:
 
 
 class Board(BoardBase):
+    """
+    Your implementation of the chess board. You will need to find implementations for all of these methods. 
+
+    Hint: Read the documentation carefully. Also look at the parent class (BoardBase) for further reference and example implementations. 
+    """
+
     def __init__(self):
+        """
+        Constructor, currently does nothing but calling the super constructor. 
+
+        """
         super().__init__()
 
     def iterate_cells_with_pieces(self, white):
@@ -151,6 +162,9 @@ class Board(BoardBase):
         Hint: You need a double-nested loop,
         the first iterates over all the rows, the second one iterates over each cell in the current row.
         # If the cell has a piece (so it is not None) and the piece has the correct color, *yield* it
+
+        :param white: True if WHITE pieces are to be iterated, False otherwise
+        :type white: Boolean
         """
         # Iterate all rows
         for row in self.cells:
@@ -170,6 +184,11 @@ class Board(BoardBase):
 
         Hint: You can use the iterate_cells_with_pieces() Method to find all
         pieces of a given color
+
+        :param white: True if WHITE pieces are to be iterated, False otherwise
+        :type white: Boolean
+
+        :return: The :py:class:'King': object of the given color or None if there is no King on the board.
         """
         # Iterate all cells of given color
         for piece in self.iterate_cells_with_pieces(white):
