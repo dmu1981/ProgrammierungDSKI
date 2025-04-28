@@ -6,7 +6,7 @@ from unittest_prettify.colorize import (
 )
 from board import Board
 from pieces import Pawn, Queen, Pawn, Rook, Knight, Bishop, King
-from util import cell_to_string
+from util import cell_to_string, map_piece_to_character, map_piece_to_fullname
 
 def iterate_pieces(board):
   for row in board.cells:
@@ -15,6 +15,38 @@ def iterate_pieces(board):
         continue
       
       yield piece
+
+
+
+def print_movability_error(board, piece, cell, positiveMovement):
+  RED = '\x1b[31m'
+  GREEN = '\x1b[32m'
+  RESET = '\x1b[37m'
+  text = RED + "Movability wrongly implemented. In this configuration\n\n"
+  for row in range(7, -1, -1):
+    text += "        " + RESET + f"{row+1} "
+    for col in range(8):
+      color = RESET
+      if piece.cell[0] == row and piece.cell[1] == col:
+        color = RED
+      if cell[0] == row and cell[1] == col:
+        color = GREEN
+
+      text += color + map_piece_to_character(board.get_cell((row, col))) + " "
+    text += "\n"
+
+  files = ["a", "b", "c", "d", "e", "f", "g", "h"]
+  text += "          "
+  for col in range(8):
+    text += f"{files[col]} "
+
+  text += "\n\n"
+  center = " should be able to move to " if positiveMovement else " should not be able to move to "
+  text += RED + map_piece_to_fullname(piece) + " on " + cell_to_string(piece.cell) + " (red)" + center + cell_to_string(cell) + " (green)."
+  text += "\n" + RESET
+
+  print(text)
+
 
 def verify_piece_movability(board, piece, groundTruth):
   # If piece is None, just return
@@ -148,6 +180,9 @@ class TestBoard(unittest.TestCase):
       # Iterate all pieces on the board
       # movability = {}
       # for piece in iterate_pieces(self.board):
+      #   if not isinstance(piece, Pawn):
+      #     continue
+
       #   # Get reachable cells and turn into a set
       #   cells = piece.get_reachable_cells()
       #   cells = [ (int(row), int(col)) for row, col in cells ]
@@ -156,6 +191,7 @@ class TestBoard(unittest.TestCase):
       #   key = cell_to_string(piece.cell)
       #   movability[key] = cells
       # print(json.dumps(movability))
+      # exit()
 
       movability = testcase["movability"]
 
@@ -164,6 +200,10 @@ class TestBoard(unittest.TestCase):
         # Write cell in clear text
         key = cell_to_string(piece.cell)
 
+        # Only the test movability we are supposed to test in the test case
+        if key not in movability:
+          continue
+
         # Get ground truth from file, turn into a set
         groundTruth = { (row, col) for row, col in movability[key] }
 
@@ -171,11 +211,25 @@ class TestBoard(unittest.TestCase):
         actual = { (int(row), int(col)) for row, col in piece.get_reachable_cells() }
 
         # If they match, all is fine
-        if actual == groundTruth:
-          continue
+        for cell in groundTruth:
+          if cell in actual:
+            continue
 
-        # If not, output a meaningful message
-        self.fail(f"Movement of piece {type(piece)} wrongly implemented!")
+          # If not, output a meaningful message
+          print("\nTestcase name: ", testcase["name"])
+          print_movability_error(self.board, piece, cell, True)          
+          self.fail(f"Movement of the {map_piece_to_fullname(piece)} wrongly implemented!")
+
+        # If they match, all is fine
+        for cell in actual:
+          if cell in groundTruth:
+            continue
+
+          # If not, output a meaningful message
+          print("\nTestcase name: ", testcase["name"])
+          print_movability_error(self.board, piece, cell, False)
+          
+          self.fail(f"Movement of the {map_piece_to_fullname(piece)} wrongly implemented!")
 
 
 if __name__ == "__main__":

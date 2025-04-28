@@ -1,5 +1,24 @@
 from pieces import Pawn, Rook, Bishop, Queen, King, Knight
 
+def map_piece_to_fullname(piece):
+    if piece is None:
+        return "<empty>"
+
+    c = None
+    if isinstance(piece, Pawn):
+        c = "Pawn"
+    if isinstance(piece, Rook):
+        c = "Rook"
+    if isinstance(piece, Knight):
+        c = "Knight"
+    if isinstance(piece, Bishop):
+        c = "Bishop"
+    if isinstance(piece, Queen):
+        c = "Queen"
+    if isinstance(piece, King):
+        c = "King"
+
+    return c
 
 def map_piece_to_character(piece):
     if piece is None:

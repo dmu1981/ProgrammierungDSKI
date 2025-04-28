@@ -47,11 +47,34 @@ class BoardBase:
             ]
         )
     
-    def save_to_disk(self):
-        with open(str(uuid4()) + '.board', "wt") as f:
+    def save_to_disk(self, fname = None):
+        """
+        Saves current board configuration to disk.
+
+        :param name: Filename to use. If None is provided, a unique one will be generated
+        """
+        if fname is None:
+            fname = str(uuid4())
+
+        if '.' not in fname:
+            fname += ".board"
+
+        with open(fname, "wt") as f:
             f.write(str(self))
 
+    def clear_board(self):
+        """
+        Clears to board, deleting all pieces currently placed on it
+        """
+        self.cells = [[None for _ in range(8)] for _ in range(8)]
+
+
     def load_from_disk(self, fname):
+        """
+        Read previously stored configuration from disk
+
+        :param name: Filename to use. 
+        """
         self.cells = [[None for _ in range(8)] for _ in range(8)]
 
         with open(fname, "rt") as f:
