@@ -169,13 +169,13 @@ class TestBoard(unittest.TestCase):
   @colorize(color=RED) 
   def test_movability(self):
     # Load JSON Test Suite
-    with open("movement_test.json", "rt") as f:
+    with open("tests/movement_test.json", "rt") as f:
       suite = json.load(f)
 
     # Iterate all test cases
     for testcase in suite["testcases"]:
       # Load the configuration from disk
-      self.board.load_from_disk(testcase["configuration"])
+      self.board.load_from_disk("tests/" + testcase["configuration"])
 
       # Iterate all pieces on the board
       # movability = {}
