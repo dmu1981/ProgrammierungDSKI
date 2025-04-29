@@ -25,15 +25,19 @@ class Piece:
         score = self.base_score  # Base value for this piece
 
         valid_cells = self.get_valid_cells()
-        score += 0.01 * len(
+        points_per_square = 0.01
+        if isinstance(self, Queen):
+            points_per_square /= 2 # The queen has such great mobility that we need to reduce her points a bit to compensate
+
+        score += points_per_square * len(
             valid_cells
-        )  # Every reachable cell gives 0.02 point (more movability is better)
+        )  # Every reachable cell gives 0.01 point (more movability is better)
 
         threat_score = 0.0
         total_threat = 0
         for cell in valid_cells:
             piece = self.board.get_cell(cell)
-            if piece is not None:
+            if piece is not None and piece.white != self.white: # There is a threat if we can hit an opposing piece
                 threat_score += piece.score_for_threat
                 total_threat += 1
 
