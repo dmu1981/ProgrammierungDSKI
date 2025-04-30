@@ -155,10 +155,10 @@ class BoardBase:
 
         # Check if they are valid, raise an Exception if not
         if row < 0 or row >= 8:
-            raise InvalidRowException(row, col)
+            raise InvalidRowException((row, col))
 
         if col < 0 or col >= 8:
-            raise InvalidColumnException(row, col)
+            raise InvalidColumnException((row, col))
 
         # If there is a piece to place, there is maintenance stuff to do
         if piece is not None:

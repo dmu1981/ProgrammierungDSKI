@@ -4,7 +4,7 @@ from unittest_prettify.colorize import (
     colorize,
     RED,
 )
-from board import Board
+from board import Board, InvalidRowException, InvalidColumnException
 from pieces import Pawn, Queen, Pawn, Rook, Knight, Bishop, King
 from util import cell_to_string, map_piece_to_character, map_piece_to_fullname
 
@@ -65,6 +65,44 @@ class TestBoard(unittest.TestCase):
   def setUp(self):
     self.board = Board()
     self.board.reset()
+
+  @colorize(color=RED) 
+  def test_set_cell_exceptions(self):
+    with self.assertRaises(InvalidRowException) as context:
+      self.board.set_cell((-1,0), None)
+    
+    with self.assertRaises(InvalidColumnException) as context:
+      self.board.set_cell((0,-1), None)
+
+    self.board.reset()
+
+    piece = self.board.get_cell((0,0))
+    self.board.set_cell((3,4), piece)
+    
+    self.assertIsNone(self.board.get_cell((0,0)), "set_cell should set origin cell of piece to None")
+    self.assertEqual(piece.cell[0], 3, "set_cell should set piece cell correctly")
+    self.assertEqual(piece.cell[1], 4, "set_cell should set piece cell correctly")
+    newPiece = self.board.get_cell((3,4))
+    self.assertEqual(piece, newPiece, "set_cell should set piece cell correctly")
+    self.assertIsNone(self.board.get_cell((0,0)), "set_cell should set origin cell of piece to None")
+
+    self.board.set_cell((0,7), None)
+    newPiece = self.board.get_cell((0, 7))
+    self.assertIsNone(newPiece, "set_cell should set piece cell correctly")
+  
+  @colorize(color=RED) 
+  def test_get_cell(self):
+    self.assertIsNone(self.board.get_cell((-1,-1)), "get_cell should return None for invalid cells")
+    self.assertIsNone(self.board.get_cell((3,3)), "get_cell should return None for empty cells")
+
+    piece = self.board.get_cell((0,0))
+    self.assertIsNotNone(piece, "get_cell should return proper piece")
+    self.assertTrue(isinstance(piece, Rook), "get_cell should return proper piece")
+    self.assertTrue(piece.white, "get_cell should return proper piece")
+    row, col = piece.cell
+    self.assertEqual(row, 0, "get_cell should return proper piece")
+    self.assertEqual(col, 0, "get_cell should return proper piece")
+
 
   @colorize(color=RED)
   def test_none_is_not_valid_cell(self):

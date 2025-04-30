@@ -49,11 +49,11 @@ def cell_to_string(cell):
     return files[cell[1]] + str(cell[0] + 1)
 
 
-class InvalidRowException:
+class InvalidRowException(Exception):
     def __init__(self, cell):
         self.cell = cell
 
 
-class InvalidColumnException:
+class InvalidColumnException(Exception):
     def __init__(self, cell):
         self.cell = cell
