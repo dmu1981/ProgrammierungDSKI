@@ -4,25 +4,51 @@ from util import map_piece_to_character, cell_to_string
 
 
 DEPTH = 3
-MOVES_PER_DEPTH = [0, 2, 3, 5, 10, 15]
+#MOVES_PER_DEPTH = [0, 2, 3, 5, 10, 15]
 
 
 class MinMaxArg:
+    """ Helper Class for the MinMax Algorithm.
+    This class stores the current search depth and whether we are playing as white or black in this stage. 
+
+    Note: You don´t need to implement anything in this case, you can use it in the MinMax Algorithm as you seem fit. 
+    """
     def __init__(self, depth=DEPTH, playAsWhite=True):
+        """
+        Initializes the class using the provided parameters
+        """
         self.depth = depth
         self.playAsWhite = playAsWhite
 
     def next(self):
+        """ 
+        Provides the next stage of the MinMax Algorithm by reducing the depth by one and toggling playAsWhite
+        """
         return MinMaxArg(self.depth - 1, not self.playAsWhite)
 
 
 class Move:
+    """
+    Helper class to store an evaluated move for the MinMax Algorithm. 
+    This class contains the piece that should be moved as well as the cell it should move into alongside with the evaluation score for this move. 
+
+    Note: You don´t need to implement anything in this case, you can use it in the MinMax Algorithm as you seem fit. 
+    """
+
     def __init__(self, piece, cell, score):
+        """
+        Constructor initializes the class according to the provided parameters
+        """
         self.piece = piece
         self.cell = cell
         self.score = score
 
     def __str__(self):
+        """
+        Helper class to turn this move into a neat string representation following the official chess notation guidelines.
+        Note: This method does not properly indicate a check "+" or check-mate "#" in the notation as that would require a
+        deeper analysis of the resulting board configuration. However, it appends the evaluated score of this move just for reference. 
+        """
         fr = cell_to_string(self.piece.cell)
         to = cell_to_string(self.cell)
         center = "."
@@ -98,29 +124,10 @@ def evaluate_all_possible_moves(board, minMaxArg, maximumNumberOfMoves = 10):
     # Sort moves by score
     moves.sort(key=lambda move: move.score, reverse=minMaxArg.playAsWhite)
 
-    return moves
+    # Return only the request top amount of moves
+    return moves[:maximumNumberOfMoves]
 
 
-eval_cache = {}
-total_hits = 0
-
-
-def minMax_cached(board, minMaxArg):
-    global eval_cache, total_hits
-
-    # Calculate a unique hash code for the current board position and search depth
-    hash = str(minMaxArg.depth) + board.hash()
-    if hash in eval_cache:
-        total_hits += 1
-        # print(f"Cache hit! Cache has {len(eval_cache.keys())} entries with {total_hits} hits so far")
-        return eval_cache[hash]
-
-    # Its not the cache so do the actual evaluation
-    bestMove = minMax(board, minMaxArg)
-
-    # Cache it for later
-    eval_cache[hash] = bestMove
-    return bestMove
 
 
 def minMax(board, minMaxArg):
@@ -132,9 +139,9 @@ def minMax(board, minMaxArg):
         return Move(None, None, -500 if minMaxArg.playAsWhite else 500)
 
     # Restrict further analysis to the heuristicaly best moves
-    d = DEPTH - minMaxArg.depth + 1
-    movesToKeep = MOVES_PER_DEPTH[-d]
-    moves = moves[:movesToKeep]
+    #d = DEPTH - minMaxArg.depth + 1
+    #movesToKeep = MOVES_PER_DEPTH[-d]
+    #moves = moves[:movesToKeep]
 
     # If there is depth left, see how opponent would behave for potential moves
     if minMaxArg.depth > 1:
@@ -181,5 +188,29 @@ def minMax(board, minMaxArg):
     return moves[0]
 
 
+
+
+
 def suggest_move(board):
     return minMax_cached(board, MinMaxArg())
+
+eval_cache = {}
+total_hits = 0
+
+
+def minMax_cached(board, minMaxArg):
+    global eval_cache, total_hits
+
+    # Calculate a unique hash code for the current board position and search depth
+    hash = str(minMaxArg.depth) + board.hash()
+    if hash in eval_cache:
+        total_hits += 1
+        # print(f"Cache hit! Cache has {len(eval_cache.keys())} entries with {total_hits} hits so far")
+        return eval_cache[hash]
+
+    # Its not the cache so do the actual evaluation
+    bestMove = minMax(board, minMaxArg)
+
+    # Cache it for later
+    eval_cache[hash] = bestMove
+    return bestMove

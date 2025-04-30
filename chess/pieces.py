@@ -25,7 +25,7 @@ class Piece:
         score = self.base_score  # Base value for this piece
 
         valid_cells = self.get_valid_cells()
-        points_per_square = 0.01
+        points_per_square = 0.02
         if isinstance(self, Queen):
             points_per_square /= 2 # The queen has such great mobility that we need to reduce her points a bit to compensate
 
@@ -46,7 +46,7 @@ class Piece:
         ):  # We have a fork (at least two pieces threatened at the same time, evaluate that higher)
             threat_score = threat_score * 1.1 + 0.1
 
-        score += threat_score
+        score += 0.1 * threat_score
 
         return score
 

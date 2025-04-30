@@ -8,6 +8,8 @@ from board import Board
 from pieces import Pawn, Queen, Pawn, Rook, Knight, Bishop, King
 from util import cell_to_string, map_piece_to_character, map_piece_to_fullname
 
+from engine import evaluate_all_possible_moves, MinMaxArg
+
 def iterate_pieces(board):
   for row in board.cells:
     for piece in row:
@@ -349,5 +351,59 @@ class TestBoard(unittest.TestCase):
     
     self.assertLess(self.board.evaluate(), 0, msg="Evaluate should return a negative value if black is dominanting.")
 
+  @colorize(color=RED) 
+  def test_evaluate_all_possible_moves_empty_list_on_empty_board(self):
+    self.board.clear_board()
+
+    moves = evaluate_all_possible_moves(self.board, minMaxArg=MinMaxArg())
+    self.assertTrue(not moves, "evaluate_all_possible_moves should return an empty list for an empty board")
+
+  @colorize(color=RED) 
+  def test_evaluate_all_possible_moves_ten_moves(self):
+    self.board.load_from_memory(
+      """. . . . . . . K
+         . . . . . . . .
+         . . . p . . . .
+         . . . . . . . .
+         . b . R . q . .
+         . . . . . . . .
+         . . . k . . . .
+         . . . . . . . .""")
+
+    moves = evaluate_all_possible_moves(self.board, minMaxArg=MinMaxArg())
+    self.assertEqual(len(moves), 10, "evaluate_all_possible_moves should return exactly 10 moves in this configuration for White.\n\n" + str(self.board))
+
+    self.assertTrue(isinstance(moves[0].piece, Rook), "Top move for white should be hitting with the rook in this case!\n\n" + str(self.board))
+    self.assertTrue(isinstance(self.board.get_cell(moves[0].cell), King), "Top move for white should be hitting the black king in this case!\n\n" + str(self.board))
+
+    self.assertTrue(isinstance(moves[1].piece, Rook), "2nd top move for white should be hitting with the rook in this case!\n\n" + str(self.board))
+    self.assertTrue(isinstance(self.board.get_cell(moves[1].cell), Queen), "2nd top move for white should be hitting the black queen in this case!\n\n" + str(self.board))
+
+    self.assertTrue(isinstance(moves[2].piece, Rook), "3rd top move for white should be hitting with the rook in this case!\n\n" + str(self.board))
+    self.assertTrue(isinstance(self.board.get_cell(moves[2].cell), Bishop), "3rd top move for white should be hitting the black bishop in this case!\n\n" + str(self.board))
+
+    self.assertTrue(isinstance(moves[3].piece, Rook), "4th top move for white should be hitting with the rook in this case!\n\n" + str(self.board))
+    self.assertTrue(isinstance(self.board.get_cell(moves[3].cell), Pawn), "4th top move for white should be hitting the black pawn in this case!\n\n" + str(self.board))
+
+  @colorize(color=RED) 
+  def test_evaluate_all_possible_moves_random_config_order(self):
+    self.board.load_from_disk("tests/random1.board")
+
+    moves = evaluate_all_possible_moves(self.board, minMaxArg=MinMaxArg(playAsWhite=True), maximumNumberOfMoves=500)
+    for index in range(len(moves)-1):
+      self.assertGreaterEqual(moves[index].score, moves[index+1].score, "evaluate_all_possible_moves should return sorted list in descending order when playing as White")
+
+    moves = evaluate_all_possible_moves(self.board, minMaxArg=MinMaxArg(playAsWhite=False), maximumNumberOfMoves=500)
+    for index in range(len(moves)-1):
+      self.assertLessEqual(moves[index].score, moves[index+1].score, "evaluate_all_possible_moves should return sorted list in ascending order when playing as Black")
+
+  @colorize(color=RED) 
+  def test_evaluate_all_possible_moves_random_config_truncated(self):
+    self.board.load_from_disk("tests/random1.board")
+
+    moves = evaluate_all_possible_moves(self.board, minMaxArg=MinMaxArg(playAsWhite=True), maximumNumberOfMoves=6)
+    self.assertEqual(len(moves), 6, "evaluate_all_possible_moves should respect requested amount of moves")
+
+    
 if __name__ == "__main__":
   unittest.main()
