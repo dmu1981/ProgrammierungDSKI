@@ -50,17 +50,6 @@ def print_movability_error(board, piece, cell, positiveMovement):
   print(text)
 
 
-def verify_piece_movability(board, piece, groundTruth):
-  # If piece is None, just return
-  if piece is None:
-    return
-  
-  # Get reachable cells for given piece and turn into a set
-  cells = piece.get_reachable_cells()
-  
-
-  # Check set equality with ground truth
-
 class TestBoard(unittest.TestCase):
   def setUp(self):
     self.board = Board()
