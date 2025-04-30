@@ -34,7 +34,17 @@ class Move:
         return s
 
 
-def evaluate_all_possible_moves(board, minMaxArg):
+def evaluate_all_possible_moves(board, minMaxArg, maximumNumberOfMoves = 10):
+    """
+    This method must evaluate all possible moves from all pieces of the current color. 
+    So if minMaxArg.playAsWhite is True, all possible moves of all white pieces must be evaluated.
+    And if minMaxArg.playAsWhite is False, all possible moves of all black pieces must be evaluated. 
+
+    Moves must be sorted according to the scalar evaluation according to the minMax scheme. 
+    So if minMaxArg.playAsWhite is True, the moves must be sorted in *descending* order, so the best evaluated move for white is in array position 0.
+    So if minMaxArg.playAsWhite is True, the moves must be sorted in *descending* order, so the best evaluated move for white is in array position 0.
+    
+    """
     # Start with an empty list of moves
     moves = []
 

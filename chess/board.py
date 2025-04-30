@@ -69,16 +69,15 @@ class BoardBase:
         self.cells = [[None for _ in range(8)] for _ in range(8)]
 
 
-    def load_from_disk(self, fname):
+    def load_from_memory(self, configString):
         """
-        Read previously stored configuration from disk
+        Read previously stored configuration from a memory string
 
         :param name: Filename to use. 
-        """
+        """       
         self.cells = [[None for _ in range(8)] for _ in range(8)]
 
-        with open(fname, "rt") as f:
-            for row, line in enumerate(f):
+        for row, line in enumerate(configString.split("\n")):
               line = line.strip()
               for col, pieceCode in enumerate(line.split(' ')):
                 if pieceCode == '.':
@@ -106,7 +105,15 @@ class BoardBase:
 
                 self.set_cell(np.array([7-row, col]), piece)
 
-        
+    def load_from_disk(self, fname):
+        """
+        Read previously stored configuration from disk
+
+        :param name: Filename to use. 
+        """       
+
+        with open(fname, "rt") as f:
+            self.load_from_memory(f.read())
             
 
     def is_king_check_cached(self, white):

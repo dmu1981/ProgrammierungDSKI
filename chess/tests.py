@@ -231,6 +231,123 @@ class TestBoard(unittest.TestCase):
           
           self.fail(f"Movement of the {map_piece_to_fullname(piece)} wrongly implemented!")
 
+  @colorize(color=RED) 
+  def test_iterate_pieces_empty_board(self):
+    self.board.clear_board()
+
+    for color in [True, False]:
+      for _ in self.board.iterate_cells_with_pieces(color):
+        self.fail("board.iterate_cells_with_pieces should not yield anything on an empty board!")
+  
+  @colorize(color=RED) 
+  def test_iterate_pieces(self):
+    for color in [True, False]:
+      # Count total pieces
+      total = 0
+
+      # Iterate white pieces
+      for piece in self.board.iterate_cells_with_pieces(color):
+        # Unpack cell tuple
+        row, col = piece.cell 
+
+        if color == True: # White pieces need to be on row 0 or 1
+          self.assertLessEqual(piece.cell[0], 1, "board.iterate_cells_with_pieces yields wrongly places pieces")  
+        else: # Black pieces need to be on row 6 or 7
+          self.assertGreaterEqual(piece.cell[0], 6, "board.iterate_cells_with_pieces yields wrongly places pieces")  
+
+        self.assertEqual(piece.white, color, "board.iterate_cells_with_pieces yields pieces of wrong color")
+        total += 1
+
+      # Make sure we got iterated exactly 16 pieces
+      if total < 16:
+        self.fail("board.iterate_cells_with_pieces does not yield all pieces")
+      elif total > 16:
+        self.fail("board.iterate_cells_with_pieces does too many pieces")
+
+  @colorize(color=RED) 
+  def test_find_king(self):
+    for color in [True, False]:
+      piece = self.board.find_king(color)
+      self.assertIsNotNone(piece, "board.find_king does not yield the King piece")
+      self.assertTrue(isinstance(piece, King), "board.find_king must only yield the King piece")
+      self.assertEqual(piece.white, color, "board.find_king must not yield wrongly colored king piece")
+
+    self.board.clear_board()
+    self.assertIsNone(self.board.find_king(True), "board.find_king must not yield a piece on an empty board")
+    self.assertIsNone(self.board.find_king(False), "board.find_king must not yield a piece on an empty board")
+
+  @colorize(color=RED) 
+  def test_king_in_check(self):
+    self.board.load_from_memory(
+      """. . . . . . . .
+         . . . . . K . .
+         . . . . . . . .
+         . . . . n . . .
+         . . . . . . . .
+         . . . . . k . .
+         . . . . . . . .
+         . . . . . . . .""")
+    
+    self.assertTrue(self.board.is_king_check(True), "is_king_check does not properly identify king being in check!")
+    self.assertFalse(self.board.is_king_check(False), "is_king_check should not report unchecked king as being checked!")
+
+    self.board.load_from_memory(
+      """. . . . . . . .
+         . . . . . Q . .
+         . . . . . . . .
+         . . . . . . . .
+         . . k . . K . .
+         . . . . . . . .
+         . . . . . . . .
+         . . . . . . . .""")
+    
+    self.assertFalse(self.board.is_king_check(True), "is_king_check should not report unchecked king as being checked!")
+    self.assertTrue(self.board.is_king_check(False), "is_king_check does not properly identify king being in check!")
+
+    self.board.load_from_memory(
+      """. . . . . . . .
+         . . . . . . . .
+         . . k . . . . .
+         . P . . . . p .
+         . . . . . K . .
+         . . . . . . . .
+         . . . . . . . .
+         . . . . . . . .""")
+    
+    self.assertTrue(self.board.is_king_check(True), "is_king_check does not properly identify king being in check!")
+    self.assertTrue(self.board.is_king_check(False), "is_king_check does not properly identify king being in check!")
+
+  @colorize(color=RED) 
+  def test_evaluate(self):
+    self.board.reset()
+    self.assertAlmostEqual(self.board.evaluate(), 0, msg="Evaluate should return 0 on the default board configuration.")
+
+    self.board.clear_board()
+    self.assertAlmostEqual(self.board.evaluate(), 0, msg="Evaluate should return 0 on an empty board.")
+
+    self.board.load_from_memory(
+      """. . . . k . . .
+         . . . . . . . .
+         . . . . . . . .
+         . . . . . . . .
+         . . . . . . . .
+         . . . . . . . .
+         P P P P P P P P
+         R N B Q K B N R""")
+    
+    self.assertGreater(self.board.evaluate(), 0, msg="Evaluate should return a positive value if white is dominanting.")
+
+    self.board.load_from_memory(
+      """r n b q k b n r
+         p p p p p p p p
+         . . . . . . . .
+         . . . . . . . .
+         . . . . . . . .
+         . . . . . . . .
+         . . . . . . . .
+         . . . . K . . .""")
+    
+    self.assertLess(self.board.evaluate(), 0, msg="Evaluate should return a negative value if black is dominanting.")
 
 if __name__ == "__main__":
   unittest.main()
