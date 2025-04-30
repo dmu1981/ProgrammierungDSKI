@@ -40,10 +40,31 @@ def evaluate_all_possible_moves(board, minMaxArg, maximumNumberOfMoves = 10):
     So if minMaxArg.playAsWhite is True, all possible moves of all white pieces must be evaluated.
     And if minMaxArg.playAsWhite is False, all possible moves of all black pieces must be evaluated. 
 
-    Moves must be sorted according to the scalar evaluation according to the minMax scheme. 
+    Iterate over all cells with pieces on them by calling the :meth:`board.iterate_cells_with_pieces` method. 
+    For each piece, retrieve all valid moves by calling the :meth:piece:get_valid_cells: method of that piece. 
+
+    In order to evaluate a valid move, first you need to place that piece on the respective cell. Call the :meth:`board.set_cell` method 
+    to do so. Before doing so, remember the cell the piece is currently placed on as you will need to place it back later.
+    Because placing a piece on a new cell could potential hit (and thus remove) an opposing piece currently placed on this cell, 
+    you need to remember the piece on the target cell as well. Call :meth:`board.get_cell` to retrieve that piece and store it. 
+
+    After the new board configuration is set in place, call the :meth:`board.evaluate` method. You can use the 
+    :class:`Move` class to store the move and its achieved evaluation score in a list. 
+
+    Restore the original board configuration by placing the piece in its original cell and restoring any potentially removed piece before 
+    moving on to the next move. 
+
+    Remember the :meth:`board.evaluate` method always evaluates from WHITEs perspective, so a higher evaluation
+    relates to a better position for WHITE. 
+
+    Moves must be sorted with respect o the scalar evaluation according to the minMax scheme. 
     So if minMaxArg.playAsWhite is True, the moves must be sorted in *descending* order, so the best evaluated move for white is in array position 0.
-    So if minMaxArg.playAsWhite is True, the moves must be sorted in *descending* order, so the best evaluated move for white is in array position 0.
+    So if minMaxArg.playAsWhite is False, the moves must be sorted in *ascending* order, so the worst evaluated move for white is in array position 0.
+
+    Use the lists sort method and provide a proper key to the sorting algorithm, such that it sorts the moves according to the achieved score. 
     
+    After sorting, a maximum number of moves as provided by the respective parameter must be returned. If there are 
+    more moves possible (in most situations there are), only return the top (or worst). Hint: Slice the list after sorting. 
     """
     # Start with an empty list of moves
     moves = []
