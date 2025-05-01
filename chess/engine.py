@@ -4,7 +4,6 @@ from util import map_piece_to_character, cell_to_string
 
 
 DEPTH = 3
-#MOVES_PER_DEPTH = [0, 2, 3, 5, 10, 15]
 
 
 class MinMaxArg:
@@ -63,24 +62,25 @@ class Move:
 def evaluate_all_possible_moves(board, minMaxArg, maximumNumberOfMoves = 10):
     """
     This method must evaluate all possible moves from all pieces of the current color. 
+
     So if minMaxArg.playAsWhite is True, all possible moves of all white pieces must be evaluated.
     And if minMaxArg.playAsWhite is False, all possible moves of all black pieces must be evaluated. 
 
-    Iterate over all cells with pieces on them by calling the :meth:`board.iterate_cells_with_pieces` method. 
-    For each piece, retrieve all valid moves by calling the :meth:piece:get_valid_cells: method of that piece. 
+    Iterate over all cells with pieces on them by calling the :py:meth:`iterate_cells_with_pieces <board.Board.iterate_cells_with_pieces>` method. 
+    For each piece, retrieve all valid moves by calling the :py:meth:`get_valid_cells <pieces.Piece.get_valid_cells>` method of that piece. 
 
-    In order to evaluate a valid move, first you need to place that piece on the respective cell. Call the :meth:`board.set_cell` method 
+    In order to evaluate a valid move, first you need to place that piece on the respective cell. Call the :py:meth:`set_cell <board.BoardBase.set_cell>` method 
     to do so. Before doing so, remember the cell the piece is currently placed on as you will need to place it back later.
     Because placing a piece on a new cell could potential hit (and thus remove) an opposing piece currently placed on this cell, 
-    you need to remember the piece on the target cell as well. Call :meth:`board.get_cell` to retrieve that piece and store it in a variable.
+    you need to remember the piece on the target cell as well. Call :py:meth:`get_cell <board.BoardBase.get_cell>` to retrieve that piece and store it in a variable.
 
-    After the new board configuration is set in place, call the :meth:`board.evaluate` method. You can use the 
-    :class:`Move` class to store the move (piece and target cell) alongside its achieved evaluation score in a list. 
+    After the new board configuration is set in place, call the :py:meth:`evaluate <board.Board.evaluate>` method. You can use the 
+    :py:class:`Move` class to store the move (piece and target cell) alongside its achieved evaluation score in a list. 
 
     Restore the original board configuration by placing the piece in its original cell and restoring any potentially removed piece before 
     moving on to the next move or piece. 
 
-    Remember the :meth:`board.evaluate` method always evaluates from WHITEs perspective, so a higher evaluation
+    Remember the :py:meth:`evaluate <board.Board.evaluate>` method always evaluates from WHITEs perspective, so a higher evaluation
     relates to a better position for WHITE. 
 
     Moves must be sorted with respect o the scalar evaluation according to the minMax scheme. 

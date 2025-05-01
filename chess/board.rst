@@ -11,6 +11,7 @@ Reference - Board
 
 .. autoclass:: board::Board
    :members:
+   :undoc-members:
 
 Reference - Base Board
 ----------------------

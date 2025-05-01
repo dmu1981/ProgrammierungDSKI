@@ -23,6 +23,7 @@ Vorbereitungen
 
 :doc:`Das Brett <../board>` 
 :doc:`Die Figuren <../figures>`
+:doc:`Die Schachengine <../engine>`
 
 .. toctree::
    :maxdepth: 2

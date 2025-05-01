@@ -217,7 +217,7 @@ class Board(BoardBase):
     """
     Your implementation of the chess board. You will need to find implementations for all of these methods. 
 
-    Hint: Read the documentation carefully. Also look at the parent class (BoardBase) for further reference and example implementations. 
+    **HINT**: Read the documentation carefully. Also look at the parent class (BoardBase) for further reference and example implementations. 
     """
 
     def __init__(self):
@@ -232,7 +232,7 @@ class Board(BoardBase):
         **TODO**: Write a generator (using the yield keyword) that allows to iterate
         over all cells with a piece of given color.
 
-        **Hint**: You need a double-nested loop,
+        **HINT**: You need a double-nested loop,
         the first one iterates over all the rows, the second one iterates over each cell in the current row.
         If the cell has a piece (so it is not None) and the piece has the correct color, *yield* it
 
@@ -255,7 +255,7 @@ class Board(BoardBase):
         """
         **TODO**: Find the king piece of given color and return that piece
 
-        **Hint**: You can use the iterate_cells_with_pieces() Method to find all
+        **HINT**: You can use the iterate_cells_with_pieces() Method to find all
         pieces of a given color
 
         :param white: True if WHITE pieces are to be iterated, False otherwise
@@ -274,10 +274,10 @@ class Board(BoardBase):
 
     def is_king_check(self, white):
         """
-        TODO: Evaluate if the king of given color is currently in check.
+        **TODO**: Evaluate if the king of given color is currently in check.
         A check is given if any opposing piece can beat the king in its next move.
 
-        Hint: You can use the find_king() Method to find the king of the given color.
+        **HINT**: You can use the find_king() Method to find the king of the given color.
         Then use the iterate_cells_with_pieces Method to find all pieces of *opposing color* (negate the "white"-parameter)
         For each opposing piece, call the "get_reachable_cells()" method to get a list of all reachable cells.
         Iterate over each reachable cell and check if the kings cell is reachable. If yes, shortcut and return True right away.
@@ -300,11 +300,11 @@ class Board(BoardBase):
 
     def evaluate(self):
         """
-        TODO: Evaluate the current board configuration into a numerical number.
+        **TODO**: Evaluate the current board configuration into a numerical number.
         The higher the number, to more favorable for WHITE (note: This is always from whites perspective!) the current configuration is.
 
 
-        Hint: Start with a score of zero.
+        **HINT**: Start with a score of zero.
         Use the iterate_cells_with_pieces Method to find all WHITE pieces and call their respective "evaluate" Method. Sum those scores up.
         Then use the iterate_cells_with_pieces Method to find all BLACK pieces, call their respective "evaluate" Method and substract that from the score.
         """
@@ -322,10 +322,10 @@ class Board(BoardBase):
 
     def is_valid_cell(self, cell):
         """
-        TODO: Check if the given cell coordinates are valid. A cell coordinate is valid if both
+        **TODO**: Check if the given cell coordinates are valid. A cell coordinate is valid if both
         row and coloumn are between 0 and 7 inclusively.
 
-        Hint:
+        **HINT**:
         Cell is a tuple (row, col) of row and column. Unpack the tuple and check both row and col for
         being within the allowed range (0 to 7 inclusively).
         Don´t forget to handle the special case of "cell" being None. Return False in that case
@@ -350,9 +350,9 @@ class Board(BoardBase):
 
     def cell_is_valid_and_empty(self, cell):
         """
-        TODO: Check if the given cell is empty, meaning there is no piece placed on it.
+        **TODO**: Check if the given cell is empty, meaning there is no piece placed on it.
 
-        Hint:
+        **HINT**:
         You can use the "is_valid_cell()" Method to verify the cell is valid in the first place.
         If so, use "get_cell()" to retrieve the piece placed on it and return True if there is None
         """
@@ -372,14 +372,14 @@ class Board(BoardBase):
 
     def piece_can_enter_cell(self, piece, cell):
         """
-        TODO: Check if the given piece can enter the given cell.
+        **TODO**: Check if the given piece can enter the given cell.
         Note: You don´t need to check movement rules for the individual piece here. You only need to answer the question
         whether the piece can be placed on the given cell or not.
 
         A piece can be placed on a cell if the cell is valid and either empty or an opposing piece is placed here.
         A cell cannot be entered if a piece of the same color is already in that cell.
 
-        Hint:
+        **HINT**:
         You can use the "is_valid_cell()" Method to verify the cell is valid in the first place.
         If so, use "get_cell()" to retrieve the piece placed on it. If there is None, this cell can be entered
         If, however, there is another piece, it must be of opposing color. Check the other pieces "white" attribute and compare against
@@ -401,14 +401,14 @@ class Board(BoardBase):
 
     def piece_can_hit_on_cell(self, piece, cell):
         """
-        TODO: Check if the given piece can *hit* at the given cell.
+        **TODO**: Check if the given piece can *hit* at the given cell.
         Note: You don´t need to check movement rules for the individual piece here. You only need to answer the question
         whether the piece can be placed on the given cell or not and hit an opposing piece.
 
         A piece can hit on a cell if the cell is valid and an opposing piece is placed here.
         A cell cannot be hit if the cell is empty or a piece of the same color is already in that cell.
 
-        Hint:
+        **HINT**:
         You can use the "is_valid_cell()" Method to verify the cell is valid in the first place.
         If so, use "get_cell()" to retrieve the piece placed on it. If there is None, this cell cannot be hit.
         If, however, there is another piece, it must be of opposing color. Check the other pieces "white" attribute and compare against

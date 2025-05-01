@@ -431,6 +431,24 @@ class TestBoard(unittest.TestCase):
     moves = evaluate_all_possible_moves(self.board, minMaxArg=MinMaxArg(playAsWhite=True), maximumNumberOfMoves=6)
     self.assertEqual(len(moves), 6, "evaluate_all_possible_moves should respect requested amount of moves")
 
+  @colorize(color=RED) 
+  def test_get_valid_moves_leaves_board_intact(self):
+    # Load a configuration from disk
+    self.board.load_from_disk("tests/random1.board")
+
+    # Hash it for later reference
+    beforeHash = self.board.hash()
+
+    # Iterate over all pieces
+    for piece in iterate_pieces(self.board):
+      # Get all valid moves for this piece
+      valid_moves = piece.get_valid_cells()
+
+      # Now make sure the board configuration did not change
+      self.assertEqual(beforeHash, self.board.hash(), "piece.get_valid_cells must not alter board configuration after its return")
+
+
+
     
 if __name__ == "__main__":
   unittest.main()

@@ -159,7 +159,7 @@ def get_cell_under_mouse(uiState):
     return uiState
 
 
-def run_game(board):
+def run_game(board, manual=False):
     # Initialize Pygame
     pygame.init()
 
@@ -177,13 +177,13 @@ def run_game(board):
     nextMove = None
 
     while running:
-        # if nextMove is None:
-        #     nextMove = suggest_move(board)
-        #     print("Next Move is ", nextMove)
-        #     board.set_cell(nextMove.cell, nextMove.piece)
-        #     uiState.score = nextMove.score
-        #     displayScore = np.tanh(uiState.score / 8.0) * 4.0
-        #     print(f"Current Evaluation: {+displayScore:.2f}")
+        if nextMove is None and not manual:
+            nextMove = suggest_move(board)
+            print("Next Move is ", nextMove)
+            board.set_cell(nextMove.cell, nextMove.piece)
+            uiState.score = nextMove.score
+            displayScore = np.tanh(uiState.score / 8.0) * 4.0
+            print(f"Current Evaluation: {+displayScore:.2f}")
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
