@@ -370,7 +370,7 @@ class Queen(Piece):  # Königin
             np.array([1, 0]),
             np.array([-1, 0]),
             np.array([0, 1]),
-            np.array([0, -1])
+            np.array([0, -1 ])
         ]
 
         # Go through all directions

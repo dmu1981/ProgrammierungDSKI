@@ -14,18 +14,15 @@ verpflichtenden Prüfungsleistung programmieren Sie dabei eine erste, eigene KI 
   :width: 400
   :align: center
 
-Vorbereitungen
---------------
-
-.. code-block:: console
-
-   (.venv) $ pip install lumache
-
-:doc:`Das Brett <../board>` 
-:doc:`Die Figuren <../figures>`
-:doc:`Die Schachengine <../engine>`
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   Das Schachspiel <chessoverview>
+   Über Schachcomputer <chessengine>
+   Das Brett <board>
+   Die Figuren <figures>
+   Die Engine <engine>
+   Eine sinnvolle Reihenfolge <reihenfolge>
+   Einrichten der Arbeitsumgebung <setup>
