@@ -24,7 +24,33 @@ for i in range(9,3,-1):
 ```
 
 ## 🧪 Übungsaufgabe:
-Gib alle gerade Zahlen zwischen 2 und 20 (inklusive) aus.
+* Gib alle gerade Zahlen zwischen 2 und 20 (inklusive) aus.
+
+## 🧪 Übungsaufgabe:
+Gib alle Zahlen zwischen 1 und 100 aus welche beide der folgenden Bedinungen erfüllt.
+
+* Der Rest bei Division durch 7 ist kleiner als 3
+* Der Rest bei Division durch 13 ist größer als 10
+
+<details>
+<summary>Lösung anzeigen</summary>
+
+```python
+for i in range(1,100):
+    if (i % 7 < 3) and (i % 13 > 10):
+        print(i)
+
+37
+50
+51
+63
+64
+77        
+```
+
+</details>
+
+
 
 ## Über einen String iterieren
 ```python
@@ -32,6 +58,44 @@ name = "Dennis"
 for buchstabe in name:
     print(buchstabe)
 ```
+
+## 🧪 Übungsaufgabe:
+Fordere den Benutzer auf einen Text einzugeben. 
+Iteriere dann über jeden Buchstaben des Textes und
+gib ihn aus falls er doppelt vorkommt (sein Vorgänger also identisch ist zu diesem)
+
+<details>
+<summary>Lösung anzeigen</summary>
+
+```python
+text = input("Geben Sie einen Text ein: ")
+vorgaenger = None
+for buchstabe in text:
+    if buchstabe == vorgaenger:
+        print(buchstabe)
+    
+    vorgaenger = buchstabe       
+```
+
+</details>
+
+## 🧪 Übungsaufgabe:
+Frage den Benutzer nach einer natürlichen Zahl. Gib die Summe aller natürlichen Zahlen von 1 bis zur gegebenen Zahl aus. 
+
+<details>
+<summary>Lösung anzeigen</summary>
+
+```python
+zahl = int(input("Geben Sie eine Zahl ein"))
+
+summe = 0
+for i in range(zahl):
+    summe += i
+
+print(f"Die Summe von 1 bis {zahl} lautet {summe}")
+```
+
+</details>
 
 ## `while`-Schleife - Wiederhole solange eine Bedingung `True` ist
 
@@ -45,8 +109,6 @@ while x < 5:
 ## 🧪 Übungsaufgabe:
 Frage den Benutzer nach seinem Passwort. Wiederhole die Frage solange bis er das korrekte Passwort eingibt. 
 
-## 🧪 Übungsaufgabe:
-Frage den Benutzer nach einer natürlichen Zahl. Gib die Summe aller natürlichen Zahlen von 1 bis zur gegebenen Zahl aus. 
 
 ## `break` und `continue`.
 Mit dem `break`-Keyword kann die Schleife vorzeitig verlassen werden. 
@@ -66,6 +128,32 @@ for zahl in range(1, 11):
         continue  # gerade Zahl? überspringen!
     print(zahl)
 ```    
+
+## 🧪 Übungsaufgabe:
+Iteriere über jeden Buchstaben eines Textes. 
+Gib jeden Buchstaben aus der kein Vokal ist. 
+
+<details>
+<summary>Lösung anzeigen</summary>
+
+```python
+text = "Hallo Welt"
+for buchstabe in text:
+    if buchstabe == 'a' or buchstabe == 'A':
+        continue
+    if buchstabe == 'e' or buchstabe == 'E':
+        continue
+    if buchstabe == 'i' or buchstabe == 'I':
+        continue
+    if buchstabe == 'o' or buchstabe == 'O':
+        continue
+    if buchstabe == 'u' or buchstabe == 'U':
+        continue
+    print(buchstabe)
+```
+
+</details>
+
 
 ## Verschachtelte Schleifen
 Schleifen können verschachtelt werden. Das `break` und `continue`-Keyword bezieht sich stets nur auf den aktuellen Schleifenkörper.

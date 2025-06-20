@@ -4,11 +4,11 @@
 format: jb-book
 root: intro
 parts:
-  - caption: Einleitung
-    chapters:
-    - file: introduction
-    - file: pyenv
-    - file: vscode
+  # - caption: Einleitung
+  #   chapters:
+  #   - file: introduction
+  #   - file: pyenv
+  #   - file: vscode
   - caption: Grundlagen
     chapters:
     - file: grundlagen/helloworld
@@ -17,45 +17,45 @@ parts:
     - file: grundlagen/schleifen
     - file: grundlagen/mathundrandom
     - file: grundlagen/listen
-    - file: grundlagen/strings
-    - file: grundlagen/tuple
-    - file: grundlagen/sets
-    - file: grundlagen/dicts
-    - file: grundlagen/funktionen
-    - file: grundlagen/exceptions
-    - file: grundlagen/dateien
-    - file: grundlagen/klassen
-    - file: grundlagen/vererbung
-    - file: grundlagen/iteratoren
-    - file: grundlagen/kontext
-    - file: grundlagen/comprehensions
-    - file: grundlagen/module
-    - file: grundlagen/assert
-    - file: grundlagen/generatoren
-    - file: grundlagen/csvjson
-  - caption: Pandas
-    chapters:
-    - file: pandas/intro
-    - file: pandas/einfuehrung
-    - file: pandas/filtern
-    - file: pandas/gruppieren
-    - file: pandas/sortieren
-    - file: pandas/zeitreihen
-  - caption: NumPy
-    chapters:
-    - file: numpy/intro
-    - file: numpy/einfuehrung  
-    - file: numpy/operationen
-    - file: numpy/slicing
-    - file: numpy/rechnen
-    - file: numpy/reshape
-    - file: numpy/linalg
-  - caption: MatPlotLib
-    chapters:
-    - file: matplotlib/intro.md
-    - file: matplotlib/einleitung.md
-    - file: matplotlib/diagramme.md
-    - file: matplotlib/hist.md
-    - file: matplotlib/achsen.md
-    - file: matplotlib/style.md
-    - file: matplotlib/annotations.md
+  #   - file: grundlagen/strings
+  #   - file: grundlagen/tuple
+  #   - file: grundlagen/sets
+  #   - file: grundlagen/dicts
+  #   - file: grundlagen/funktionen
+  #   - file: grundlagen/exceptions
+  #   - file: grundlagen/dateien
+  #   - file: grundlagen/klassen
+  #   - file: grundlagen/vererbung
+  #   - file: grundlagen/iteratoren
+  #   - file: grundlagen/kontext
+  #   - file: grundlagen/comprehensions
+  #   - file: grundlagen/module
+  #   - file: grundlagen/assert
+  #   - file: grundlagen/generatoren
+  #   - file: grundlagen/csvjson
+  # - caption: Pandas
+  #   chapters:
+  #   - file: pandas/intro
+  #   - file: pandas/einfuehrung
+  #   - file: pandas/filtern
+  #   - file: pandas/gruppieren
+  #   - file: pandas/sortieren
+  #   - file: pandas/zeitreihen
+  # - caption: NumPy
+  #   chapters:
+  #   - file: numpy/intro
+  #   - file: numpy/einfuehrung  
+  #   - file: numpy/operationen
+  #   - file: numpy/slicing
+  #   - file: numpy/rechnen
+  #   - file: numpy/reshape
+  #   - file: numpy/linalg
+  # - caption: MatPlotLib
+  #   chapters:
+  #   - file: matplotlib/intro.md
+  #   - file: matplotlib/einleitung.md
+  #   - file: matplotlib/diagramme.md
+  #   - file: matplotlib/hist.md
+  #   - file: matplotlib/achsen.md
+  #   - file: matplotlib/style.md
+  #   - file: matplotlib/annotations.md
