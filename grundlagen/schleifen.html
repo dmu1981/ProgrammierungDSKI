@@ -181,7 +181,11 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Einleitung</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Einführung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../studium.html">🎓 Herzlich willkommen – Was bedeutet es eigentlich zu studieren?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">🗺️ Übersicht über diesen Kurs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vorwort.html">📘 Vorwort zur Vorlesung Programmieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmieren.html">💻 Programmieren - Was ist das</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">🐍 Einführung in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pyenv.html">🔍 Python-Version installieren mit <code class="docutils literal notranslate"><span class="pre">pyenv</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
 
@@ -435,11 +439,14 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-schleife"><code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe">🧪 Übungsaufgabe:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uber-einen-string-iterieren">Über einen String iterieren</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-schleife-wiederhole-solange-eine-bedingung-true-ist"><code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife - Wiederhole solange eine Bedingung <code class="docutils literal notranslate"><span class="pre">True</span></code> ist</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">🧪 Übungsaufgabe:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uber-einen-string-iterieren">Über einen String iterieren</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">🧪 Übungsaufgabe:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">🧪 Übungsaufgabe:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-schleife-wiederhole-solange-eine-bedingung-true-ist"><code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife - Wiederhole solange eine Bedingung <code class="docutils literal notranslate"><span class="pre">True</span></code> ist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">🧪 Übungsaufgabe:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#break-und-continue"><code class="docutils literal notranslate"><span class="pre">break</span></code> und <code class="docutils literal notranslate"><span class="pre">continue</span></code>.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">🧪 Übungsaufgabe:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-schleifen">Verschachtelte Schleifen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-projekt-benutzerverwaltung">🎓 Mini-Projekt - Benutzerverwaltung:</a></li>
 </ul>
@@ -478,7 +485,32 @@ document.write(`
 </section>
 <section id="ubungsaufgabe">
 <h2>🧪 Übungsaufgabe:<a class="headerlink" href="#ubungsaufgabe" title="Link to this heading">#</a></h2>
-<p>Gib alle gerade Zahlen zwischen 2 und 20 (inklusive) aus.</p>
+<ul class="simple">
+<li><p>Gib alle gerade Zahlen zwischen 2 und 20 (inklusive) aus.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>🧪 Übungsaufgabe:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Gib alle Zahlen zwischen 1 und 100 aus welche beide der folgenden Bedinungen erfüllt.</p>
+<ul class="simple">
+<li><p>Der Rest bei Division durch 7 ist kleiner als 3</p></li>
+<li><p>Der Rest bei Division durch 13 ist größer als 10</p></li>
+</ul>
+<details>
+<summary>Lösung anzeigen</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">13</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="mi">37</span>
+<span class="mi">50</span>
+<span class="mi">51</span>
+<span class="mi">63</span>
+<span class="mi">64</span>
+<span class="mi">77</span>        
+</pre></div>
+</div>
+</details>
 </section>
 <section id="uber-einen-string-iterieren">
 <h2>Über einen String iterieren<a class="headerlink" href="#uber-einen-string-iterieren" title="Link to this heading">#</a></h2>
@@ -487,6 +519,40 @@ document.write(`
     <span class="nb">print</span><span class="p">(</span><span class="n">buchstabe</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+<section id="id2">
+<h2>🧪 Übungsaufgabe:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>Fordere den Benutzer auf einen Text einzugeben.
+Iteriere dann über jeden Buchstaben des Textes und
+gib ihn aus falls er doppelt vorkommt (sein Vorgänger also identisch ist zu diesem)</p>
+<details>
+<summary>Lösung anzeigen</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Geben Sie einen Text ein: &quot;</span><span class="p">)</span>
+<span class="n">vorgaenger</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">for</span> <span class="n">buchstabe</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">buchstabe</span> <span class="o">==</span> <span class="n">vorgaenger</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">buchstabe</span><span class="p">)</span>
+    
+    <span class="n">vorgaenger</span> <span class="o">=</span> <span class="n">buchstabe</span>       
+</pre></div>
+</div>
+</details>
+</section>
+<section id="id3">
+<h2>🧪 Übungsaufgabe:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>Frage den Benutzer nach einer natürlichen Zahl. Gib die Summe aller natürlichen Zahlen von 1 bis zur gegebenen Zahl aus.</p>
+<details>
+<summary>Lösung anzeigen</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahl</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Geben Sie eine Zahl ein&quot;</span><span class="p">))</span>
+
+<span class="n">summe</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">zahl</span><span class="p">):</span>
+    <span class="n">summe</span> <span class="o">+=</span> <span class="n">i</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Die Summe von 1 bis </span><span class="si">{</span><span class="n">zahl</span><span class="si">}</span><span class="s2"> lautet </span><span class="si">{</span><span class="n">summe</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
 </section>
 <section id="while-schleife-wiederhole-solange-eine-bedingung-true-ist">
 <h2><code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife - Wiederhole solange eine Bedingung <code class="docutils literal notranslate"><span class="pre">True</span></code> ist<a class="headerlink" href="#while-schleife-wiederhole-solange-eine-bedingung-true-ist" title="Link to this heading">#</a></h2>
@@ -497,13 +563,9 @@ document.write(`
 </pre></div>
 </div>
 </section>
-<section id="id1">
-<h2>🧪 Übungsaufgabe:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h2>🧪 Übungsaufgabe:<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>Frage den Benutzer nach seinem Passwort. Wiederhole die Frage solange bis er das korrekte Passwort eingibt.</p>
-</section>
-<section id="id2">
-<h2>🧪 Übungsaufgabe:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>Frage den Benutzer nach einer natürlichen Zahl. Gib die Summe aller natürlichen Zahlen von 1 bis zur gegebenen Zahl aus.</p>
 </section>
 <section id="break-und-continue">
 <h2><code class="docutils literal notranslate"><span class="pre">break</span></code> und <code class="docutils literal notranslate"><span class="pre">continue</span></code>.<a class="headerlink" href="#break-und-continue" title="Link to this heading">#</a></h2>
@@ -521,6 +583,29 @@ document.write(`
     <span class="nb">print</span><span class="p">(</span><span class="n">zahl</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+<section id="id5">
+<h2>🧪 Übungsaufgabe:<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>Iteriere über jeden Buchstaben eines Textes.
+Gib jeden Buchstaben aus der kein Vokal ist.</p>
+<details>
+<summary>Lösung anzeigen</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hallo Welt&quot;</span>
+<span class="k">for</span> <span class="n">buchstabe</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">buchstabe</span> <span class="o">==</span> <span class="s1">&#39;a&#39;</span> <span class="ow">or</span> <span class="n">buchstabe</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="k">if</span> <span class="n">buchstabe</span> <span class="o">==</span> <span class="s1">&#39;e&#39;</span> <span class="ow">or</span> <span class="n">buchstabe</span> <span class="o">==</span> <span class="s1">&#39;E&#39;</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="k">if</span> <span class="n">buchstabe</span> <span class="o">==</span> <span class="s1">&#39;i&#39;</span> <span class="ow">or</span> <span class="n">buchstabe</span> <span class="o">==</span> <span class="s1">&#39;I&#39;</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="k">if</span> <span class="n">buchstabe</span> <span class="o">==</span> <span class="s1">&#39;o&#39;</span> <span class="ow">or</span> <span class="n">buchstabe</span> <span class="o">==</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="k">if</span> <span class="n">buchstabe</span> <span class="o">==</span> <span class="s1">&#39;u&#39;</span> <span class="ow">or</span> <span class="n">buchstabe</span> <span class="o">==</span> <span class="s1">&#39;U&#39;</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">buchstabe</span><span class="p">)</span>
+</pre></div>
+</div>
+</details>
 </section>
 <section id="verschachtelte-schleifen">
 <h2>Verschachtelte Schleifen<a class="headerlink" href="#verschachtelte-schleifen" title="Link to this heading">#</a></h2>
@@ -611,11 +696,14 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-schleife"><code class="docutils literal notranslate"><span class="pre">for</span></code>-Schleife</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe">🧪 Übungsaufgabe:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uber-einen-string-iterieren">Über einen String iterieren</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-schleife-wiederhole-solange-eine-bedingung-true-ist"><code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife - Wiederhole solange eine Bedingung <code class="docutils literal notranslate"><span class="pre">True</span></code> ist</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">🧪 Übungsaufgabe:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uber-einen-string-iterieren">Über einen String iterieren</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">🧪 Übungsaufgabe:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">🧪 Übungsaufgabe:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-schleife-wiederhole-solange-eine-bedingung-true-ist"><code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife - Wiederhole solange eine Bedingung <code class="docutils literal notranslate"><span class="pre">True</span></code> ist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">🧪 Übungsaufgabe:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#break-und-continue"><code class="docutils literal notranslate"><span class="pre">break</span></code> und <code class="docutils literal notranslate"><span class="pre">continue</span></code>.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">🧪 Übungsaufgabe:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-schleifen">Verschachtelte Schleifen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-projekt-benutzerverwaltung">🎓 Mini-Projekt - Benutzerverwaltung:</a></li>
 </ul>

@@ -181,7 +181,11 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Einleitung</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Einführung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../studium.html">🎓 Herzlich willkommen – Was bedeutet es eigentlich zu studieren?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">🗺️ Übersicht über diesen Kurs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vorwort.html">📘 Vorwort zur Vorlesung Programmieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmieren.html">💻 Programmieren - Was ist das</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">🐍 Einführung in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pyenv.html">🔍 Python-Version installieren mit <code class="docutils literal notranslate"><span class="pre">pyenv</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
 
@@ -434,6 +438,17 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benutzereingaben">🧩 Benutzereingaben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatierte-zeichenketten-f-strings-in-python">Formatierte Zeichenketten (f-Strings) in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">Syntax</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kommentare-in-python">Kommentare in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung-begruszung-mit-name-und-alter">📝 Übung: Begrüßung mit Name und Alter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe">Aufgabe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hinweise">Hinweise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#musterlosung">Musterlösung</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -461,6 +476,53 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hallo, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+<section id="formatierte-zeichenketten-f-strings-in-python">
+<h2>Formatierte Zeichenketten (f-Strings) in Python<a class="headerlink" href="#formatierte-zeichenketten-f-strings-in-python" title="Link to this heading">#</a></h2>
+<p>Formatierte Zeichenketten, auch <strong>f-Strings</strong> genannt, ermöglichen es, <strong>Variablen direkt in einen String einzubetten</strong>. Sie wurden mit <strong>Python 3.6</strong> eingeführt und sind eine <strong>lesbare und effiziente</strong> Möglichkeit, Strings zusammenzusetzen.</p>
+<section id="syntax">
+<h3>Syntax<a class="headerlink" href="#syntax" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Maria&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hallo, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="kommentare-in-python">
+<h2>Kommentare in Python<a class="headerlink" href="#kommentare-in-python" title="Link to this heading">#</a></h2>
+<p>Kommentare sind Texte im Code, die <strong>nicht ausgeführt</strong> werden. Sie dienen dazu, den Code zu erklären, Notizen zu machen oder bestimmte Teile vorübergehend zu deaktivieren.</p>
+<p>Kommentare beginnen mit dem <strong>Rautezeichen <code class="docutils literal notranslate"><span class="pre">#</span></code></strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Das ist ein Kommentar</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Sofia&quot;</span>  <span class="c1"># Diese Variable speichert den Namen</span>
+</pre></div>
+</div>
+<p>Alles nach dem <code class="docutils literal notranslate"><span class="pre">#</span></code> in einer Zeile wird von Python ignoriert.</p>
+<p>💡 Tipp: Schreibe immer dann Kommentare, wenn du dir oder anderen den Code später verständlicher machen willst.</p>
+</section>
+<section id="ubung-begruszung-mit-name-und-alter">
+<h2>📝 Übung: Begrüßung mit Name und Alter<a class="headerlink" href="#ubung-begruszung-mit-name-und-alter" title="Link to this heading">#</a></h2>
+<section id="aufgabe">
+<h3>Aufgabe<a class="headerlink" href="#aufgabe" title="Link to this heading">#</a></h3>
+<p>Schreibe ein kleines Python-Programm, das folgende Schritte ausführt:</p>
+<ol class="arabic">
+<li><p>Fragt die Benutzerin oder den Benutzer nach dem <strong>Namen</strong>.</p></li>
+<li><p>Fragt nach dem <strong>Alter</strong>.</p></li>
+<li><p>Gibt eine persönliche Begrüßung aus, z. B.:</p>
+<p>Hallo Anna, dein Alter ist 23</p>
+</li>
+</ol>
+</section>
+<section id="hinweise">
+<h3>Hinweise<a class="headerlink" href="#hinweise" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Verwende <code class="docutils literal notranslate"><span class="pre">input()</span></code> für die Eingaben.</p></li>
+<li><p>Verwende einen <strong>f-String</strong> für die Ausgabe.</p></li>
+</ul>
+</section>
+<section id="musterlosung">
+<h3>Musterlösung<a class="headerlink" href="#musterlosung" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="helloworldsolution.html"><span class="std std-doc">Lösung</span></a></p>
+</section>
 </section>
 </section>
 
@@ -529,6 +591,17 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benutzereingaben">🧩 Benutzereingaben</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatierte-zeichenketten-f-strings-in-python">Formatierte Zeichenketten (f-Strings) in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">Syntax</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kommentare-in-python">Kommentare in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung-begruszung-mit-name-und-alter">📝 Übung: Begrüßung mit Name und Alter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe">Aufgabe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hinweise">Hinweise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#musterlosung">Musterlösung</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

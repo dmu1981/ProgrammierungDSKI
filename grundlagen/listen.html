@@ -183,7 +183,11 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Einleitung</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Einführung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../studium.html">🎓 Herzlich willkommen – Was bedeutet es eigentlich zu studieren?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">🗺️ Übersicht über diesen Kurs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vorwort.html">📘 Vorwort zur Vorlesung Programmieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmieren.html">💻 Programmieren - Was ist das</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">🐍 Einführung in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pyenv.html">🔍 Python-Version installieren mit <code class="docutils literal notranslate"><span class="pre">pyenv</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
 
@@ -436,15 +440,21 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-elemente">🔍 Zugriff auf Elemente</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eine-liste-mit-bubble-sort-sortieren">Eine Liste mit Bubble-Sort sortieren</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionsprinzip">🧠 Funktionsprinzip</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel">🔢 Beispiel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe">🧪 Übungsaufgabe:</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbeiten-mit-listen">🛠️ Arbeiten mit Listen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sum-summe-berechnen">🔢 <code class="docutils literal notranslate"><span class="pre">sum()</span></code> – Summe berechnen</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-startwert">➕ Mit Startwert:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#min-kleinster-wert">📉 <code class="docutils literal notranslate"><span class="pre">min()</span></code> – Kleinster Wert</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-groszter-wert">📈 `max()? – Größter Wert</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-groszter-wert">📈 <code class="docutils literal notranslate"><span class="pre">max()</span></code> – Größter Wert</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groszter-eintrag-nach-lange-eines-namens">🧑‍🏆 Größter Eintrag nach Länge eines Namens:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kombiniert-mit-sum-durchschnitt-berechnen">💡 Kombiniert mit sum() – Durchschnitt berechnen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kombiniert-mit-sum-durchschnitt-berechnen">💡 Kombiniert mit <code class="docutils literal notranslate"><span class="pre">sum()</span></code> – Durchschnitt berechnen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uber-listen-iterieren">🔁 Über Listen iterieren</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension">💡 List-Comprehension</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-list-comprehension">Verschachtelte List-Comprehension</a></li>
@@ -480,6 +490,69 @@ Mit Listen kann man mehrere Werte in einer Variablen speichern. Die Reihenfolge 
 <span class="n">namen</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Benny&quot;</span>
 </pre></div>
 </div>
+</section>
+<section id="eine-liste-mit-bubble-sort-sortieren">
+<h2>Eine Liste mit Bubble-Sort sortieren<a class="headerlink" href="#eine-liste-mit-bubble-sort-sortieren" title="Link to this heading">#</a></h2>
+<p><strong>Bubble Sort</strong> ist ein einfacher Sortieralgorithmus, der Listen schrittweise sortiert, indem er <strong>benachbarte Elemente vergleicht und vertauscht</strong>, falls sie in der falschen Reihenfolge stehen.</p>
+<blockquote>
+<div><p>💡 Der Name „Bubble“ kommt daher, dass größere Werte beim Sortieren <strong>wie Luftblasen nach oben steigen</strong> (ans Ende der Liste).</p>
+</div></blockquote>
+<section id="funktionsprinzip">
+<h3>🧠 Funktionsprinzip<a class="headerlink" href="#funktionsprinzip" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Der Algorithmus durchläuft die Liste <strong>mehrfach von vorn bis hinten</strong>.</p></li>
+<li><p>Bei jedem Durchlauf vergleicht er <strong>jeweils zwei benachbarte Elemente</strong>:</p>
+<ul>
+<li><p>Wenn sie in der falschen Reihenfolge sind, werden sie vertauscht.</p></li>
+</ul>
+</li>
+<li><p>Der größte Wert „wandert“ dabei ans Ende – deshalb kann man nach jedem Durchlauf <strong>einen Vergleich weniger</strong> machen.</p></li>
+<li><p>Der Vorgang wird wiederholt, <strong>bis keine Vertauschungen mehr nötig sind</strong>.</p></li>
+</ul>
+</section>
+<section id="beispiel">
+<h3>🔢 Beispiel<a class="headerlink" href="#beispiel" title="Link to this heading">#</a></h3>
+<p>Gegeben: <code class="docutils literal notranslate"><span class="pre">[5,</span> <span class="pre">2,</span> <span class="pre">4,</span> <span class="pre">1]</span></code></p>
+<ol class="arabic simple">
+<li><p><strong>Erster Durchlauf</strong>:</p>
+<ul class="simple">
+<li><p>5 und 2 → vertauschen → <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">5,</span> <span class="pre">4,</span> <span class="pre">1]</span></code></p></li>
+<li><p>5 und 4 → vertauschen → <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">1]</span></code></p></li>
+<li><p>5 und 1 → vertauschen → <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">4,</span> <span class="pre">1,</span> <span class="pre">5]</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Zweiter Durchlauf</strong>:</p>
+<ul class="simple">
+<li><p>2 und 4 → ok</p></li>
+<li><p>4 und 1 → vertauschen → <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">1,</span> <span class="pre">4,</span> <span class="pre">5]</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Dritter Durchlauf</strong>:</p>
+<ul class="simple">
+<li><p>2 und 1 → vertauschen → <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">4,</span> <span class="pre">5]</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Fertig</strong> – die Liste ist sortiert.</p></li>
+</ol>
+</section>
+<section id="ubungsaufgabe">
+<h3>🧪 Übungsaufgabe:<a class="headerlink" href="#ubungsaufgabe" title="Link to this heading">#</a></h3>
+<p>Implementieren Sie Bubble-Sort mit der Liste <code class="docutils literal notranslate"><span class="pre">[6,3,5,2,4,1]</span></code></p>
+<details>
+<summary>Lösung anzeigen</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#sortieren mit Bubble-Sort</span>
+<span class="n">daten</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">anzahl</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">daten</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">anzahl</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">anzahl</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">daten</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">daten</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">daten</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">daten</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">daten</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">daten</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span>
+</pre></div>
+</div>
+</details>
+</section>
 </section>
 <section id="arbeiten-mit-listen">
 <h2>🛠️ Arbeiten mit Listen<a class="headerlink" href="#arbeiten-mit-listen" title="Link to this heading">#</a></h2>
@@ -518,7 +591,7 @@ Mit Listen kann man mehrere Werte in einer Variablen speichern. Die Reihenfolge 
 <p>➡️ Gibt den kleinsten Wert in der Liste zurück</p>
 </section>
 <section id="max-groszter-wert">
-<h2>📈 `max()? – Größter Wert<a class="headerlink" href="#max-groszter-wert" title="Link to this heading">#</a></h2>
+<h2>📈 <code class="docutils literal notranslate"><span class="pre">max()</span></code> – Größter Wert<a class="headerlink" href="#max-groszter-wert" title="Link to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">punkte</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">punkte</span><span class="p">))</span>  <span class="c1"># → 40</span>
 </pre></div>
@@ -533,7 +606,7 @@ Mit Listen kann man mehrere Werte in einer Variablen speichern. Die Reihenfolge 
 </div>
 </section>
 <section id="kombiniert-mit-sum-durchschnitt-berechnen">
-<h2>💡 Kombiniert mit sum() – Durchschnitt berechnen<a class="headerlink" href="#kombiniert-mit-sum-durchschnitt-berechnen" title="Link to this heading">#</a></h2>
+<h2>💡 Kombiniert mit <code class="docutils literal notranslate"><span class="pre">sum()</span></code> – Durchschnitt berechnen<a class="headerlink" href="#kombiniert-mit-sum-durchschnitt-berechnen" title="Link to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
 <span class="n">durchschnitt</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">durchschnitt</span><span class="p">)</span>  <span class="c1"># → 4.5</span>
@@ -544,6 +617,9 @@ Mit Listen kann man mehrere Werte in einer Variablen speichern. Die Reihenfolge 
 <h2>🔁 Über Listen iterieren<a class="headerlink" href="#uber-listen-iterieren" title="Link to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">namen</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Anna&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="p">,</span> <span class="s2">&quot;Clara&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">namen</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo,&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">namen</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo,&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -765,15 +841,21 @@ else:
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-elemente">🔍 Zugriff auf Elemente</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eine-liste-mit-bubble-sort-sortieren">Eine Liste mit Bubble-Sort sortieren</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionsprinzip">🧠 Funktionsprinzip</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel">🔢 Beispiel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubungsaufgabe">🧪 Übungsaufgabe:</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbeiten-mit-listen">🛠️ Arbeiten mit Listen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sum-summe-berechnen">🔢 <code class="docutils literal notranslate"><span class="pre">sum()</span></code> – Summe berechnen</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-startwert">➕ Mit Startwert:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#min-kleinster-wert">📉 <code class="docutils literal notranslate"><span class="pre">min()</span></code> – Kleinster Wert</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-groszter-wert">📈 `max()? – Größter Wert</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#max-groszter-wert">📈 <code class="docutils literal notranslate"><span class="pre">max()</span></code> – Größter Wert</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groszter-eintrag-nach-lange-eines-namens">🧑‍🏆 Größter Eintrag nach Länge eines Namens:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kombiniert-mit-sum-durchschnitt-berechnen">💡 Kombiniert mit sum() – Durchschnitt berechnen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kombiniert-mit-sum-durchschnitt-berechnen">💡 Kombiniert mit <code class="docutils literal notranslate"><span class="pre">sum()</span></code> – Durchschnitt berechnen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uber-listen-iterieren">🔁 Über Listen iterieren</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension">💡 List-Comprehension</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-list-comprehension">Verschachtelte List-Comprehension</a></li>

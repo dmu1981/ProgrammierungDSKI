@@ -1,4 +1,4 @@
-# Einführung in Python
+# 🐍 Einführung in Python
 ## Warum Python
 
 Python ist **DIE** Sprache im Bereich Data Science und Machine Learning – und das aus richtig guten Gründen:

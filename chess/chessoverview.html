@@ -1,0 +1,650 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Schach: Ein Spiel strategischer Tiefe &#8212; Programmierung für Data Science und KI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chess/chessoverview';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Programmierung für Data Science und KI - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Programmierung für Data Science und KI - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programmierung für Data Science und KI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Einleitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../studium.html">🎓 Herzlich willkommen – Was bedeutet es eigentlich zu studieren?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">🗺️ Übersicht über diesen Kurs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vorwort.html">📘 Vorwort zur Vorlesung Programmieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmieren.html">💻 Programmieren - Was ist das</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">🐍 Einführung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pyenv.html">🔍 Python-Version installieren mit <code class="docutils literal notranslate"><span class="pre">pyenv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grundlagen</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/helloworld.html">🐍 Python: Hello World Beispiel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/variablenundoperationen.html">🧠 Variablen in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/kontrollstrukturen.html">🗂️ Kontrollstrukturen – Entscheidungen im Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/schleifen.html">🔁 Schleifen – Wiederholungen meistern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/mathundrandom.html">🧮 Einführung in <code class="docutils literal notranslate"><span class="pre">math</span></code> und <code class="docutils literal notranslate"><span class="pre">random</span></code> in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/listen.html">🧩 Listen - Mehrere Elemente verwalten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/strings.html">📝 Strings in Python – Zeichenketten meistern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/tuple.html">📦 Tupel - Die unveränderbare Liste</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/sets.html">🔷 Sets in Python – Mengen ohne Duplikate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/dicts.html">📘 Dictionaries in Python – Daten als Schlüssel-Wert-Paare</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/funktionen.html">🧩 Funktionen in Python – Code wiederverwenden und strukturieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/exceptions.html">🚨 Fehlerbehandlung in Python – <code class="docutils literal notranslate"><span class="pre">try</span></code>, <code class="docutils literal notranslate"><span class="pre">except</span></code>, <code class="docutils literal notranslate"><span class="pre">finally</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/dateien.html">🗂️ Dateien öffnen, lesen und schreiben in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/klassen.html">🧱 Klassen - Objektorientierte Programmierung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/vererbung.html">🧬 Vererbung in Python – Gemeinsamkeiten wiederverwenden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/iteratoren.html">🔁 Iteratoren in Python – und wie man eigene erstellt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/kontext.html">📚 Kontextmanager &amp; with-Statement in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/module.html">🧩 Eigene Module in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/assert.html">✅ <code class="docutils literal notranslate"><span class="pre">assert</span></code> in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/generatoren.html">🔁 Generatoren in Python – Elegante Iteratoren mit yield</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/csvjson.html">📂 Arbeiten mit CSV- und JSON-Dateien in Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pandas</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../pandas/intro.html">🐼 Pandas?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/einfuehrung.html">🐼 Einführung in Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/filtern.html">🐼 Arbeiten mit DataFrames – Filtern, Berechnen, Erweitern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/gruppieren.html">🐼 Gruppieren, Aggregieren &amp; Statistiken mit Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/sortieren.html">🐼  Sortieren, Filtern &amp; Kombinieren von DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/zeitreihen.html">🐼 Zeitreihenanalyse &amp; Daten speichern mit Pandas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NumPy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../numpy/intro.html">🔢 Einführung in NumPy – Das Fundament der numerischen Programmierung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/einfuehrung.html">🔢 Einstieg in Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/operationen.html">🔢 Array-Erzeugung, Indexierung &amp; Rechnen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/slicing.html">🔢 Indexierung, Slicing &amp; Boolean-Masken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/rechnen.html">🔢 Rechnen mit Arrays &amp; Broadcasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/reshape.html">🔢 Mehrdimensionale Arrays &amp; Reshape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/linalg.html">🔢 Lineare Algebra mit NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">MatPlotLib</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/intro.html">🎨  Matplotlib – Daten sichtbar machen mit Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/einleitung.html">🎨 Erste Schritte mit MatPlotLib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/diagramme.html">🎨  Diagrammtypen I – Linien, Punkte, Balken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/hist.html">🎨 Diagrammtypen II – Histogramm, Boxplot &amp; Torte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/achsen.html">🎨 Achsen, Layout &amp; Subplots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/style.html">🎨 Stile, Farben &amp; Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/annotations.html">🎨 Annotationen</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchess/chessoverview.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chess/chessoverview.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Schach: Ein Spiel strategischer Tiefe</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uberblick">Überblick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ursprung-und-geschichte">Ursprung und Geschichte</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ziel-des-spiels">Ziel des Spiels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spielaufbau">Spielaufbau</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bewegungsregeln">Bewegungsregeln</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sonderregeln">Sonderregeln</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strategische-tiefe">Strategische Tiefe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modernes-schach">Modernes Schach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anfangsaufstellung">Anfangsaufstellung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fazit">Fazit</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="schach-ein-spiel-strategischer-tiefe">
+<h1>Schach: Ein Spiel strategischer Tiefe<a class="headerlink" href="#schach-ein-spiel-strategischer-tiefe" title="Link to this heading">#</a></h1>
+<section id="uberblick">
+<h2>Überblick<a class="headerlink" href="#uberblick" title="Link to this heading">#</a></h2>
+<p><strong>Schach</strong> ist ein Strategiespiel für zwei Spieler, das seit über einem Jahrtausend existiert. Gespielt wird es auf einem 8x8-Brett, dem sogenannten <strong>Schachbrett</strong>. Zwei Armeen – Weiß und Schwarz – stehen sich gegenüber in einem Kampf voller Intelligenz, Weitblick und taktischem Geschick. Ziel ist es, den <strong>König</strong> des Gegners schachmatt zu setzen.</p>
+</section>
+<section id="ursprung-und-geschichte">
+<h2>Ursprung und Geschichte<a class="headerlink" href="#ursprung-und-geschichte" title="Link to this heading">#</a></h2>
+<p>Das Spiel Schach entwickelte sich aus dem indischen Spiel <em>Chaturanga</em>, das im 6. Jahrhundert n. Chr. gespielt wurde. Es gelangte über Persien in die islamische Welt und verbreitete sich bis ins 10. Jahrhundert nach Europa. Die heutigen Regeln wurden besonders in der Renaissancezeit geprägt, insbesondere durch die Einführung der mächtigen <strong>Dame</strong> und der erweiterten Bewegungen der Läufer.</p>
+</section>
+<section id="ziel-des-spiels">
+<h2>Ziel des Spiels<a class="headerlink" href="#ziel-des-spiels" title="Link to this heading">#</a></h2>
+<p>Das Hauptziel im Schach ist es, den gegnerischen <strong>König schachmatt</strong> zu setzen. Dies bedeutet, dass der König angegriffen wird (<em>Schach</em>) und es keinen legalen Zug gibt, um seine Gefangennahme im nächsten Zug zu verhindern.</p>
+</section>
+<section id="spielaufbau">
+<h2>Spielaufbau<a class="headerlink" href="#spielaufbau" title="Link to this heading">#</a></h2>
+<p>Zu Beginn verfügt jeder Spieler über 16 Figuren:</p>
+<ul class="simple">
+<li><p>1 König</p></li>
+<li><p>1 Dame</p></li>
+<li><p>2 Türme</p></li>
+<li><p>2 Läufer</p></li>
+<li><p>2 Springer</p></li>
+<li><p>8 Bauern</p></li>
+</ul>
+<p>Jede Figur hat ein eigenes, spezifisches Bewegungsmuster. Weiß beginnt das Spiel, danach wechseln sich die Spieler ab.</p>
+</section>
+<section id="bewegungsregeln">
+<h2>Bewegungsregeln<a class="headerlink" href="#bewegungsregeln" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>König</strong>: Ein Feld in jede Richtung.</p></li>
+<li><p><strong>Dame</strong>: Beliebig weit vertikal, horizontal oder diagonal.</p></li>
+<li><p><strong>Turm</strong>: Beliebig weit vertikal oder horizontal.</p></li>
+<li><p><strong>Läufer</strong>: Beliebig weit diagonal.</p></li>
+<li><p><strong>Springer</strong>: In L-Form: zwei Felder in eine Richtung, dann ein Feld rechtwinklig.</p></li>
+<li><p><strong>Bauer</strong>: Ein Feld vorwärts, beim ersten Zug zwei Felder möglich; schlägt diagonal.</p></li>
+</ul>
+</section>
+<section id="sonderregeln">
+<h2>Sonderregeln<a class="headerlink" href="#sonderregeln" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Rochade</strong>: Eine Schutzbewegung von König und Turm.</p></li>
+<li><p><strong>En Passant</strong>: Eine spezielle Schlagmöglichkeit des Bauern.</p></li>
+<li><p><strong>Umwandlung</strong>: Ein Bauer, der die gegnerische Grundreihe erreicht, wird in eine andere Figur (meist Dame) umgewandelt.</p></li>
+</ul>
+<p><strong>Hinweis</strong>: Im Rahmen dieser Prüfungsleistung und der umzusetzenden eigenen Implementierung einer Schachengine brauchen Sie diese Sonderregeln nicht zu berücksichtigen. Das bedeutet konkret das das Schlagen “en Passant” sowie die Rochade nicht verkommen können.  Auch eine Umwandlung eines Bauern findet nicht statt. Dies sind Vereinfachungen um die Komplexität des Problems gering zu halten.</p>
+</section>
+<section id="strategische-tiefe">
+<h2>Strategische Tiefe<a class="headerlink" href="#strategische-tiefe" title="Link to this heading">#</a></h2>
+<p>Schach ist für seine strategische Komplexität berühmt. Spieler müssen Folgendes berücksichtigen:</p>
+<ul class="simple">
+<li><p><strong>Eröffnungstheorie</strong>: Figurenentwicklung und Kontrolle des Zentrums.</p></li>
+<li><p><strong>Taktik im Mittelspiel</strong>: Kombinationen wie Gabeln, Fesselungen und Spieße.</p></li>
+<li><p><strong>Endspieltechnik</strong>: Einen Vorteil mit wenigen Figuren in einen Sieg umwandeln.</p></li>
+</ul>
+</section>
+<section id="modernes-schach">
+<h2>Modernes Schach<a class="headerlink" href="#modernes-schach" title="Link to this heading">#</a></h2>
+<p>Mit dem Aufkommen von Computern hat Schach eine neue Ära betreten:</p>
+<ul class="simple">
+<li><p><strong>Schachprogramme</strong> wie Stockfish analysieren Stellungen mit übermenschlicher Präzision.</p></li>
+<li><p><strong>Online-Plattformen</strong> wie Lichess und Chess.com ermöglichen tägliche Millionenpartien.</p></li>
+<li><p><strong>Turnierschach</strong> wird von der FIDE organisiert, mit globalen Wettbewerben und Weltmeisterschaften.</p></li>
+</ul>
+</section>
+<section id="anfangsaufstellung">
+<h2>Anfangsaufstellung<a class="headerlink" href="#anfangsaufstellung" title="Link to this heading">#</a></h2>
+<p>Das Schachbrett wird so ausgerichtet, dass das rechte Eckfeld eines jeden Spielers ein weißes Feld ist („weißes Feld rechts“). Die zweite Reihe (2. Reihe für Weiß, 7. Reihe für Schwarz) wird mit den acht Bauern besetzt.</p>
+<p>In der ersten Reihe stehen – von links nach rechts – folgende Figuren:</p>
+<ul class="simple">
+<li><p><strong>Turm</strong>, <strong>Springer</strong>, <strong>Läufer</strong>, <strong>Dame</strong>, <strong>König</strong>, <strong>Läufer</strong>, <strong>Springer</strong>, <strong>Turm</strong></p></li>
+</ul>
+<p>Dabei steht die Dame immer auf dem Feld ihrer eigenen Farbe: die weiße Dame auf einem weißen Feld (d1), die schwarze Dame auf einem schwarzen Feld (d8). Der König steht direkt daneben auf dem verbleibenden Zentralfeld (e1 bzw. e8).
+Weiß beginnt das Spiel, danach wechseln sich die Spieler ab.</p>
+</section>
+<section id="fazit">
+<h2>Fazit<a class="headerlink" href="#fazit" title="Link to this heading">#</a></h2>
+<p>Schach ist eines der angesehensten und geistig anspruchsvollsten Spiele der Geschichte. Ob als Freizeitvergnügen oder im Wettkampf – es fordert den Verstand, schärft die Logik und bietet eine universelle Sprache der Strategie.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chess"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uberblick">Überblick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ursprung-und-geschichte">Ursprung und Geschichte</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ziel-des-spiels">Ziel des Spiels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spielaufbau">Spielaufbau</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bewegungsregeln">Bewegungsregeln</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sonderregeln">Sonderregeln</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strategische-tiefe">Strategische Tiefe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modernes-schach">Modernes Schach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anfangsaufstellung">Anfangsaufstellung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fazit">Fazit</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Prof. Dr. Dennis Müller
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

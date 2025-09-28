@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'grundlagen/variablenundoperationen';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -181,7 +183,11 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Einleitung</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Einführung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../studium.html">🎓 Herzlich willkommen – Was bedeutet es eigentlich zu studieren?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">🗺️ Übersicht über diesen Kurs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vorwort.html">📘 Vorwort zur Vorlesung Programmieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmieren.html">💻 Programmieren - Was ist das</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">🐍 Einführung in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pyenv.html">🔍 Python-Version installieren mit <code class="docutils literal notranslate"><span class="pre">pyenv</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
 
@@ -437,9 +443,26 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtige-datentypen">🔤 2. Wichtige Datentypen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einfache-operationen-mit-variablen">➕ 3. Einfache Operationen mit Variablen</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-zahlen-int-float">🔢 Mit Zahlen (int, float):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#direkte-ruckzuweisung-kurzformen">Direkte Rückzuweisung (Kurzformen)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung-kurzformen-und-ausfuhrliche-zuweisungen">🔁 Übung: Kurzformen und ausführliche Zuweisungen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-a-kurzen">🧠 Aufgabe A: Kürzen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-b-ausschreiben">🧠 Aufgabe B: Ausschreiben</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-welchen-wert-haben-x-und-y-nach-diesen-operationen">🧠 Quiz: Welchen Wert haben x und y nach diesen Operationen?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-strings">Mit Strings</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#umwandlung">Umwandlung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-listen-list">📏 Mit Listen (list):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung-umwandlung-von-datentypen">🧠 Übung: Umwandlung von Datentypen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ungenauigkeiten-bei-gleitkommazahlen-float">🔢 Ungenauigkeiten bei Gleitkommazahlen (<code class="docutils literal notranslate"><span class="pre">float</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel">Beispiel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#andere-basen">🔢 Andere Basen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatierungsmoglichkeiten-mit-f-strings">Formatierungsmöglichkeiten mit f-Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung-formatierte-strings-mit-verschiedenen-datentypen">🧪 Übung: Formatierte Strings mit verschiedenen Datentypen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-a-werte-definieren-und-einsetzen">🔢 Aufgabe A: Werte definieren und einsetzen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolsche-variablen">🎯 Boolsche Variablen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamische-typisierung">⚠️ 4. Dynamische Typisierung</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#none-als-besonderer-wert">5. <code class="docutils literal notranslate"><span class="pre">None</span></code> als besonderer Wert</a></li>
@@ -471,6 +494,12 @@ document.write(`
 <p>Eine Variable ist ein <strong>Name</strong>, der auf einen bestimmten <strong>Wert</strong> zeigt.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Anna&quot;</span>
 <span class="n">alter</span> <span class="o">=</span> <span class="mi">25</span>
+</pre></div>
+</div>
+<p>Variablen speichern ihre Werte und belegen Speicherplatz im Computer.
+Python wählt eine geeignete interne Repräsentation um diese Werte zu speichern. Der Wert einer Variable kann überschrieben werden</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">alter</span> <span class="o">=</span> <span class="mi">27</span>
 </pre></div>
 </div>
 </section>
@@ -509,11 +538,11 @@ document.write(`
 </table>
 </div>
 <p><strong>Beispiele:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>           <span class="c1"># int</span>
-<span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span>        <span class="c1"># float</span>
-<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hi!&quot;</span>     <span class="c1"># str</span>
-<span class="n">ist_wahr</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># bool</span>
-<span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># list</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>           <span class="c1"># integer (Ganzzahl)</span>
+<span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span>        <span class="c1"># float (Gleitkommazahl)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hi!&quot;</span>     <span class="c1"># str (Zeichenkette)</span>
+<span class="n">ist_wahr</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># bool (Boolsche Variable)</span>
+<span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># list (Liste)</span>
 </pre></div>
 </div>
 <p>Für längere Texte (Strings) eignet sich die <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>-Notation:</p>
@@ -542,6 +571,62 @@ document.write(`
 </pre></div>
 </div>
 </section>
+<section id="direkte-ruckzuweisung-kurzformen">
+<h3>Direkte Rückzuweisung (Kurzformen)<a class="headerlink" href="#direkte-ruckzuweisung-kurzformen" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">a</span> <span class="o">+=</span> <span class="mi">3</span> <span class="c1"># 8</span>
+<span class="n">a</span> <span class="o">*=</span> <span class="mi">2</span> <span class="c1"># 16</span>
+<span class="n">a</span> <span class="o">/=</span> <span class="mi">4</span> <span class="c1"># 4</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ubung-kurzformen-und-ausfuhrliche-zuweisungen">
+<h2>🔁 Übung: Kurzformen und ausführliche Zuweisungen<a class="headerlink" href="#ubung-kurzformen-und-ausfuhrliche-zuweisungen" title="Link to this heading">#</a></h2>
+<section id="aufgabe-a-kurzen">
+<h3>🧠 Aufgabe A: Kürzen<a class="headerlink" href="#aufgabe-a-kurzen" title="Link to this heading">#</a></h3>
+<p>Schreibe die folgenden Zuweisungen als <strong>Kurzform</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">d</span> <span class="o">/</span> <span class="mi">4</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">e</span> <span class="o">%</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</section>
+<section id="aufgabe-b-ausschreiben">
+<h3>🧠 Aufgabe B: Ausschreiben<a class="headerlink" href="#aufgabe-b-ausschreiben" title="Link to this heading">#</a></h3>
+<p>Schreibe die folgenden Zuweisungen als <strong>Kurzform</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">+=</span> <span class="mi">7</span>
+<span class="n">y</span> <span class="o">//=</span> <span class="mi">2</span>
+<span class="n">z</span> <span class="o">**=</span> <span class="mi">3</span>
+<span class="n">n</span> <span class="o">-=</span> <span class="mi">4</span>
+<span class="n">k</span> <span class="o">*=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</section>
+<section id="quiz-welchen-wert-haben-x-und-y-nach-diesen-operationen">
+<h3>🧠 Quiz: Welchen Wert haben x und y nach diesen Operationen?<a class="headerlink" href="#quiz-welchen-wert-haben-x-und-y-nach-diesen-operationen" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>                   
+<span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">x</span> <span class="o">+=</span> <span class="n">y</span>
+<span class="n">y</span> <span class="o">-=</span> <span class="n">x</span>  
+</pre></div>
+</div>
+<details>
+<summary>Klicke hier, um die Lösung anzuzeigen</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>                   <span class="c1"># x=2</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">5</span>                   <span class="c1"># x=2, y=5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>       <span class="c1"># x=0, y=5</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>       <span class="c1"># x=0, y=9</span>
+<span class="n">x</span> <span class="o">+=</span> <span class="n">y</span>                  <span class="c1"># x=9, y=9</span>
+<span class="n">y</span> <span class="o">-=</span> <span class="n">x</span>                  <span class="c1"># x=9, y=0</span>
+</pre></div>
+</div>
+</details>
+</section>
 <section id="mit-strings">
 <h3>Mit Strings<a class="headerlink" href="#mit-strings" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Hallo&quot;</span>
@@ -555,16 +640,146 @@ document.write(`
 <h3>Umwandlung<a class="headerlink" href="#umwandlung" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;5&quot;</span>              <span class="c1"># str &quot;5&quot;</span>
 <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span>            <span class="c1"># float</span>
+<span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>           <span class="c1"># 5 (integer)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>          <span class="c1"># 3 (integer)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;3.14&quot;</span><span class="p">)</span>    <span class="c1"># 3.14 (float)</span>
+</pre></div>
+</div>
+<p>⚠️ Achtung: Die Umwandlung von beliebigen Strings in Zahlendatentypen kann scheitern:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;fünf&quot;</span>            
 <span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>           <span class="c1"># int (5)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>          <span class="c1"># int (3)</span>
+    <span class="c1"># Traceback (most recent call last):</span>
+    <span class="c1"># File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
+    <span class="c1"># valueError: invalid literal for int() with base 10: &#39;fünf&#39;</span>
 </pre></div>
 </div>
 </section>
-<section id="mit-listen-list">
-<h3>📏 Mit Listen (list):<a class="headerlink" href="#mit-listen-list" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">zahlen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>       <span class="c1"># [1, 2, 3, 4]</span>
-<span class="n">laenge</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span>   <span class="c1"># 4</span>
+<section id="ubung-umwandlung-von-datentypen">
+<h3>🧠 Übung: Umwandlung von Datentypen<a class="headerlink" href="#ubung-umwandlung-von-datentypen" title="Link to this heading">#</a></h3>
+<p>Fordern Sie den Benutzer auf eine beliebige Gleitkommazahl einzugeben
+(verwenden Sie <a class="reference external" href="https://www.w3schools.com/python/ref_func_input.asp">input</a>). Wandeln Sie die Zahl zunächst in eine Gleitkommazahl um.</p>
+<p>Überlegen Sie dann wie sie die Zahl runden können und geben Sie das gerundete Ergebniss aus.</p>
+<details>
+<summary>Klicke hier, um die Lösung anzuzeigen</summary>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Geben Sie eine Gleitkommazahl ein&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</details>
+</section>
+</section>
+<section id="ungenauigkeiten-bei-gleitkommazahlen-float">
+<h2>🔢 Ungenauigkeiten bei Gleitkommazahlen (<code class="docutils literal notranslate"><span class="pre">float</span></code>)<a class="headerlink" href="#ungenauigkeiten-bei-gleitkommazahlen-float" title="Link to this heading">#</a></h2>
+<p>Python (wie viele andere Programmiersprachen) verwendet zur Darstellung von Dezimalzahlen den <strong>Binär-Gleitkomma-Standard (IEEE 754)</strong>. Dabei können <strong>kleine Rundungsfehler</strong> entstehen, da <strong>nicht alle Dezimalzahlen exakt binär darstellbar sind</strong>.</p>
+<section id="beispiel">
+<h3>Beispiel<a class="headerlink" href="#beispiel" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ergebnis von 0.1 + 0.2:&quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ist das Ergebnis genau 0.3?&quot;</span><span class="p">,</span> <span class="n">c</span> <span class="o">==</span> <span class="mf">0.3</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="andere-basen">
+<h3>🔢 Andere Basen<a class="headerlink" href="#andere-basen" title="Link to this heading">#</a></h3>
+<p>Wir stellen Zahlen im s.g. Zehnersystem da, d.h. wir verwenden Ziffern von 0 bis 9 und ein Stellenwertsystem welches mit jeder Stelle um den Faktor 10 wächst. Konkret:</p>
+<div class="math notranslate nohighlight">
+\[ 372 = 3 * 100 + 7 * 10 + 2\]</div>
+<p>Das Binärsystem verwendet nur die Ziffern 0 und 1 und jede Stelle verdoppelt sich im Wert. Konkret:</p>
+<div class="math notranslate nohighlight">
+\[101101 = 1 * 32 + 0 * 16 + 1 * 8 + 1 * 4 + 0 * 2 + 1 = 45\]</div>
+<p>Python kann diese Basenumrechnung für uns machen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># Dezimal nach Binär:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">bin</span><span class="p">(</span><span class="mi">45</span><span class="p">))</span>
+    <span class="c1"># 0b101101</span>
+
+    <span class="c1"># Binär nach Dezimal:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;101101&quot;</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+    <span class="mi">45</span>
+</pre></div>
+</div>
+<p>Neben dem Binärsystem findet das s.g. Hexadezimalsystem oft Verwendung in Computeranwendung. Dabei verwenden wir 16 Ziffern (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F).</p>
+<div class="math notranslate nohighlight">
+\[ 0xAE = 10 * 16 + 14 = 174\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># Dezimal nach Hexadezimal:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="mi">108</span><span class="p">))</span>
+    <span class="c1"># 0x6c</span>
+
+    <span class="c1"># Hexadezimal nach Dezimal:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;6c&quot;</span><span class="p">,</span><span class="mi">16</span><span class="p">))</span>
+    <span class="mi">108</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="formatierungsmoglichkeiten-mit-f-strings">
+<h2>Formatierungsmöglichkeiten mit f-Strings<a class="headerlink" href="#formatierungsmoglichkeiten-mit-f-strings" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Typ</p></th>
+<th class="head"><p>Beispiel</p></th>
+<th class="head"><p>Ausgabe</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ganzzahl</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">f&quot;{42}&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">42</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">f&quot;{3.14159:.2f}&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3.14</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Ausrichtung</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">f&quot;{'Text':&gt;10}&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'</span>&#160;&#160;&#160;&#160; <span class="pre">Text'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Wissenschaftlich</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">f&quot;{12345:.2e}&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.23e+04</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Prozent</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">f&quot;{0.75:.0%}&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">75%</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Boolesch</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">f&quot;{True}&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Ausdruck</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">f&quot;{2</span> <span class="pre">+</span> <span class="pre">3}&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="ubung-formatierte-strings-mit-verschiedenen-datentypen">
+<h2>🧪 Übung: Formatierte Strings mit verschiedenen Datentypen<a class="headerlink" href="#ubung-formatierte-strings-mit-verschiedenen-datentypen" title="Link to this heading">#</a></h2>
+<p>Du lernst, wie du mit <strong>f-Strings (<code class="docutils literal notranslate"><span class="pre">f&quot;&quot;</span></code>)</strong> in Python verschiedene Datentypen <strong>formatiert und leserlich</strong> darstellen kannst. Dazu gehören:</p>
+<ul class="simple">
+<li><p>Ganzzahlen (<code class="docutils literal notranslate"><span class="pre">int</span></code>)</p></li>
+<li><p>Kommazahlen (<code class="docutils literal notranslate"><span class="pre">float</span></code>)</p></li>
+<li><p>Strings</p></li>
+<li><p>Wahrheitswerte (<code class="docutils literal notranslate"><span class="pre">bool</span></code>)</p></li>
+<li><p>Runden, Ausrichten und Padding</p></li>
+</ul>
+<hr class="docutils" />
+<section id="aufgabe-a-werte-definieren-und-einsetzen">
+<h3>🔢 Aufgabe A: Werte definieren und einsetzen<a class="headerlink" href="#aufgabe-a-werte-definieren-und-einsetzen" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Definiere folgende Variablen:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Lena&quot;</span>
+<span class="n">alter</span> <span class="o">=</span> <span class="mi">27</span>
+<span class="n">größe</span> <span class="o">=</span> <span class="mf">1.6754</span>
+<span class="n">ist_studentin</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>Gib folgenden Satz mittels eines f-Strings aus:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    Name: Lena | Alter: 27 | Größe: 1.68 m | Studentin: Ja
 </pre></div>
 </div>
 </section>
@@ -703,9 +918,26 @@ Nutze <a class="reference external" href="https://www.w3schools.com/python/ref_f
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtige-datentypen">🔤 2. Wichtige Datentypen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einfache-operationen-mit-variablen">➕ 3. Einfache Operationen mit Variablen</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-zahlen-int-float">🔢 Mit Zahlen (int, float):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#direkte-ruckzuweisung-kurzformen">Direkte Rückzuweisung (Kurzformen)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung-kurzformen-und-ausfuhrliche-zuweisungen">🔁 Übung: Kurzformen und ausführliche Zuweisungen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-a-kurzen">🧠 Aufgabe A: Kürzen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-b-ausschreiben">🧠 Aufgabe B: Ausschreiben</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-welchen-wert-haben-x-und-y-nach-diesen-operationen">🧠 Quiz: Welchen Wert haben x und y nach diesen Operationen?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-strings">Mit Strings</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#umwandlung">Umwandlung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-listen-list">📏 Mit Listen (list):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung-umwandlung-von-datentypen">🧠 Übung: Umwandlung von Datentypen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ungenauigkeiten-bei-gleitkommazahlen-float">🔢 Ungenauigkeiten bei Gleitkommazahlen (<code class="docutils literal notranslate"><span class="pre">float</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel">Beispiel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#andere-basen">🔢 Andere Basen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatierungsmoglichkeiten-mit-f-strings">Formatierungsmöglichkeiten mit f-Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ubung-formatierte-strings-mit-verschiedenen-datentypen">🧪 Übung: Formatierte Strings mit verschiedenen Datentypen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-a-werte-definieren-und-einsetzen">🔢 Aufgabe A: Werte definieren und einsetzen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolsche-variablen">🎯 Boolsche Variablen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamische-typisierung">⚠️ 4. Dynamische Typisierung</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#none-als-besonderer-wert">5. <code class="docutils literal notranslate"><span class="pre">None</span></code> als besonderer Wert</a></li>

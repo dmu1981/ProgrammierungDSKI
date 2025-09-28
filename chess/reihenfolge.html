@@ -1,0 +1,649 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Implementierungsreihenfolge der TODO-Methoden &#8212; Programmierung für Data Science und KI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chess/reihenfolge';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Programmierung für Data Science und KI - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Programmierung für Data Science und KI - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programmierung für Data Science und KI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Einleitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../studium.html">🎓 Herzlich willkommen – Was bedeutet es eigentlich zu studieren?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">🗺️ Übersicht über diesen Kurs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vorwort.html">📘 Vorwort zur Vorlesung Programmieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmieren.html">💻 Programmieren - Was ist das</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">🐍 Einführung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pyenv.html">🔍 Python-Version installieren mit <code class="docutils literal notranslate"><span class="pre">pyenv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grundlagen</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/helloworld.html">🐍 Python: Hello World Beispiel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/variablenundoperationen.html">🧠 Variablen in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/kontrollstrukturen.html">🗂️ Kontrollstrukturen – Entscheidungen im Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/schleifen.html">🔁 Schleifen – Wiederholungen meistern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/mathundrandom.html">🧮 Einführung in <code class="docutils literal notranslate"><span class="pre">math</span></code> und <code class="docutils literal notranslate"><span class="pre">random</span></code> in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/listen.html">🧩 Listen - Mehrere Elemente verwalten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/strings.html">📝 Strings in Python – Zeichenketten meistern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/tuple.html">📦 Tupel - Die unveränderbare Liste</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/sets.html">🔷 Sets in Python – Mengen ohne Duplikate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/dicts.html">📘 Dictionaries in Python – Daten als Schlüssel-Wert-Paare</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/funktionen.html">🧩 Funktionen in Python – Code wiederverwenden und strukturieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/exceptions.html">🚨 Fehlerbehandlung in Python – <code class="docutils literal notranslate"><span class="pre">try</span></code>, <code class="docutils literal notranslate"><span class="pre">except</span></code>, <code class="docutils literal notranslate"><span class="pre">finally</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/dateien.html">🗂️ Dateien öffnen, lesen und schreiben in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/klassen.html">🧱 Klassen - Objektorientierte Programmierung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/vererbung.html">🧬 Vererbung in Python – Gemeinsamkeiten wiederverwenden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/iteratoren.html">🔁 Iteratoren in Python – und wie man eigene erstellt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/kontext.html">📚 Kontextmanager &amp; with-Statement in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/module.html">🧩 Eigene Module in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/assert.html">✅ <code class="docutils literal notranslate"><span class="pre">assert</span></code> in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/generatoren.html">🔁 Generatoren in Python – Elegante Iteratoren mit yield</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/csvjson.html">📂 Arbeiten mit CSV- und JSON-Dateien in Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pandas</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../pandas/intro.html">🐼 Pandas?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/einfuehrung.html">🐼 Einführung in Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/filtern.html">🐼 Arbeiten mit DataFrames – Filtern, Berechnen, Erweitern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/gruppieren.html">🐼 Gruppieren, Aggregieren &amp; Statistiken mit Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/sortieren.html">🐼  Sortieren, Filtern &amp; Kombinieren von DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/zeitreihen.html">🐼 Zeitreihenanalyse &amp; Daten speichern mit Pandas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NumPy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../numpy/intro.html">🔢 Einführung in NumPy – Das Fundament der numerischen Programmierung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/einfuehrung.html">🔢 Einstieg in Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/operationen.html">🔢 Array-Erzeugung, Indexierung &amp; Rechnen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/slicing.html">🔢 Indexierung, Slicing &amp; Boolean-Masken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/rechnen.html">🔢 Rechnen mit Arrays &amp; Broadcasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/reshape.html">🔢 Mehrdimensionale Arrays &amp; Reshape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/linalg.html">🔢 Lineare Algebra mit NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">MatPlotLib</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/intro.html">🎨  Matplotlib – Daten sichtbar machen mit Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/einleitung.html">🎨 Erste Schritte mit MatPlotLib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/diagramme.html">🎨  Diagrammtypen I – Linien, Punkte, Balken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/hist.html">🎨 Diagrammtypen II – Histogramm, Boxplot &amp; Torte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/achsen.html">🎨 Achsen, Layout &amp; Subplots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/style.html">🎨 Stile, Farben &amp; Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/annotations.html">🎨 Annotationen</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchess/reihenfolge.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chess/reihenfolge.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Implementierungsreihenfolge der TODO-Methoden</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-grundlagen-im-board-modul">Phase 1: Grundlagen im Board-Modul</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-bewegungsregeln-der-figuren">Phase 2: Bewegungsregeln der Figuren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-3-figurenlogik-und-spielfluss">Phase 3: Figurenlogik und Spielfluss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-4-bewertung-und-ki">Phase 4: Bewertung und KI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-5-mini-max-logik">Phase 5: Mini-Max-Logik</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uberblick">Überblick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusatzliche-hinweise">Zusätzliche Hinweise</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="implementierungsreihenfolge-der-todo-methoden">
+<h1>Implementierungsreihenfolge der TODO-Methoden<a class="headerlink" href="#implementierungsreihenfolge-der-todo-methoden" title="Link to this heading">#</a></h1>
+<p>Um den Schachcomputer schrittweise aufzubauen, sollten die mit <code class="docutils literal notranslate"><span class="pre">TODO</span></code> markierten Methoden in einer sinnvollen Reihenfolge bearbeitet werden. Diese Seite hilft euch dabei, eine logische Abfolge zu wählen – <strong>von einfachen, unabhängigen Funktionen</strong> bis hin zu <strong>komplexeren, zusammengesetzten Logiken</strong> wie Mini-Max.</p>
+<section id="phase-1-grundlagen-im-board-modul">
+<h2>Phase 1: Grundlagen im Board-Modul<a class="headerlink" href="#phase-1-grundlagen-im-board-modul" title="Link to this heading">#</a></h2>
+<p>Beginnt mit den Methoden, die einfache Prüfungen und Datenzugriffe betreffen:</p>
+<ol class="arabic simple">
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_valid_cell()</span></code>
+- Prüft, ob eine Zelle im gültigen Bereich des Schachbretts liegt.
+- Grundlage fast aller weiteren Bewegungsfunktionen.</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">cell_is_valid_and_empty()</span></code>
+- Liefert <cite>True</cite>, wenn eine gültige Zelle leer ist.
+- Baut direkt auf <cite>is_valid_cell()</cite> auf.</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">piece_can_enter_cell(piece,</span> <span class="pre">cell)</span></code>
+- Prüft, ob eine Figur ein Feld betreten darf (leer oder Gegner).
+- Wichtig für Bewegung und Schlagmechaniken.</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">piece_can_hit_on_cell(piece,</span> <span class="pre">cell)</span></code>
+- Prüft, ob eine Figur eine gegnerische Figur auf dem Ziel schlagen kann.</p></li>
+</ol>
+<p>Diese Funktionen müssen <strong>zuerst</strong> korrekt funktionieren, da sie in fast allen Figurenmethoden wiederverwendet werden.</p>
+</section>
+<section id="phase-2-bewegungsregeln-der-figuren">
+<h2>Phase 2: Bewegungsregeln der Figuren<a class="headerlink" href="#phase-2-bewegungsregeln-der-figuren" title="Link to this heading">#</a></h2>
+<p>Im nächsten Schritt implementiert ihr die <cite>get_reachable_cells()</cite>-Methoden jeder Figur. Diese bilden das Fundament für mögliche Züge:</p>
+<ol class="arabic simple" start="5">
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Pawn.get_reachable_cells()</span></code></p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Rook.get_reachable_cells()</span></code></p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Knight.get_reachable_cells()</span></code></p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Bishop.get_reachable_cells()</span></code></p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Queen.get_reachable_cells()</span></code></p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">King.get_reachable_cells()</span></code></p></li>
+</ol>
+<p>Diese Methoden müssen <strong>nicht prüfen</strong>, ob der eigene König danach im Schach steht – das übernimmt später <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_valid_cells()</span></code>.</p>
+</section>
+<section id="phase-3-figurenlogik-und-spielfluss">
+<h2>Phase 3: Figurenlogik und Spielfluss<a class="headerlink" href="#phase-3-figurenlogik-und-spielfluss" title="Link to this heading">#</a></h2>
+<ol class="arabic simple" start="11">
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Piece.get_valid_cells()</span></code>
+- Kombiniert <code class="xref py py-meth docutils literal notranslate"><span class="pre">get_reachable_cells</span></code> mit einer Prüfung auf Schach.
+- Nutzt temporäres Umplatzieren auf dem Brett.
+- <strong>Komplexität</strong>: mittel bis hoch, da Zustand zwischengespeichert und wiederhergestellt werden muss.</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Board.iterate_cells_with_pieces()</span></code>    - Generator für alle Figuren einer Farbe.
+- Wird für Bewertung und Mini-Max benötigt.</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Board.find_king()</span></code>
+- Sucht die Königsfigur einer bestimmten Farbe.
+- Grundlage für Schachprüfung.</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Board.is_king_check()</span></code>
+- Prüft, ob ein König im Schach steht.
+- Nutzt vorherige Methoden für Gegnerreichweiten.</p></li>
+</ol>
+</section>
+<section id="phase-4-bewertung-und-ki">
+<h2>Phase 4: Bewertung und KI<a class="headerlink" href="#phase-4-bewertung-und-ki" title="Link to this heading">#</a></h2>
+<ol class="arabic simple" start="15">
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Piece.evaluate()</span></code>
+- Bewertet die Stellung einer einzelnen Figur.
+- Nutzt z. B. Anzahl gültiger Züge, Bedrohungen etc.</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Board.evaluate()</span></code>
+- Aggregiert alle Bewertungen weißer und schwarzer Figuren.
+- Gibt eine numerische Bewertung der Gesamtstellung zurück.</p></li>
+</ol>
+</section>
+<section id="phase-5-mini-max-logik">
+<h2>Phase 5: Mini-Max-Logik<a class="headerlink" href="#phase-5-mini-max-logik" title="Link to this heading">#</a></h2>
+<ol class="arabic simple" start="17">
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">evaluate_all_possible_moves()</span></code>
+- Erzeugt und bewertet alle möglichen Züge einer Farbe.
+- Nutzt fast alle vorhergehenden Methoden.</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">minMax()</span></code>
+- Der rekursive Mini-Max-Algorithmus.
+- Komplexität hoch, rekursiv, mit Zustandsänderung.</p></li>
+</ol>
+</section>
+<section id="uberblick">
+<h2>Überblick<a class="headerlink" href="#uberblick" title="Link to this heading">#</a></h2>
+</section>
+<section id="zusatzliche-hinweise">
+<h2>Zusätzliche Hinweise<a class="headerlink" href="#zusatzliche-hinweise" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fangt <strong>nicht mitten in der Mini-Max-Logik</strong> an, wenn die Bewegungs- und Prüfmethoden noch nicht korrekt funktionieren.</p></li>
+<li><p>Testet jede Methode <strong>isoliert</strong>, bevor ihr sie in größere Strukturen einbaut.</p></li>
+<li><p>Nutzt Zwischenausgaben (<cite>print()</cite>) und einfache Testszenarien, um eure Implementierung schrittweise zu verifizieren.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chess"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-grundlagen-im-board-modul">Phase 1: Grundlagen im Board-Modul</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-bewegungsregeln-der-figuren">Phase 2: Bewegungsregeln der Figuren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-3-figurenlogik-und-spielfluss">Phase 3: Figurenlogik und Spielfluss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-4-bewertung-und-ki">Phase 4: Bewertung und KI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-5-mini-max-logik">Phase 5: Mini-Max-Logik</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uberblick">Überblick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusatzliche-hinweise">Zusätzliche Hinweise</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Prof. Dr. Dennis Müller
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

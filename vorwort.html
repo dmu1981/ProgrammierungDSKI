@@ -1,0 +1,693 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>📘 Vorwort zur Vorlesung Programmieren &#8212; Programmierung für Data Science und KI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'vorwort';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="💻 Programmieren - Was ist das" href="programmieren.html" />
+    <link rel="prev" title="🗺️ Übersicht über diesen Kurs" href="overview.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Programmierung für Data Science und KI - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Programmierung für Data Science und KI - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Programmierung für Data Science und KI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Einleitung</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="studium.html">🎓 Herzlich willkommen – Was bedeutet es eigentlich zu studieren?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">🗺️ Übersicht über diesen Kurs</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">📘 Vorwort zur Vorlesung Programmieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programmieren.html">💻 Programmieren - Was ist das</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">🐍 Einführung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyenv.html">🔍 Python-Version installieren mit <code class="docutils literal notranslate"><span class="pre">pyenv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="vscode.html">Visual Studio Code</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grundlagen</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/helloworld.html">🐍 Python: Hello World Beispiel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/variablenundoperationen.html">🧠 Variablen in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/kontrollstrukturen.html">🗂️ Kontrollstrukturen – Entscheidungen im Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/schleifen.html">🔁 Schleifen – Wiederholungen meistern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/mathundrandom.html">🧮 Einführung in <code class="docutils literal notranslate"><span class="pre">math</span></code> und <code class="docutils literal notranslate"><span class="pre">random</span></code> in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/listen.html">🧩 Listen - Mehrere Elemente verwalten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/strings.html">📝 Strings in Python – Zeichenketten meistern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/tuple.html">📦 Tupel - Die unveränderbare Liste</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/sets.html">🔷 Sets in Python – Mengen ohne Duplikate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/dicts.html">📘 Dictionaries in Python – Daten als Schlüssel-Wert-Paare</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/funktionen.html">🧩 Funktionen in Python – Code wiederverwenden und strukturieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/exceptions.html">🚨 Fehlerbehandlung in Python – <code class="docutils literal notranslate"><span class="pre">try</span></code>, <code class="docutils literal notranslate"><span class="pre">except</span></code>, <code class="docutils literal notranslate"><span class="pre">finally</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/dateien.html">🗂️ Dateien öffnen, lesen und schreiben in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/klassen.html">🧱 Klassen - Objektorientierte Programmierung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/vererbung.html">🧬 Vererbung in Python – Gemeinsamkeiten wiederverwenden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/iteratoren.html">🔁 Iteratoren in Python – und wie man eigene erstellt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/kontext.html">📚 Kontextmanager &amp; with-Statement in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/module.html">🧩 Eigene Module in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/assert.html">✅ <code class="docutils literal notranslate"><span class="pre">assert</span></code> in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/generatoren.html">🔁 Generatoren in Python – Elegante Iteratoren mit yield</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grundlagen/csvjson.html">📂 Arbeiten mit CSV- und JSON-Dateien in Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pandas</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pandas/intro.html">🐼 Pandas?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas/einfuehrung.html">🐼 Einführung in Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas/filtern.html">🐼 Arbeiten mit DataFrames – Filtern, Berechnen, Erweitern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas/gruppieren.html">🐼 Gruppieren, Aggregieren &amp; Statistiken mit Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas/sortieren.html">🐼  Sortieren, Filtern &amp; Kombinieren von DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas/zeitreihen.html">🐼 Zeitreihenanalyse &amp; Daten speichern mit Pandas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NumPy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="numpy/intro.html">🔢 Einführung in NumPy – Das Fundament der numerischen Programmierung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy/einfuehrung.html">🔢 Einstieg in Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy/operationen.html">🔢 Array-Erzeugung, Indexierung &amp; Rechnen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy/slicing.html">🔢 Indexierung, Slicing &amp; Boolean-Masken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy/rechnen.html">🔢 Rechnen mit Arrays &amp; Broadcasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy/reshape.html">🔢 Mehrdimensionale Arrays &amp; Reshape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy/linalg.html">🔢 Lineare Algebra mit NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">MatPlotLib</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="matplotlib/intro.html">🎨  Matplotlib – Daten sichtbar machen mit Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib/einleitung.html">🎨 Erste Schritte mit MatPlotLib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib/diagramme.html">🎨  Diagrammtypen I – Linien, Punkte, Balken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib/hist.html">🎨 Diagrammtypen II – Histogramm, Boxplot &amp; Torte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib/achsen.html">🎨 Achsen, Layout &amp; Subplots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib/style.html">🎨 Stile, Farben &amp; Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib/annotations.html">🎨 Annotationen</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fvorwort.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/vorwort.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>📘 Vorwort zur Vorlesung Programmieren</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kein-einsatz-von-ki-tools-warum">🚫 Kein Einsatz von KI-Tools – Warum?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#es-geht-um-euer-verstandnis">🎯 1. Es geht um Euer Verständnis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lernen-funktioniert-durch-aktives-tun">💡 2. Lernen funktioniert durch aktives Tun</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ki-tauscht-kompetenz-vor">🔒 3. KI täuscht Kompetenz vor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euer-vorteil-langfristiges-konnen-statt-kurzfristiger-abkurzung">✨ Euer Vorteil: Langfristiges Können statt kurzfristiger Abkürzung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#echte-skills-statt-austauschbarer-klickarbeit">🛠️ Echte Skills statt austauschbarer Klickarbeit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-deutsche-arbeitsmarkt-braucht">💼 Der deutsche Arbeitsmarkt braucht:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-grafikdesign-content-erstellung">🎨 Beispiel: Grafikdesign &amp; Content-Erstellung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubertrag-auf-programmieren">🧠 Übertrag auf Programmieren:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#meine-bitte-an-euch">🧭 Meine Bitte an euch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wenn-ki-alles-kann-warum-bist-du-dann-noch-hier">🤔 Wenn KI alles kann – warum bist Du dann noch hier?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ein-studium-ist-keine-dienstleistung-sondern-ein-trainingslager-fur-echtes-konnen">🎓 Ein Studium ist keine Dienstleistung, sondern ein Trainingslager für echtes Können.</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="vorwort-zur-vorlesung-programmieren">
+<h1>📘 Vorwort zur Vorlesung Programmieren<a class="headerlink" href="#vorwort-zur-vorlesung-programmieren" title="Link to this heading">#</a></h1>
+<p>Liebe Studierende,</p>
+<p>herzlich willkommen zur Vorlesung „Programmieren“!
+In den kommenden Wochen werden wir gemeinsam die Grundlagen des Programmierens erkunden – ein Werkzeug, das Euch nicht nur durch das Studium begleiten wird, sondern auch Euer Denken strukturiert, Eure Problemlösefähigkeiten stärkt und Eure Kreativität entfesseln kann.</p>
+<section id="kein-einsatz-von-ki-tools-warum">
+<h2>🚫 Kein Einsatz von KI-Tools – Warum?<a class="headerlink" href="#kein-einsatz-von-ki-tools-warum" title="Link to this heading">#</a></h2>
+<p>In dieser Vorlesung und bei den dazugehörigen Übungsaufgaben bitte ich Euch ausdrücklich darum, auf den Einsatz von KI-Tools wie ChatGPT, GitHub Copilot oder Codegenerierungsdienste zu verzichten.</p>
+<p>Warum dieser Verzicht?</p>
+<section id="es-geht-um-euer-verstandnis">
+<h3>🎯 1. Es geht um Euer Verständnis<a class="headerlink" href="#es-geht-um-euer-verstandnis" title="Link to this heading">#</a></h3>
+<p>Programmieren ist keine mechanische Tätigkeit. Es ist ein aktiver Denkprozess, bei dem Ihr Schritt für Schritt lernt, Probleme zu analysieren und eigenständig Lösungen zu entwickeln.</p>
+<p>Beispiel: Wenn eine KI Euch eine for-Schleife schreibt, habt Ihr vielleicht das Ergebnis – aber nicht den Weg dorthin verstanden. Beim nächsten, leicht anderen Problem steht Ihr dann wieder ratlos da.</p>
+</section>
+<section id="lernen-funktioniert-durch-aktives-tun">
+<h3>💡 2. Lernen funktioniert durch aktives Tun<a class="headerlink" href="#lernen-funktioniert-durch-aktives-tun" title="Link to this heading">#</a></h3>
+<p>Stellt Euch vor, Ihr wollt ein Instrument lernen. Es würde wenig bringen, jemand anderen Eure Stücke vorspielen zu lassen. Genauso ist es beim Programmieren: Nur durch eigenes Ausprobieren, Fehler machen, Debugging und Reflektieren baut Ihr echtes Können auf.</p>
+</section>
+<section id="ki-tauscht-kompetenz-vor">
+<h3>🔒 3. KI täuscht Kompetenz vor<a class="headerlink" href="#ki-tauscht-kompetenz-vor" title="Link to this heading">#</a></h3>
+<p>KI kann Code schreiben – aber oft nicht korrekt, sicher oder passend für Euer Level. Wenn Ihr auf diese Tools setzt, gebt Ihr Euch selbst eine trügerische Sicherheit. In einer Klausur ohne KI steht Ihr dann plötzlich mit leerem Blatt da.</p>
+</section>
+<section id="euer-vorteil-langfristiges-konnen-statt-kurzfristiger-abkurzung">
+<h3>✨ Euer Vorteil: Langfristiges Können statt kurzfristiger Abkürzung<a class="headerlink" href="#euer-vorteil-langfristiges-konnen-statt-kurzfristiger-abkurzung" title="Link to this heading">#</a></h3>
+<p>Wenn Ihr Euch darauf einlasst, den Stoff selbst zu verstehen, werdet Ihr:</p>
+<p>Probleme kreativ und selbstständig lösen können besser im Team kommunizieren (denn Ihr versteht, was im Code passiert)später von KI profitieren, weil Ihr sie kritisch und zielgerichtet einsetzen könnt</p>
+</section>
+<section id="echte-skills-statt-austauschbarer-klickarbeit">
+<h3>🛠️ Echte Skills statt austauschbarer Klickarbeit<a class="headerlink" href="#echte-skills-statt-austauschbarer-klickarbeit" title="Link to this heading">#</a></h3>
+<p>Vielleicht fragt Ihr Euch: “Aber wenn ChatGPT oder CoPilot mir doch helfen können – warum sollte ich darauf verzichten?”</p>
+<p>Die Antwort liegt in der Wertigkeit Eurer Arbeit. Aufgaben, die rein durch KI generiert oder durch Copy-Paste erledigt werden können, sind beliebig und international leicht skalierbar. Solche Tätigkeiten lassen sich bereits heute in Billiglohnländern für wenige Euro pro Stunde erledigen – oder automatisieren sich in Zukunft komplett.</p>
+<p>Was deutsche Unternehmen suchen, sind keine „Code-Kopierer“, sondern kreative, reflektierte Problemlöser.</p>
+</section>
+<section id="der-deutsche-arbeitsmarkt-braucht">
+<h3>💼 Der deutsche Arbeitsmarkt braucht:<a class="headerlink" href="#der-deutsche-arbeitsmarkt-braucht" title="Link to this heading">#</a></h3>
+<p>Analytisches Denken: Probleme verstehen, abstrahieren und strukturieren.</p>
+<p>Eigenständige Lösungsentwicklung: Nicht nur den Code, sondern den Kontext verstehen.</p>
+<p>Teamfähigkeit &amp; Verständlichkeit: Code, den man erklären kann, ist wertvoller als Code, der nur funktioniert.</p>
+<p>Wenn Ihr in diese Kompetenzen investiert – durch echtes Verstehen, Übung und Reflexion – werdet Ihr unersetzbar. Wenn Ihr Euch hingegen nur auf generative Tools verlasst, lernt Ihr genau die Art von Tätigkeit, die am leichtesten ersetzt werden kann.</p>
+</section>
+</section>
+<section id="beispiel-grafikdesign-content-erstellung">
+<h2>🎨 Beispiel: Grafikdesign &amp; Content-Erstellung<a class="headerlink" href="#beispiel-grafikdesign-content-erstellung" title="Link to this heading">#</a></h2>
+<p>Ein Bereich, der auf den ersten Blick stark von KI durchdrungen scheint, ist Grafikdesign und Texterstellung. Mit Tools wie Midjourney, Canva mit AI-Funktion, DALL·E oder ChatGPT für Texte lassen sich heute in Sekunden scheinbar professionelle Ergebnisse erzeugen.</p>
+<p>Aber:</p>
+<p>Gute Designer und Texter:innen sind nicht ersetzbar – sie sind gefragter denn je.</p>
+<p>Warum?
+KI trifft selten den Kontext. Ein Werbeplakat, das wirklich beim Kunden ankommt, braucht nicht nur ein hübsches Bild, sondern ein tiefes Verständnis von Zielgruppe, Kultur, Sprache, Medium, Timing.</p>
+<p>KI kennt keine Markenstrategie. Ein Unternehmen will Wiedererkennbarkeit, emotionale Wirkung, Authentizität – Dinge, die sich nur durch menschliche Kreativität und Erfahrung entwickeln lassen.</p>
+<p>KI braucht Anleitung. Gute Prompts, Auswahl, Nachbearbeitung, kritisches Denken: Das kann nur jemand, der selbst weiß, was Qualität ist.</p>
+<p>Wer nur „auf Knopfdruck“ Inhalte erzeugt, lernt wenig – und wird austauschbar.
+Wer versteht, wie gute Inhalte funktionieren, kann KI gezielt einsetzen und bleibt unverzichtbar.</p>
+<section id="ubertrag-auf-programmieren">
+<h3>🧠 Übertrag auf Programmieren:<a class="headerlink" href="#ubertrag-auf-programmieren" title="Link to this heading">#</a></h3>
+<p>Genauso ist es in der Softwareentwicklung. KI kann Dir Code liefern, aber keine Architektur, keine saubere API, keine Wartbarkeit, keine Verantwortung.
+Diese Dinge lernt man nur, wenn man selbst denkt, plant, testet – und auch mal scheitert.</p>
+</section>
+</section>
+<section id="meine-bitte-an-euch">
+<h2>🧭 Meine Bitte an euch<a class="headerlink" href="#meine-bitte-an-euch" title="Link to this heading">#</a></h2>
+<p>Ich wünsche mir, dass Ihr Euch in dieser Vorlesung selbst herausfordert. Nicht, um perfekte Lösungen abzuliefern, sondern um zu verstehen, zu lernen und zu wachsen. Ihr werdet Unterstützung bekommen – durch mich, durch die Übungen, durch Eure Kommiliton:innen. Aber: Der zentrale Lernprozess liegt in Euren Händen.</p>
+<p>Euer Ehrgeiz ist Euer stärkster Motor. Nutzt ihn.</p>
+</section>
+<section id="wenn-ki-alles-kann-warum-bist-du-dann-noch-hier">
+<h2>🤔 Wenn KI alles kann – warum bist Du dann noch hier?<a class="headerlink" href="#wenn-ki-alles-kann-warum-bist-du-dann-noch-hier" title="Link to this heading">#</a></h2>
+<p>Lass uns ganz offen sein:</p>
+<p>Wenn Du wirklich glaubst, dass KI bereits heute alles kann – dann brauchst Du dieses Studium nicht.</p>
+<p>Warum solltest Du dann noch vier Jahre Deiner Lebenszeit investieren?
+Wenn ChatGPT, CoPilot &amp; Co. Dir alles abnehmen, dann:</p>
+<ul class="simple">
+<li><p>✅ Starte jetzt Dein eigenes Projekt.</p></li>
+<li><p>✅ Bau die nächste App mit ein paar Prompts.</p></li>
+<li><p>✅ Gründe ein Start-up – oder bewirb Dich direkt bei einem Tech-Konzern.</p></li>
+</ul>
+<p>Aber – und das ist der Punkt – wenn Du noch hier bist, dann offenbar, weil Du selbst weißt:</p>
+<p>KI ist ein Werkzeug, kein Ersatz für Denken.</p>
+<p>Verstehen ist mehr wert als nur Anwenden.</p>
+<p>Die besten Jobs bekommst Du nicht, weil Du „KI bedienen“ kannst – sondern weil Du Probleme lösen kannst.</p>
+<section id="ein-studium-ist-keine-dienstleistung-sondern-ein-trainingslager-fur-echtes-konnen">
+<h3>🎓 Ein Studium ist keine Dienstleistung, sondern ein Trainingslager für echtes Können.<a class="headerlink" href="#ein-studium-ist-keine-dienstleistung-sondern-ein-trainingslager-fur-echtes-konnen" title="Link to this heading">#</a></h3>
+<p>Wenn Du nur auf schnelle Lösungen aus bist, bist Du hier fehl am Platz.
+Wenn Du aber bereit bist, Dich auf das Lernen einzulassen – dann ist diese Vorlesung genau der richtige Ort für Dich.</p>
+<p>Danke für Eure Offenheit und Euer Vertrauen.
+Ich freue mich auf die gemeinsame Reise durch die Welt des Programmierens!</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="overview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">🗺️ Übersicht über diesen Kurs</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="programmieren.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">💻 Programmieren - Was ist das</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kein-einsatz-von-ki-tools-warum">🚫 Kein Einsatz von KI-Tools – Warum?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#es-geht-um-euer-verstandnis">🎯 1. Es geht um Euer Verständnis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lernen-funktioniert-durch-aktives-tun">💡 2. Lernen funktioniert durch aktives Tun</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ki-tauscht-kompetenz-vor">🔒 3. KI täuscht Kompetenz vor</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euer-vorteil-langfristiges-konnen-statt-kurzfristiger-abkurzung">✨ Euer Vorteil: Langfristiges Können statt kurzfristiger Abkürzung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#echte-skills-statt-austauschbarer-klickarbeit">🛠️ Echte Skills statt austauschbarer Klickarbeit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-deutsche-arbeitsmarkt-braucht">💼 Der deutsche Arbeitsmarkt braucht:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-grafikdesign-content-erstellung">🎨 Beispiel: Grafikdesign &amp; Content-Erstellung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubertrag-auf-programmieren">🧠 Übertrag auf Programmieren:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#meine-bitte-an-euch">🧭 Meine Bitte an euch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wenn-ki-alles-kann-warum-bist-du-dann-noch-hier">🤔 Wenn KI alles kann – warum bist Du dann noch hier?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ein-studium-ist-keine-dienstleistung-sondern-ein-trainingslager-fur-echtes-konnen">🎓 Ein Studium ist keine Dienstleistung, sondern ein Trainingslager für echtes Können.</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Prof. Dr. Dennis Müller
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

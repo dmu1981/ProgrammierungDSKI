@@ -181,7 +181,11 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Einleitung</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Einführung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../studium.html">🎓 Herzlich willkommen – Was bedeutet es eigentlich zu studieren?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">🗺️ Übersicht über diesen Kurs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vorwort.html">📘 Vorwort zur Vorlesung Programmieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmieren.html">💻 Programmieren - Was ist das</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">🐍 Einführung in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pyenv.html">🔍 Python-Version installieren mit <code class="docutils literal notranslate"><span class="pre">pyenv</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
 
@@ -435,7 +439,12 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vergleichsoperatoren">Vergleichsoperatoren</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#else-und-elif">Else und elif</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logische-operationen">Logische Operationen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logische-operationen">Logische Operationen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-a-vergleiche-durchfuhren">🧠 Aufgabe A: Vergleiche durchführen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-b-kombinierte-bedingungen">🔄 Aufgabe B: Kombinierte Bedingungen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-c-kombinierte-bedingungen">🔄 Aufgabe C: Kombinierte Bedingungen</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#das-programm-vorzeitig-beenden">Das Programm vorzeitig beenden</a></li>
 </ul>
             </nav>
@@ -533,6 +542,72 @@ Nutze <a class="reference external" href="https://www.w3schools.com/python/ref_f
   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zutritt erlaubt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<section id="aufgabe-a-vergleiche-durchfuhren">
+<h3>🧠 Aufgabe A: Vergleiche durchführen<a class="headerlink" href="#aufgabe-a-vergleiche-durchfuhren" title="Link to this heading">#</a></h3>
+<p>Fülle die folgenden Codezeilen aus und überprüfe, ob die Aussagen <strong><code class="docutils literal notranslate"><span class="pre">True</span></code> oder <code class="docutils literal notranslate"><span class="pre">False</span></code></strong> ergeben.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">)</span>        <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>       <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">)</span>       <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span>       <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="p">)</span>   <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>    <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span> <span class="o">==</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>   <span class="c1"># → ?</span>
+</pre></div>
+</div>
+</section>
+<section id="aufgabe-b-kombinierte-bedingungen">
+<h3>🔄 Aufgabe B: Kombinierte Bedingungen<a class="headerlink" href="#aufgabe-b-kombinierte-bedingungen" title="Link to this heading">#</a></h3>
+<p>Verwende and, or und not, um die folgenden Aussagen zu überprüfen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="c1"># Ist x größer als 5 UND y kleiner als 15?</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># Ist x kleiner als 5 ODER y gleich 12?</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># Ist NICHT wahr, dass x größer als 10 ist?</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># Ist z negativ UND ungleich 0?</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># Ist y durch 3 teilbar ODER x eine gerade Zahl?</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># Ist status NICHT True?</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># Ist x im Bereich zwischen 5 und 10 (einschließlich)?</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="aufgabe-c-kombinierte-bedingungen">
+<h3>🔄 Aufgabe C: Kombinierte Bedingungen<a class="headerlink" href="#aufgabe-c-kombinierte-bedingungen" title="Link to this heading">#</a></h3>
+<p>Verwende and, or und not, um die folgenden Aussagen zu überprüfen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">9</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="ow">and</span> <span class="kc">False</span><span class="p">)</span>          <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="ow">or</span> <span class="kc">False</span><span class="p">)</span>           <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">False</span> <span class="ow">or</span> <span class="kc">False</span><span class="p">)</span>          <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="kc">True</span><span class="p">)</span>                <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">))</span>     <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">4</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="mi">7</span> <span class="o">!=</span> <span class="mi">7</span><span class="p">))</span>    <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="mi">3</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">))</span>            <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">==</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>          <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">12</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>   <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>         <span class="c1"># → ?</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">9</span><span class="p">))</span> <span class="c1"># → ?</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="das-programm-vorzeitig-beenden">
 <h2>Das Programm vorzeitig beenden<a class="headerlink" href="#das-programm-vorzeitig-beenden" title="Link to this heading">#</a></h2>
@@ -622,7 +697,12 @@ Nutze <a class="reference external" href="https://www.w3schools.com/python/ref_f
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vergleichsoperatoren">Vergleichsoperatoren</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#else-und-elif">Else und elif</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logische-operationen">Logische Operationen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logische-operationen">Logische Operationen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-a-vergleiche-durchfuhren">🧠 Aufgabe A: Vergleiche durchführen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-b-kombinierte-bedingungen">🔄 Aufgabe B: Kombinierte Bedingungen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-c-kombinierte-bedingungen">🔄 Aufgabe C: Kombinierte Bedingungen</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#das-programm-vorzeitig-beenden">Das Programm vorzeitig beenden</a></li>
 </ul>
   </nav></div>

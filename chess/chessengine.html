@@ -1,0 +1,606 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Einleitung: Bau eines einfachen Schachcomputers mit Mini-Max &#8212; Programmierung für Data Science und KI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chess/chessengine';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Programmierung für Data Science und KI - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Programmierung für Data Science und KI - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programmierung für Data Science und KI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Einleitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../studium.html">🎓 Herzlich willkommen – Was bedeutet es eigentlich zu studieren?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">🗺️ Übersicht über diesen Kurs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vorwort.html">📘 Vorwort zur Vorlesung Programmieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programmieren.html">💻 Programmieren - Was ist das</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">🐍 Einführung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pyenv.html">🔍 Python-Version installieren mit <code class="docutils literal notranslate"><span class="pre">pyenv</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode.html">Visual Studio Code</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grundlagen</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/helloworld.html">🐍 Python: Hello World Beispiel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/variablenundoperationen.html">🧠 Variablen in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/kontrollstrukturen.html">🗂️ Kontrollstrukturen – Entscheidungen im Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/schleifen.html">🔁 Schleifen – Wiederholungen meistern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/mathundrandom.html">🧮 Einführung in <code class="docutils literal notranslate"><span class="pre">math</span></code> und <code class="docutils literal notranslate"><span class="pre">random</span></code> in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/listen.html">🧩 Listen - Mehrere Elemente verwalten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/strings.html">📝 Strings in Python – Zeichenketten meistern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/tuple.html">📦 Tupel - Die unveränderbare Liste</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/sets.html">🔷 Sets in Python – Mengen ohne Duplikate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/dicts.html">📘 Dictionaries in Python – Daten als Schlüssel-Wert-Paare</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/funktionen.html">🧩 Funktionen in Python – Code wiederverwenden und strukturieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/exceptions.html">🚨 Fehlerbehandlung in Python – <code class="docutils literal notranslate"><span class="pre">try</span></code>, <code class="docutils literal notranslate"><span class="pre">except</span></code>, <code class="docutils literal notranslate"><span class="pre">finally</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/dateien.html">🗂️ Dateien öffnen, lesen und schreiben in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/klassen.html">🧱 Klassen - Objektorientierte Programmierung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/vererbung.html">🧬 Vererbung in Python – Gemeinsamkeiten wiederverwenden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/iteratoren.html">🔁 Iteratoren in Python – und wie man eigene erstellt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/kontext.html">📚 Kontextmanager &amp; with-Statement in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/module.html">🧩 Eigene Module in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/assert.html">✅ <code class="docutils literal notranslate"><span class="pre">assert</span></code> in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/generatoren.html">🔁 Generatoren in Python – Elegante Iteratoren mit yield</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grundlagen/csvjson.html">📂 Arbeiten mit CSV- und JSON-Dateien in Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pandas</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../pandas/intro.html">🐼 Pandas?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/einfuehrung.html">🐼 Einführung in Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/filtern.html">🐼 Arbeiten mit DataFrames – Filtern, Berechnen, Erweitern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/gruppieren.html">🐼 Gruppieren, Aggregieren &amp; Statistiken mit Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/sortieren.html">🐼  Sortieren, Filtern &amp; Kombinieren von DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/zeitreihen.html">🐼 Zeitreihenanalyse &amp; Daten speichern mit Pandas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NumPy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../numpy/intro.html">🔢 Einführung in NumPy – Das Fundament der numerischen Programmierung in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/einfuehrung.html">🔢 Einstieg in Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/operationen.html">🔢 Array-Erzeugung, Indexierung &amp; Rechnen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/slicing.html">🔢 Indexierung, Slicing &amp; Boolean-Masken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/rechnen.html">🔢 Rechnen mit Arrays &amp; Broadcasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/reshape.html">🔢 Mehrdimensionale Arrays &amp; Reshape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/linalg.html">🔢 Lineare Algebra mit NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">MatPlotLib</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/intro.html">🎨  Matplotlib – Daten sichtbar machen mit Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/einleitung.html">🎨 Erste Schritte mit MatPlotLib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/diagramme.html">🎨  Diagrammtypen I – Linien, Punkte, Balken</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/hist.html">🎨 Diagrammtypen II – Histogramm, Boxplot &amp; Torte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/achsen.html">🎨 Achsen, Layout &amp; Subplots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/style.html">🎨 Stile, Farben &amp; Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/annotations.html">🎨 Annotationen</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchess/chessengine.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chess/chessengine.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Einleitung: Bau eines einfachen Schachcomputers mit Mini-Max</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Einleitung: Bau eines einfachen Schachcomputers mit Mini-Max</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-max-algorithmus-im-detail">Mini-Max-Algorithmus im Detail</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grundidee">Grundidee</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rekursive-struktur">Rekursive Struktur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bewertungsfunktion">Bewertungsfunktion</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="einleitung-bau-eines-einfachen-schachcomputers-mit-mini-max">
+<h1>Einleitung: Bau eines einfachen Schachcomputers mit Mini-Max<a class="headerlink" href="#einleitung-bau-eines-einfachen-schachcomputers-mit-mini-max" title="Link to this heading">#</a></h1>
+<p>Stellt euch vor, ihr könntet einem Computer das Schachspielen beibringen – so, dass er selbstständig Züge macht, dabei plant und sogar gegnerische Absichten „voraussieht“. Genau das ist das Ziel dieses Projekts: Ihr entwickelt euren eigenen Schachcomputer, der mithilfe eines einfachen, aber wirkungsvollen Entscheidungsverfahrens spielt – dem sogenannten <strong>Mini-Max-Algorithmus</strong>.</p>
+<p>Der Mini-Max-Algorithmus stammt aus der Welt der Spieltheorie und hilft dem Computer dabei, Entscheidungen zu treffen, die langfristig zu einem Vorteil führen. Er betrachtet abwechselnd eigene und gegnerische Züge und bewertet die entstehenden Spielsituationen. Ziel ist es, <strong>den besten eigenen Zug</strong> zu finden, indem man davon ausgeht, dass der Gegner ebenfalls <strong>immer den besten möglichen Zug</strong> machen wird.</p>
+<p>Dabei geht es nicht darum, gleich einen Weltklasse-Computer wie Stockfish zu bauen. Vielmehr lernt ihr die grundlegenden Ideen kennen, die hinter künstlicher Intelligenz in Spielen stecken: systematisches Durchsuchen von Möglichkeiten, Bewertung von Positionen und strategisches Vorausplanen.</p>
+<p>Am Ende habt ihr einen einfachen, aber funktionierenden Schach-Bot, der mit euch (oder gegeneinander) Partien spielen kann – ganz aus eigener Umsetzung.</p>
+</section>
+<section id="mini-max-algorithmus-im-detail">
+<h1>Mini-Max-Algorithmus im Detail<a class="headerlink" href="#mini-max-algorithmus-im-detail" title="Link to this heading">#</a></h1>
+<section id="grundidee">
+<h2>Grundidee<a class="headerlink" href="#grundidee" title="Link to this heading">#</a></h2>
+<p>Der Mini-Max-Algorithmus ist ein rekursives Verfahren zur Entscheidungsfindung in Zwei-Spieler-Nullsummenspielen wie Schach. Der Algorithmus basiert auf der Annahme, dass beide Spieler <strong>optimal</strong> spielen – das heißt, jeder versucht, seinen eigenen Nutzen zu maximieren und den des Gegners zu minimieren.</p>
+<p>Im Kontext eines Schachcomputers bedeutet das: Der eigene Zug (Maximierer) wird so gewählt, dass der schlechtestmögliche Gegenzug (Minimierer) noch zu einem relativ guten Ergebnis führt.</p>
+</section>
+<section id="rekursive-struktur">
+<h2>Rekursive Struktur<a class="headerlink" href="#rekursive-struktur" title="Link to this heading">#</a></h2>
+<p>Der Mini-Max-Algorithmus durchsucht den Spielbaum bis zu einer bestimmten <strong>Suchtiefe</strong> und bewertet die entstehenden Stellungen mit einer <strong>Bewertungsfunktion</strong>. Danach propagiert er die Bewertungen zurück nach oben, wobei auf jeder Ebene je nach Spielerrolle der maximale oder minimale Wert weitergegeben wird.</p>
+<p>Der Ablauf sieht folgendermaßen aus:</p>
+<ol class="arabic simple">
+<li><p><strong>Generiere alle legalen Züge</strong> für die aktuelle Stellung.</p></li>
+<li><p><strong>Simuliere</strong> jeden Zug und rufe rekursiv Mini-Max für den entstehenden Zustand auf.</p></li>
+<li><p>Wenn die maximale Tiefe erreicht ist oder das Spiel vorbei ist:
+- <strong>Bewerte</strong> die Stellung numerisch (z. B. Material, Stellungsvorteile).</p></li>
+<li><p>Der <strong>Maximierer</strong> (z. B. Weiß) wählt den Zug mit dem <strong>höchsten Bewertungswert</strong>.</p></li>
+<li><p>Der <strong>Minimierer</strong> (z. B. Schwarz) wählt den Zug mit dem <strong>niedrigsten Bewertungswert</strong>.</p></li>
+</ol>
+</section>
+<section id="bewertungsfunktion">
+<h2>Bewertungsfunktion<a class="headerlink" href="#bewertungsfunktion" title="Link to this heading">#</a></h2>
+<p>Eine einfache Bewertungsfunktion kann auf der <strong>Materialverteilung</strong> basieren:</p>
+<ul class="simple">
+<li><p>Bauer = 1 Punkt</p></li>
+<li><p>Springer / Läufer = 3 Punkte</p></li>
+<li><p>Turm = 5 Punkte</p></li>
+<li><p>Dame = 9 Punkte</p></li>
+<li><p>König = ∞ (oder sehr hoher Wert)</p></li>
+</ul>
+<p>Diese Funktion kann durch <strong>Positionsboni</strong> (z. B. Zentrumskontrolle, Entwicklung, Königssicherheit) ergänzt werden.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chess"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Einleitung: Bau eines einfachen Schachcomputers mit Mini-Max</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-max-algorithmus-im-detail">Mini-Max-Algorithmus im Detail</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grundidee">Grundidee</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rekursive-struktur">Rekursive Struktur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bewertungsfunktion">Bewertungsfunktion</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Prof. Dr. Dennis Müller
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

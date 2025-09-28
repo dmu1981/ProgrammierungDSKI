@@ -18,6 +18,60 @@ print(namen[-1])  # Clara (von hinten)
 namen[1] = "Benny"
 ```
 
+## Eine Liste mit Bubble-Sort sortieren
+
+**Bubble Sort** ist ein einfacher Sortieralgorithmus, der Listen schrittweise sortiert, indem er **benachbarte Elemente vergleicht und vertauscht**, falls sie in der falschen Reihenfolge stehen.
+
+> 💡 Der Name „Bubble“ kommt daher, dass größere Werte beim Sortieren **wie Luftblasen nach oben steigen** (ans Ende der Liste).
+
+
+### 🧠 Funktionsprinzip
+
+- Der Algorithmus durchläuft die Liste **mehrfach von vorn bis hinten**.
+- Bei jedem Durchlauf vergleicht er **jeweils zwei benachbarte Elemente**:
+  - Wenn sie in der falschen Reihenfolge sind, werden sie vertauscht.
+- Der größte Wert „wandert“ dabei ans Ende – deshalb kann man nach jedem Durchlauf **einen Vergleich weniger** machen.
+- Der Vorgang wird wiederholt, **bis keine Vertauschungen mehr nötig sind**.
+
+### 🔢 Beispiel
+
+Gegeben: `[5, 2, 4, 1]`
+
+1. **Erster Durchlauf**:
+   - 5 und 2 → vertauschen → `[2, 5, 4, 1]`
+   - 5 und 4 → vertauschen → `[2, 4, 5, 1]`
+   - 5 und 1 → vertauschen → `[2, 4, 1, 5]`
+
+2. **Zweiter Durchlauf**:
+   - 2 und 4 → ok
+   - 4 und 1 → vertauschen → `[2, 1, 4, 5]`
+
+3. **Dritter Durchlauf**:
+   - 2 und 1 → vertauschen → `[1, 2, 4, 5]`
+
+4. **Fertig** – die Liste ist sortiert.
+
+### 🧪 Übungsaufgabe:
+Implementieren Sie Bubble-Sort mit der Liste `[6,3,5,2,4,1]`
+
+<details>
+<summary>Lösung anzeigen</summary>
+
+```python
+#sortieren mit Bubble-Sort
+daten = [6,3,5,2,4,1]
+anzahl = len(daten)
+for j in range(0,anzahl):
+    for i in range(0,anzahl-1):
+        if daten[i] > daten[i+1]:
+            h = daten[i]
+            daten[i] = daten[i+1]
+            daten[i+1] = h
+```
+
+</details>
+
+
 ## 🛠️ Arbeiten mit Listen
 
 ```python
@@ -52,7 +106,7 @@ print(min(temperaturen))  # → 14.8
 
 ➡️ Gibt den kleinsten Wert in der Liste zurück
 
-## 📈 `max()? – Größter Wert
+## 📈 `max()` – Größter Wert
 ```python
 punkte = [10, 30, 25, 40]
 print(max(punkte))  # → 40
@@ -66,7 +120,7 @@ namen = ["Anna", "Beate", "Christoph"]
 print(max(namen, key=len))  # → Christoph
 ```
 
-## 💡 Kombiniert mit sum() – Durchschnitt berechnen
+## 💡 Kombiniert mit `sum()` – Durchschnitt berechnen
 ```python
 zahlen = [3, 4, 5, 6]
 durchschnitt = sum(zahlen) / len(zahlen)
@@ -78,6 +132,9 @@ print(durchschnitt)  # → 4.5
 ```python
 namen = ["Anna", "Ben", "Clara"]
 for name in namen:
+    print("Hallo,", name)
+
+for name in reversed(namen):
     print("Hallo,", name)
 ```
 
