@@ -12,6 +12,14 @@ Eine Variable ist ein **Name**, der auf einen bestimmten **Wert** zeigt.
 name = "Anna"
 alter = 25
 ```
+
+Variablen speichern ihre Werte und belegen Speicherplatz im Computer.
+Python wählt eine geeignete interne Repräsentation um diese Werte zu speichern. Der Wert einer Variable kann überschrieben werden
+
+```python
+alter = 25
+alter = 27
+```
  
 ## 🔤 2. Wichtige Datentypen
 
@@ -44,7 +52,6 @@ dreifachen Anführungszeichen.
 """
 ```
 
-
 ## ➕ 3. Einfache Operationen mit Variablen
 ### 🔢 Mit Zahlen (int, float):
 ```python
@@ -67,6 +74,55 @@ a += 3 # 8
 a *= 2 # 16
 a /= 4 # 4
 ```
+
+## 🔁 Übung: Kurzformen und ausführliche Zuweisungen
+
+### 🧠 Aufgabe A: Kürzen
+
+Schreibe die folgenden Zuweisungen als **Kurzform**:
+
+```python
+a = a + 5
+b = b * 2
+c = c - 1
+d = d / 4
+e = e % 3
+```
+
+### 🧠 Aufgabe B: Ausschreiben
+
+Schreibe die folgenden Zuweisungen als **Kurzform**:
+
+```python
+x += 7
+y //= 2
+z **= 3
+n -= 4
+k *= 10
+```
+
+### 🧠 Quiz: Welchen Wert haben x und y nach diesen Operationen?
+
+```python
+x = 2                   
+y = 5
+x = (2*x - y) + 1
+y = (2*y - x) - 1
+x += y
+y -= x  
+```
+<details>
+<summary>Klicke hier, um die Lösung anzuzeigen</summary>
+
+```python
+x = 2                   # x=2
+y = 5                   # x=2, y=5
+x = (2*x - y) + 1       # x=0, y=5
+y = (2*y - x) - 1       # x=0, y=9
+x += y                  # x=9, y=9
+y -= x                  # x=9, y=0
+```
+</details>
 
 ### Mit Strings
 ```python
@@ -93,6 +149,37 @@ a = int(a)           # int (5)
     # Traceback (most recent call last):
     # File "<stdin>", line 1, in <module>
     # valueError: invalid literal for int() with base 10: 'fünf'
+```
+
+### 🧠 Übung: Umwandlung von Datentypen
+Fordern Sie den Benutzer auf eine beliebige Gleitkommazahl einzugeben 
+(verwenden Sie [input](https://www.w3schools.com/python/ref_func_input.asp)). Wandeln Sie die Zahl zunächst in eine Gleitkommazahl um. 
+
+Überlegen Sie dann wie sie die Zahl runden können und geben Sie das gerundete Ergebniss aus. 
+
+<details>
+<summary>Klicke hier, um die Lösung anzuzeigen</summary>
+
+```python
+x = float(input("Geben Sie eine Gleitkommazahl ein"))
+print(int(x + 0.5))
+```
+</details>
+
+
+## 🔢 Ungenauigkeiten bei Gleitkommazahlen (`float`)
+
+Python (wie viele andere Programmiersprachen) verwendet zur Darstellung von Dezimalzahlen den **Binär-Gleitkomma-Standard (IEEE 754)**. Dabei können **kleine Rundungsfehler** entstehen, da **nicht alle Dezimalzahlen exakt binär darstellbar sind**.
+
+### Beispiel
+
+```python
+a = 0.1
+b = 0.2
+c = a + b
+
+print("Ergebnis von 0.1 + 0.2:", c)
+print("Ist das Ergebnis genau 0.3?", c == 0.3)
 ```
 
 ### 🔢 Andere Basen
@@ -130,12 +217,47 @@ $$ 0xAE = 10 * 16 + 14 = 174$$
     108
 ```
 
-### 📏 Mit Listen (list):
+## Formatierungsmöglichkeiten mit f-Strings
+
+| Typ              | Beispiel           | Ausgabe       |
+| ---------------- | ------------------ | ------------- |
+| Ganzzahl         | `f"{42}"`          | `42`          |
+| Float            | `f"{3.14159:.2f}"` | `3.14`        |
+| Ausrichtung      | `f"{'Text':>10}"`  | `'     Text'` |
+| Wissenschaftlich | `f"{12345:.2e}"`   | `1.23e+04`    |
+| Prozent          | `f"{0.75:.0%}"`    | `75%`         |
+| Boolesch         | `f"{True}"`        | `True`        |
+| Ausdruck         | `f"{2 + 3}"`       | `5`           |
+
+
+## 🧪 Übung: Formatierte Strings mit verschiedenen Datentypen
+
+Du lernst, wie du mit **f-Strings (`f""`)** in Python verschiedene Datentypen **formatiert und leserlich** darstellen kannst. Dazu gehören:
+
+- Ganzzahlen (`int`)
+- Kommazahlen (`float`)
+- Strings
+- Wahrheitswerte (`bool`)
+- Runden, Ausrichten und Padding
+
+---
+
+### 🔢 Aufgabe A: Werte definieren und einsetzen
+
+1. Definiere folgende Variablen:
+
 ```python
-zahlen = [1, 2, 3]
-zahlen.append(4)       # [1, 2, 3, 4]
-laenge = len(zahlen)   # 4
+name = "Lena"
+alter = 27
+größe = 1.6754
+ist_studentin = True
 ```
+
+Gib folgenden Satz mittels eines f-Strings aus:
+
+        Name: Lena | Alter: 27 | Größe: 1.68 m | Studentin: Ja
+
+
 
 ### 🎯 Boolsche Variablen
 Boolsche Variablen sind solche, die nur zwei Zustände annehmen können: Wahr oder Falsch. Mit diesen können einfach logische Operationen durchgeführt werden.
