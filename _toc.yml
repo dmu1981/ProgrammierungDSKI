@@ -6,6 +6,10 @@ root: intro
 parts:
   - caption: Einleitung
     chapters:
+    - file: studium
+    - file: overview
+    - file: vorwort
+    - file: programmieren
     - file: introduction
     - file: pyenv
     - file: vscode

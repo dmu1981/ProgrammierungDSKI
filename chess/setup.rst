@@ -84,6 +84,7 @@ Testausgabe interpretieren
 --------------------------
 
 - **Erfolgreicher Test**:
+
 Nachdem alle Methoden korrekt implementiert wurden laufen die Tests ohne Fehlermeldung durch:
 
   .. code-block::
@@ -97,6 +98,7 @@ Nachdem alle Methoden korrekt implementiert wurden laufen die Tests ohne Fehlerm
     OK
 
 - **Fehlgeschlagener Test**:
+
 Ist eure Implementierung fehlerhaft oder unvollständig, erhaltet ihr eine
 möglichst sprechende Beschreibung des Fehlers.
 
